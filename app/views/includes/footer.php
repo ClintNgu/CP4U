@@ -2,7 +2,7 @@
 <footer class="d-flex align-items-center justify-content-around">
     <div class="main-left-container w-25 d-flex justify-content-center align-items-center">
       <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo">
-      <h2 class='name ms-1'>CP<br>4U</h2>
+      <h2 class='name ms-2'>CP<br>4U</h2>
     </div>
     <div 
     class="main-right-container border-top border-bottom border-top-light border-bottom-light 

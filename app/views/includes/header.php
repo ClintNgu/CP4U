@@ -20,6 +20,9 @@
     <?= include ROOT . '/public/styles/css/style.css';  ?>
   </style>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="<?= URL_ROOT ?>/img/logo.png"/>
+  
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
