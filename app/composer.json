@@ -1,0 +1,12 @@
+{
+  "name": "ecom/cp4u",
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    },
+    "classmap": [
+      "controllers"
+    ]
+  },
+  "require": {}
+}

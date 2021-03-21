@@ -1,0 +1,80 @@
+// color variables
+$logoBackColor: rgb(7, 19, 43);
+$white: #f0f0f0;
+$pink: rgb(222, 64, 205);
+$turquoise: rgb(96, 196, 243);
+
+// partials
+@import 'Home';
+
+// main styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(45, 112, 245, 0.6);
+  border-radius: 50px;
+
+  &:hover {
+    background: rgba(45, 112, 245, 0.8);
+  }
+}
+
+body {
+  font-family: 'M PLUS 1p', sans-serif;
+  background: $white;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.main-container {
+  min-height: 100vh;
+}
+
+footer {
+  background: $logoBackColor;
+  min-height: 50vh;
+
+  .main-left-container {
+    .name {
+      font-weight: 900;
+      background-clip: text;
+      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    img {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+
+  .main-right-container {
+    width: 40%;
+    text-align: center;
+
+    i {
+      font-size: 1.1rem;
+      display: inline;
+      color: lightsteelblue;
+    }
+
+    .text {
+      font-size: 0.55rem;
+      font-weight: 200;
+      color: $white;
+      display: inline;
+    }
+  }
+}
