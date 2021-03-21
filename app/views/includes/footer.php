@@ -1,3 +1,4 @@
+</div>
 <footer class="d-flex align-items-center justify-content-around">
     <div class="main-left-container w-25 d-flex justify-content-center align-items-center">
       <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo">
