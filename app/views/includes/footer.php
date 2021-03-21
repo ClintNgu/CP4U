@@ -2,17 +2,17 @@
 <footer class="d-flex align-items-center justify-content-around">
     <div class="main-left-container w-25 d-flex justify-content-center align-items-center">
       <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo">
-      <h2 class='name ms-2'>CP<br>4U</h2>
+      <h1 class='name ms-3'>CP<br>4U</h1>
     </div>
     <div 
     class="main-right-container border-top border-bottom border-top-light border-bottom-light 
     d-flex align-items-center justify-content-center flex-column 
-    py-4">
+    py-5">
       <div class='d-flex align-items-center justify-content-center'>
         <i class="fab fa-instagram"></i>
         <p class='text ms-2 mb-0'><em>www.instagram.com/CP4U/</em></p>
       </div>
-      <div class='d-flex align-items-center justify-content-center mt-3'>
+      <div class='d-flex align-items-center justify-content-center mt-4'>
         <i class="fab fa-facebook"></i>
         <p class='text ms-2 mb-0'><em>www.facebook.com/CP4U/</em></p>
       </div>
