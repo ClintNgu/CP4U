@@ -5,7 +5,8 @@ $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
 
 // partials
-@import 'Home';
+@import "Home";
+@import "Login";
 
 // main styles
 * {
@@ -28,7 +29,7 @@ $turquoise: rgb(96, 196, 243);
 }
 
 body {
-  font-family: 'M PLUS 1p', sans-serif;
+  font-family: "M PLUS 1p", sans-serif;
   background: $white;
 }
 
