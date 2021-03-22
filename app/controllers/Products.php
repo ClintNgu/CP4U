@@ -13,7 +13,7 @@ class Products extends Controller {
   
   public function product($params) {
     $this->data['title'] = 'Product Name';
-    $this->data['item_id'] = $params[0] ?? '';
+    $this->data['item_id'] = $params[0] ?? -1;
     
     //render view
     $this->renderView('Product', $this->data);
