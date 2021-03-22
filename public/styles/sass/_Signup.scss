@@ -16,6 +16,12 @@
       color: $white;
       text-shadow: 2px 2px 5px #333;
     }
+
+    .btn {
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      background-color: $orange;
+    }
   }
 
   .right {
@@ -27,9 +33,9 @@
     span {
       font-size: 0.85rem;
     }
-  }
 
-  .btn {
-    height: 3rem;
+    .btn {
+      height: 3rem;
+    }
   }
 }
