@@ -5,7 +5,8 @@
         <p class="text-uppercase text-shadow">
             Whether you are a 
             <br>beginner or a veteran 
-            <br><br> join us and we can all make any PC imaginable.
+            <br><br> join us and make any
+            <br> PC imaginable.
         </p>
     </div>
     <div class="right p-4">
