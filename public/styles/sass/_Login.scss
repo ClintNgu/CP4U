@@ -23,6 +23,10 @@
     border-radius: 3px;
     box-shadow: $boxShadow;
 
+    span {
+      font-size: 0.9rem;
+    }
+
     .submit-button {
       border-radius: 4px;
       border: none;

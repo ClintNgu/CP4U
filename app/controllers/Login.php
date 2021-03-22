@@ -37,6 +37,13 @@ class Login extends Controller
       $user = new User;
       $userRow = $user->login($this->data);
       
+      if (!$userRow) {
+        $this->data['emptyFields'] = '*Incorrect Username or Password*';
+      } else {
+        // start session
+        echo 'user session created';
+      }
+
       echo '<pre>';
       var_dump($userRow);
       echo '</pre>';

@@ -8,7 +8,10 @@
         </p>
     </div>
     <div class="right p-4 ms-4">
-        <h3 class='form-label'>Login</h3>
+        <div class='d-flex align-items-center'>
+            <h3 class="d-inline m-0">Sign Up</h3> 
+            <span class='text-danger ms-3'> <?= $data['emptyFields'] ?? '' ?> </span>
+        </div>  
         <form method='post' class='mt-4'>
             <input type="text" class="input form-control" placeholder="Email or Username" name="emailOrUser">
             <input type="text" class="input form-control mt-2" placeholder="Password" name="pass">
