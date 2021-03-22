@@ -41,12 +41,8 @@ class Login extends Controller
         $this->data['emptyFields'] = '*Incorrect Username or Password*';
       } else {
         // start session
-        echo 'user session created';
+        $_SESSION['User'] = $userRow;
       }
-
-      echo '<pre>';
-      var_dump($userRow);
-      echo '</pre>';
 
       //redirect to home page
       // header('Location: ' . URL_ROOT . '/home');
