@@ -1,43 +1,56 @@
-<?php include_once APP_ROOT . '/views/includes/header.php'; ?>
+<?php include APP_ROOT . '/views/includes/header.php'; ?>
 
 <div class="signup-container mb-5 d-flex align-items-center justify-content-center">
   <div class="wrapper p-4">
-    <h3>Register</h3>
+    <div class='d-flex align-items-center'>
+      <h3 class="d-inline">Register Here</h3> 
+      <span class='text-danger ms-2'> <?= $data['emptyFields'] ?? '' ?> </span>
+    </div>  
     <form method="post" class="signup-form mt-4">
       <div class='row'>
         <div class="col">
           <label class="form-label">First Name</label>
-          <input class="form-control" type="text" placeholder="First Name">
+          <input class="form-control" type="text" placeholder="First Name" name='fname' 
+            value="<?= $data['fname'] ?? '' ?>""
+          >
         </div>
         <div class='col'>
           <label class="form-label">Last Name</label>
-          <input class="form-control" type="text" placeholder="Last Name">
+          <input class="form-control" type="text" placeholder="Last Name" name='lname'
+            value="<?= $data['lname'] ?? '' ?>""
+          >
         </div>
         <div class="col">
           <label class="form-label">Username</label>
-          <input class="form-control" type="text" placeholder="Username">
+          <input class="form-control" type="text" placeholder="Username" name='username'
+            value="<?= $data['username'] ?? '' ?>""
+          >
         </div>
       </div>
       <div class="row mt-2">
         <div class="col">
           <label class="form-label">Address</label>
-          <input class="form-control" type="text" placeholder="Address">
+          <input class="form-control" type="text" placeholder="Address" name='street'
+            value="<?= $data['street'] ?? '' ?>""
+          >
         </div>
       </div>
       <div class="row mt-2">
         <div class="col">
           <label class="form-label">Email</label>
-          <input class="form-control" type="text" placeholder="Email">
+          <input class="form-control" type="text" placeholder="Email" name='email'
+            value="<?= $data['email'] ?? '' ?>""
+          >
         </div>
       </div>
       <div class="row mt-2">
         <div class="col">
           <label class="form-label">Password</label>
-          <input class="form-control" type="text" placeholder="Password">
+          <input class="form-control" type="text" placeholder="Password" name='pass'>
         </div>  
       </div>
       
-      <button type="submit" class="btn btn-primary w-100 mt-4">Sign Up</button>
+      <input type="submit" value='Sign Up' name='signupSubmit' class="btn btn-primary w-100 mt-4" />
       <p class="text-center w-100 mt-3">Already have an Account? <a class="link link-primary" href="<?= URL_ROOT ?>/login">Login</a></p>
       
     </form>
@@ -48,4 +61,4 @@
 
 
 
-<?php include_once APP_ROOT . '/views/includes/footer.php'; ?>
+<?php include APP_ROOT . '/views/includes/footer.php'; ?>

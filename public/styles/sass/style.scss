@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
 }
 
-input {
+input[type='text'] {
   background: $inputBackColor !important;
 }
 

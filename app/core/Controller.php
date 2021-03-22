@@ -5,7 +5,7 @@ class Controller {
   protected function loadModel($model) {
     if (file_exists(APP_ROOT . "/models/$model.php")) {
       require_once APP_ROOT . "/models/$model.php";
-      return new $model;
+      return new $model();
     }
   }
 

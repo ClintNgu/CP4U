@@ -1,6 +1,4 @@
 <?php
-namespace app\models;
-
 use app\core\Database;
 
 class User {
@@ -19,8 +17,6 @@ class User {
 
   public function signup($post) {
     $this->insertUser($post);
-    
-    header('Location:' . URL_ROOT . '/pages/login');
   }
 
   private function queryUserLogin($data) {
@@ -49,8 +45,8 @@ class User {
     //   'street' => 'admin street 123',
     // ];
 
-    $query =  "INSERT INTO user(fname, lname, username, email, pass, street) 
-                VALUES(:fname, :lname, :username, :email, :pass, :street);";
+    $query =  "INSERT INTO users(fname, lname, username, email, pass, street, is_admin) 
+                VALUES(:fname, :lname, :username, :email, :pass, :street, 0);";
     return $this->db->prepareStmt($query, $data);
   }
 
