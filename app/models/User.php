@@ -8,19 +8,19 @@ class User {
     $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
   }
 
-  public function login($post) {
-    $user = $this->queryUserLogin($post);
+  public function login($userInfo) {
+    $user = $this->queryUserLogin($userInfo);
     if($user) {
       $_SESSION['user'] = $user;
     }
   }
 
-  public function signup($post) {
-    $this->insertUser($post);
+  public function signup($userInfo) {
+    $this->insertUser($userInfo);
   }
 
   private function queryUserLogin($data) {
-    $query =  "SELECT * FROM user WHERE (username=:username OR email=:email) AND pass=:pass;";
+    $query =  "SELECT * FROM users WHERE (username=:username OR email=:email) AND pass=:pass;";
     return $this->db->querySingle($query, $data);
   }
 
@@ -35,15 +35,7 @@ class User {
   // }
 
   public function insertUser($data) {
-    // ex.:
-    // $data = [
-    //   'fname' => 'admin',
-    //   'lname' => 'admin',
-    //   'username' => 'admin',
-    //   'email' => 'admin@admin.com',
-    //   'pass' => 'admin',
-    //   'street' => 'admin street 123',
-    // ];
+    // ex.: look in signup controller
 
     $query =  "INSERT INTO users(fname, lname, username, email, pass, street, is_admin) 
                 VALUES(:fname, :lname, :username, :email, :pass, :street, 0);";
@@ -62,9 +54,9 @@ class User {
     //   'id' => 1,
     // ];
 
-    $query =  "UPDATE user 
+    $query =  "UPDATE users 
                 SET fname=:fname, lname=:lname, username=:username, email=:email, pass=:pass, street=:street
-                WHERE id=:id;";
+                WHERE user_id=:id;";
     return $this->db->prepareStmt($query, $data)->rowCount();
   }
 }

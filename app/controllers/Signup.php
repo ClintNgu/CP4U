@@ -1,5 +1,6 @@
 <?php
 use app\core\Controller;
+use app\controllers\User;
 
 class Signup extends Controller {
   private $data = ['title' => 'Signup'];
@@ -30,18 +31,9 @@ class Signup extends Controller {
   }
 
   private function post() {
-    $user = $this->loadModel('User');
-    
-    $userInfo = [
-      'fname' => $_POST['fname'],
-      'lname' => $_POST['lname'],
-      'username' => $_POST['username'],
-      'email' => $_POST['email'],
-      'pass' => $_POST['pass'],
-      'street' => $_POST['street'],
-    ];
-
-    $user->signup($userInfo);
+    //insert user to db
+    $user = new User;
+    $user->signup($this->data);
 
     //redirect to login page
     header('Location: ' . URL_ROOT . '/login');
