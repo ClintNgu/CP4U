@@ -1,13 +1,13 @@
 <?php include_once APP_ROOT . '/views/includes/header.php'; ?>
 
 <div class="login-container d-flex align-items-center justify-content-center">
-    <div class="left p-1 ps-4 ms-5">
+    <div class="left p-1 ps-4 mx-5">
         <p class="text-uppercase text-shadow m-0"> 
             join us and make 
             <br> your dream PC
         </p>
     </div>
-    <div class="right p-4">
+    <div class="right p-4 ms-4">
         <h3 class='form-label'>Login</h3>
         <form method='post' class='mt-4'>
             <input type="text" name="username" class="input form-control" placeholder="Email or Username">
