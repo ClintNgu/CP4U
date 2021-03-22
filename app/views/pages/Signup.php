@@ -1,7 +1,7 @@
 <?php include_once APP_ROOT . '/views/includes/header.php'; ?>
 
 <div class="signup-container d-flex align-items-center justify-content-center">
-  <div class="wrapper shadow p-4">
+  <div class="wrapper p-4">
     <h3>Register</h3>
     <form method="post" class="signup-form">
       <div class='row'>
