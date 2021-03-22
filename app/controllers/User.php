@@ -11,6 +11,18 @@ class User extends Controller {
     $this->model = $this->loadModel('User'); 
   }
 
+  public function login($post) {
+    $userInfo = [
+      'username' => $post['emailOrUser'],
+      'email' => $post['emailOrUser'],
+      'pass' =>  $post['pass'],
+    ];
+
+    //return user row
+    return $this->model->login($userInfo);
+
+  }
+
   public function signup($post) {
     $userInfo = [
       'fname' => $post['fname'],

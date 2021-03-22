@@ -9,10 +9,7 @@ class User {
   }
 
   public function login($userInfo) {
-    $user = $this->queryUserLogin($userInfo);
-    if($user) {
-      $_SESSION['user'] = $user;
-    }
+    return $this->queryUserLogin($userInfo);
   }
 
   public function signup($userInfo) {

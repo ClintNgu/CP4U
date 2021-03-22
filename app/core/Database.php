@@ -27,11 +27,11 @@ class Database {
 
   public function querySingle($query, $data) {
     $stmt = $this->prepareStmt($query, $data);
-    return $stmt->fetch();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   public function queryAll($query) {
     $stmt = $this->prepareStmt($query);
-    return $stmt->fetchAll();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 }
