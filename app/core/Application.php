@@ -1,7 +1,7 @@
 <?php 
 class Application {
 
-  private $controller = 'Home';
+  private $controller = 'Login';
   private $callback = 'index';
   private $params = [];
 
