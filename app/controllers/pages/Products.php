@@ -7,6 +7,10 @@ class Products extends Controller {
 
   public function index($params) {
 
+    echo '<pre>';
+    var_dump($_SESSION['User']);
+    echo '</pre>';
+    
     //render view
     $this->renderView('Products', $this->data);
   } 

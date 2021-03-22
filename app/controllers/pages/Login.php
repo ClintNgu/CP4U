@@ -44,7 +44,7 @@ class Login extends Controller
         $_SESSION['User'] = $userRow;
       }
 
-      //redirect to home page
-      // header('Location: ' . URL_ROOT . '/home');
+      //redirect to products page
+      header('Location: ' . URL_ROOT . '/products');
     }
 }

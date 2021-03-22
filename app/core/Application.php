@@ -10,16 +10,16 @@ class Application {
     $urls = $this->splitUrl();
 
     //set controller
-    if (file_exists(APP_ROOT . "/controllers/$urls[0].php")) {
+    if (file_exists(APP_ROOT . "/controllers/pages/$urls[0].php")) {
       $this->controller = $urls[0];
       unset($urls[0]);
     }
     
-    //init controller class
-    require APP_ROOT . "/controllers/$this->controller.php";
+    //init page controller class
+    require APP_ROOT . "/controllers/pages/$this->controller.php";
     $this->controller = new $this->controller;
     
-    //get callback
+    //set callback function
     if (isset($urls[1]) && method_exists($this->controller, $urls[1])) {
       $this->callback = $urls[1];
       unset($urls[1]);
@@ -28,7 +28,7 @@ class Application {
     //set params
     $this->params = array_values($urls);
     
-    //call callback method
+    //call controller's callback function
     call_user_func([$this->controller, $this->callback], $this->params);
     
   }
