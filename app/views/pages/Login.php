@@ -1,5 +1,4 @@
 <?php include_once APP_ROOT . '/views/includes/header.php'; ?>
-<?php include APP_ROOT . '/views/includes/nav.php'; ?>
 
 <div class="login-container d-flex align-items-center justify-content-center">
     <div class="left p-1 ps-4 mx-5">

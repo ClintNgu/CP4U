@@ -30,4 +30,5 @@
 </head>
 
 <body>
+  <?php include_once APP_ROOT . '/views/includes/nav.php'; ?>
   <div class="main-container">
