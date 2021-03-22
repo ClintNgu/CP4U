@@ -3,6 +3,7 @@ $logoBackColor: rgb(7, 19, 43);
 $white: #f0f0f0;
 $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
+$boxShadow: 5px 10px 12px rgba(0, 0, 0, 0.6);
 
 // partials
 @import 'Home';
@@ -31,8 +32,23 @@ $turquoise: rgb(96, 196, 243);
 
 body {
   font-family: 'M PLUS 1p', sans-serif;
-  background: $white;
+  // background: $white;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   overflow-x: hidden;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 img {
