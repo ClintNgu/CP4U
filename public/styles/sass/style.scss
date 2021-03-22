@@ -11,8 +11,8 @@ $green: #1bb38f;
 $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 
 // partials
-@import 'Login';
-@import 'Signup';
+@import "Login";
+@import "Signup";
 
 // main styles
 * {
@@ -45,7 +45,7 @@ h6 {
 }
 
 body {
-  font-family: 'M PLUS 1p', sans-serif;
+  font-family: "M PLUS 1p", sans-serif;
   // background: $white;
   background: linear-gradient(-45deg, $orange 40%, $green 40%);
   // background-size: 400% 400%;
@@ -53,7 +53,7 @@ body {
   overflow-x: hidden;
 }
 
-input[type='text'] {
+input[type="text"] {
   background: $inputBackColor !important;
 }
 
