@@ -3,8 +3,8 @@
 <div class="login-container d-flex align-items-center justify-content-center">
     <div class="left p-1 ps-4 mx-5">
         <p class="text-uppercase text-shadow m-0"> 
-            join us and make 
-            <br> your dream PC
+            join us and build  
+            <br>your dream pc
         </p>
     </div>
     <div class="right p-4 ms-4">
