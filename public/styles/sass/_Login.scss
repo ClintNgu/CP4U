@@ -1,20 +1,19 @@
-$logoBackColor: rgb(7, 19, 43);
-$white: #ffffff;
-
 .login-container {
   min-height: 100vh;
 
   .left {
     width: 40%;
+    border-left: 2px solid #fff;
 
     img {
       border-radius: 5px;
     }
 
     p {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: $white;
+      text-shadow: 2px 2px 5px #333;
     }
   }
 
@@ -57,23 +56,6 @@ $white: #ffffff;
     .submit-button:hover span:after {
       opacity: 1;
       right: 0;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid black;
-      border-radius: 4px;
-      margin: 5px 0;
-      opacity: 0.85;
-      display: inline-block;
-      font-size: 17px;
-      line-height: 20px;
-      text-decoration: none;
-    }
-
-    .input {
-      cursor: pointer;
     }
   }
 }

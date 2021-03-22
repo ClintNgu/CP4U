@@ -1,8 +1,8 @@
 <?php include_once APP_ROOT . '/views/includes/header.php'; ?>
 
-<div class="signup-container d-flex align-items-center justify-content-center">
+<div class="signup-container mb-5 d-flex align-items-center justify-content-center">
   <div class="wrapper p-4">
-    <h2>Register</h2>
+    <h3>Register</h3>
     <form method="post" class="signup-form mt-4">
       <div class='row'>
         <div class="col">
@@ -37,8 +37,8 @@
         </div>  
       </div>
       
-      <button type="submit" class="btn btn-dark w-100 mt-4">Sign Up</button>
-      <p class="text-center w-100 mt-3">Already have an Account? <a class="text-danger" href="<?= URL_ROOT ?>/login">Login</a></p>
+      <button type="submit" class="btn btn-primary w-100 mt-4">Sign Up</button>
+      <p class="text-center w-100 mt-3">Already have an Account? <a class="link link-primary" href="<?= URL_ROOT ?>/login">Login</a></p>
       
     </form>
   </div>
