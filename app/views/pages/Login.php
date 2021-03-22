@@ -1,12 +1,10 @@
 <?php include_once APP_ROOT . '/views/includes/header.php'; ?>
 
-<div class="login-container d-flex align-items-center justify-content-around">
-    <div class="left p-1 ps-4">
-        <p class="text-uppercase text-shadow">
-            Whether you are a 
-            <br>beginner or a veteran 
-            <br><br> join us and make any
-            <br> PC imaginable.
+<div class="login-container d-flex align-items-center justify-content-center">
+    <div class="left p-1 ps-4 ms-5">
+        <p class="text-uppercase text-shadow m-0"> 
+            join us and make 
+            <br> your dream PC
         </p>
     </div>
     <div class="right p-4">
