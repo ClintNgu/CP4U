@@ -11,8 +11,8 @@ $green: #1bb38f;
 $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 
 // partials
-@import "Login";
-@import "Signup";
+@import 'Login';
+@import 'Signup';
 
 // main styles
 * {
@@ -45,7 +45,7 @@ h6 {
 }
 
 body {
-  font-family: "M PLUS 1p", sans-serif;
+  font-family: 'M PLUS 1p', sans-serif;
   // background: $white;
   background: linear-gradient(-45deg, $orange 40%, $green 40%);
   // background-size: 400% 400%;
@@ -53,7 +53,7 @@ body {
   overflow-x: hidden;
 }
 
-input[type="text"] {
+input[type='text'] {
   background: $inputBackColor !important;
 }
 
@@ -113,6 +113,58 @@ footer {
       font-weight: 300;
       color: $white;
       display: inline;
+    }
+  }
+}
+
+.logo-img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.nav-container-div {
+  background: $logoBackColor;
+
+  .navbar {
+    background: $logoBackColor;
+
+    h1 {
+      font-weight: 800;
+      background-clip: text;
+      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .navbar-toggler {
+      width: 70px;
+      height: 40px;
+      background-clip: text;
+      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border-color: $pink;
+    }
+  }
+
+  .navbar-nav {
+    padding: 5px;
+
+    .nav-item {
+      font-weight: bold;
+      font-size: 20px;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+      font-weight: 700;
+      background-clip: text;
+      background: $turquoise;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 }
