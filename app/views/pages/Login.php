@@ -13,7 +13,7 @@
             <input type="text" name="username" class="input form-control" placeholder="Email or Username">
             <input type="text" name="password" class="input form-control mt-2" placeholder="Password">
 
-            <button type='submit' class='submit-button p-2 w-100 btn d-block mt-4'><span>Login </span></button>
+            <button type='submit' class='submit-button p-2 w-100 btn d-block mt-4 btn-dark'><span>Login</span></button>
             <p class="text-center w-100 m-0 mt-3">New here? <a class="text-primary" href="<?= URL_ROOT ?>/signup">Register</a></p>
         </form>
     </div>

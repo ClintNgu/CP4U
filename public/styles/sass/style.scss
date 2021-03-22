@@ -1,9 +1,13 @@
 // color variables
 $logoBackColor: rgb(7, 19, 43);
 $inputBackColor: #f4f4f4;
+
 $white: #f0f0f0;
 $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
+$orange: #ee7752;
+$green: #22c9a2;
+
 $boxShadow: 5px 10px 12px rgba(0, 0, 0, 0.6);
 
 // partials
@@ -34,9 +38,9 @@ $boxShadow: 5px 10px 12px rgba(0, 0, 0, 0.6);
 body {
   font-family: 'M PLUS 1p', sans-serif;
   // background: $white;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: linear-gradient(-45deg, $orange 40%, $green 40%);
+  // background-size: 400% 400%;
+  // animation: gradient 15s ease infinite;
   overflow-x: hidden;
 }
 
