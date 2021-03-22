@@ -8,7 +8,6 @@ class Database {
   private $db;
 
   public function __construct($dbType, $dbHost, $dbName, $dbUser, $dbPass) {
-    
     //init db connection
     try {
       $this->db = new PDO("$dbType:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
@@ -21,7 +20,6 @@ class Database {
   public function prepareStmt($query, $data = []) {
     $stmt = $this->db->prepare($query);
     $stmt->execute($data);
-    
     return $stmt;
   }
 

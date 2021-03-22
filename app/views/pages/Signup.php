@@ -16,33 +16,28 @@
     <form method="post" class="signup-form mt-3">
       <div class='row'>
         <div class="col">
-          <input class="form-control  " type="text" placeholder="First Name" name='fname' 
-            value="<?= $data['fname'] ?? '' ?>""
-          >
+          <input class="form-control" type="text" placeholder="First Name" name='fname' 
+            value="<?= $data['fname'] ?? '' ?>">
         </div>
         <div class='col'>
           <input class="form-control  " type="text" placeholder="Last Name" name='lname'
-            value="<?= $data['lname'] ?? '' ?>""
-          >
+            value="<?= $data['lname'] ?? '' ?>">
         </div>
         <div class="col">
           <input class="form-control  " type="text" placeholder="Username" name='username'
-            value="<?= $data['username'] ?? '' ?>""
-          >
+            value="<?= $data['username'] ?? '' ?>">
         </div>
       </div>
       <div class="row mt-2">
         <div class="col">
           <input class="form-control  " type="text" placeholder="Address" name='street'
-            value="<?= $data['street'] ?? '' ?>""
-          >
+            value="<?= $data['street'] ?? '' ?>">
         </div>
       </div>
       <div class="row mt-2">
         <div class="col">
           <input class="form-control  " type="text" placeholder="Email" name='email'
-            value="<?= $data['email'] ?? '' ?>""
-          >
+            value="<?= $data['email'] ?? '' ?>">
         </div>
       </div>
       <div class="row mt-2">
