@@ -9,12 +9,12 @@
     <a href="<?= URL_ROOT ?>/products" class="btn text-center mt-4 text-light shadow-sm">View Products</a> 
   </div>
 
-  <div class="right p-4 ms-4">
+  <div class="right p-4 pt-5 ms-4">
     <div class='d-flex align-items-center'>
       <h3 class="d-inline m-0">Sign Up</h3> 
       <span class='text-danger ms-3'> <?= $data['emptyFields'] ?? '' ?> </span>
     </div>  
-    <form method="post" class="signup-form mt-3">
+    <form method="post" class="signup-form mt-4">
       <div class='row'>
         <div class="col">
           <input class="form-control" type="text" placeholder="First Name" name='fname' 

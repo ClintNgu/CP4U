@@ -8,7 +8,7 @@
         </p>
         <a href="<?= URL_ROOT ?>/products" class="btn text-center mt-4 text-light shadow-sm">View Products</a> 
     </div>
-    <div class="right p-4 ms-4">
+    <div class="right p-4 pt-5 ms-4">
         <div class='d-flex align-items-center'>
             <h3 class="d-inline m-0">Login</h3> 
             <span class='text-danger ms-3'> <?= $data['emptyFields'] ?? '' ?> </span>
