@@ -1,3 +1,104 @@
-.login-form {
-  background: green;
+$logoBackColor: rgb(7, 19, 43);
+$white: #ffffff;
+
+.body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container-div {
+  padding: 10px;
+  display: grid;
+
+  .left-section-div {
+    display: flex;
+    padding: 10px;
+
+    img {
+      border-radius: 5px;
+    }
+
+    p {
+      padding-left: 10px;
+      font-size: 25px;
+      color: $white;
+    }
+  }
+
+  .right-section-div {
+    padding: 10px;
+    background: $white;
+    border-radius: 5px;
+    box-shadow: 5px 10px 8px black;
+    width: 80%;
+
+    .submit-button {
+      border-radius: 4px;
+      background-color: $logoBackColor;
+      border: none;
+      color: $white;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 150px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .submit-button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .submit-button span:after {
+      content: "\00bb";
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .submit-button:hover span {
+      padding-right: 25px;
+    }
+
+    .submit-button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border: 1px solid black;
+      border-radius: 4px;
+      margin: 5px 0;
+      opacity: 0.85;
+      display: inline-block;
+      font-size: 17px;
+      line-height: 20px;
+      text-decoration: none;
+    }
+
+    .input {
+      cursor: pointer;
+    }
+  }
 }
