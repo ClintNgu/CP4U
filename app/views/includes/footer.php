@@ -6,8 +6,7 @@
     </div>
     <div 
     class="main-right-container border-top border-bottom border-top-light border-bottom-light 
-    d-flex align-items-center justify-content-center flex-column 
-    py-5">
+    d-flex align-items-center justify-content-center flex-column ">
       <div class='d-flex align-items-center justify-content-center'>
         <i class="fab fa-instagram"></i>
         <p class='text ms-2 mb-0'><em>www.instagram.com/CP4U/</em></p>
