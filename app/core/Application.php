@@ -34,7 +34,7 @@ class Application {
   }
   
   private function splitUrl() {
-    $url = rtrim($_GET['url'], '/');
+    $url = rtrim($_GET['url'] ?? '', '/');
     return explode('/', ucwords(strtolower($url)));
   }
 }
