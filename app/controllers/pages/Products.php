@@ -75,18 +75,10 @@ class Products extends Controller {
     return $products[0];
   }
 
-  private function checkParams($params) {
-    if (!is_int($params[0])) {
-      return;
-    }
-
-    $this->renderProduct($params[0]);
-  }
-
   private function renderProduct($id) {
     //get item
     $this->data['product'] = $this->getProductById($id);
-    $this->data['title'] = $this->$this->data['product']['item_name'];
+    $this->data['title'] = $this->data['product']['item_name'];
     unset($this->data['products']);
     
     //no item found
@@ -114,8 +106,12 @@ class Products extends Controller {
   
   public function motherboards($params) {
     //check params
-    $this->checkParams($params);
+    if (isset($params[0])) {
+      $this->renderProduct($params[0]);
+      exit;
+    }    
 
+    echo 'hola';
     //render view
     $this->data['products'] = $this->getProductsByCategory('motherboard');
     $this->renderView('Products', $this->data);
