@@ -2,8 +2,12 @@
 
 <!-- display products -->
 <?php 
-  foreach ($data['products'] as $product) {
-    echo $product['item_id']. ": " . $product['item_name'] . '<br>';
+  foreach ($data['products'] as $idx => $product) {
+    echo $idx . ': <a 
+            class="stretched-link"' . 
+            'href="'. URL_ROOT . '/products/product/'. $product['item_id'] . '">' .
+              $product['item_name'] .
+          '</a> <br>';  
   } 
 ?>
 
