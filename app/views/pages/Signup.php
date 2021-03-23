@@ -6,7 +6,9 @@
       join us and build  
       <br>your dream pc
     </p>
-    <a href="<?= URL_ROOT ?>/products" class="btn text-center mt-4 text-light shadow-sm">View Products</a> 
+    <a href="<?= URL_ROOT ?>/products" class="btn text-center mt-4 text-light shadow text-uppercase fw-bolder">
+      SHOP NOW
+    </a> 
   </div>
 
   <div class="right p-4 pt-5 ms-4">
