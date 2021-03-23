@@ -11,12 +11,49 @@ class Products extends Controller {
     
     //query all products
     $this->data['products'] =  $productCtrl->getProducts();
+    $this->addUrlCategory();
   }
-  
-  public function index($params) {
 
-    $this->renderView('Products', $this->data);
-  } 
+  private function addUrlCategory() {
+    foreach ($this->data['products'] as $idx => ['category' => $cat]) {
+      $this->data['products'][$idx]['urlCategory'] = $this->setUrlCategory($cat);
+    }
+  }
+
+  private function setUrlCategory($cat) {
+    $urlCat = '';
+    switch (strtolower($cat)) {
+      case 'cpu': 
+        $urlCat = 'cpus';
+        break;
+      case 'motherboard': 
+        $urlCat = 'motherboards';
+        break;
+      case 'graphics card': 
+        $urlCat = 'graphics_cards';
+        break;
+      case 'ram': 
+        $urlCat = 'rams';
+        break;
+      case 'm.2': 
+        $urlCat = 'm2s';
+        break;
+      case 'power supply': 
+        $urlCat = 'power_supplies';
+        break;
+      case 'power supply': 
+        $urlCat = 'power_supplies';
+        break;
+      case 'cpu cooler': 
+        $urlCat = 'cpu_coolers';
+        break;
+      case 'pc case': 
+        $urlCat = 'pc_cases';
+        break;
+    }
+
+    return $urlCat;
+  }
 
   private function filterProducts($catname, $cat='category') {
     return array_filter(
@@ -25,8 +62,16 @@ class Products extends Controller {
     );
   }
   
+  public function index($params) {
+    $this->renderView('Products', $this->data);
+  } 
+  
   public function cpus($params) {
+    echo '<pre>';
+    var_dump($params);
+    echo '</pre>';
     $this->data['products'] = $this->filterProducts('cpu');
+    $this->data['products']['category'] = 'cpus';
     $this->renderView('Products', $this->data);
   }
   

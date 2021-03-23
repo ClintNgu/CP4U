@@ -6,7 +6,7 @@
   foreach ($data['products'] as $product) {
     echo $product['item_id'] . ': <a 
             class="link link-primary d-inline-block mt-2"' . 
-            'href="'. URL_ROOT . '/products/product/'. $product['item_id'] . '">' .
+            'href="'. URL_ROOT . '/products/'. $product['urlCategory'] .'/'. $product['item_id'] . '">' .
               $product['item_name'] .
           '</a> <br>';  
   } 
