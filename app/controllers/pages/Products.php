@@ -46,7 +46,7 @@ class Products extends Controller {
         $urlCat = 'Cpu_Coolers';
         break;
       case 'pc case': 
-        $urlCat = 'Pc_Cases';
+        $urlCat = 'PC_Cases';
         break;
     }
 

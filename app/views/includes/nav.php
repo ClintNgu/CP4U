@@ -19,7 +19,7 @@
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/M2s">Storage</a></li>
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Power_Supplies">Power Supplies</a></li>
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/CPU_Coolers">CPU Coolers</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Pc_Cases">PC Cases</a></li>
+                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/PC_Cases">PC Cases</a></li>
               </ul>
             </li>
             <li class="nav-item">
