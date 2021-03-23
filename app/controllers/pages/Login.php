@@ -5,13 +5,14 @@ use app\controllers\User;
 
 class Login extends Controller
 {
-    private $data = ['title' => 'Login'];
+    private $data = ['title' => 'Login', 'textColor' => 'text-danger'];
 
     public function index($params) {
 
       //check if redirected from sign up page
       if (isset($_SESSION['signup'])) {
         $this->data['signup'] = $_SESSION['signup'];
+        $this->data['textColor'] = 'text-success';
         unset($_SESSION['signup']);
       }
 
@@ -44,15 +45,12 @@ class Login extends Controller
       //insert user to db
       $user = new User;
       $userRow = $user->login($this->data);
-      
+
       if (!$userRow) {
         $this->data['emptyFields'] = '*Incorrect Username or Password*';
       } else {
-        // start session
         $_SESSION['User'] = $userRow;
+        header('Location: ' . URL_ROOT . '/products');
       }
-
-      //redirect to products page
-      header('Location: ' . URL_ROOT . '/products');
     }
 }

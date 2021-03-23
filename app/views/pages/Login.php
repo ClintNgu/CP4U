@@ -11,7 +11,7 @@
     <div class="right p-4 pt-5 ms-4">
         <div class='d-flex align-items-center'>
             <h3 class="d-inline m-0">Login</h3>
-            <span class='ms-3 <?= $data['emptyFields'] ? 'text-danger' : 'text-success' ?>'> 
+            <span class='ms-3 <?= $data['textColor'] ?>'> 
                 <?= $data['emptyFields'] ?? ($data['signup'] ?? '') ?> 
             </span>
         </div>
