@@ -7,4 +7,4 @@ define('DB_PASS', '');
 
 define('APP_ROOT', dirname(__DIR__));
 define('ROOT', dirname(APP_ROOT));
-define('URL_ROOT', 'http://localhost/CP4U/public');
+define('URL_ROOT', 'http://localhost/CP4U');
