@@ -104,7 +104,7 @@ class Products extends Controller {
   
   public function cpus($params) {
     //check params
-    $this->checkParams($params);
+    $this->checkParams($params, $cat);
     
     //render view
     $this->data['products'] = $this->getProductsByCategory('cpu');
