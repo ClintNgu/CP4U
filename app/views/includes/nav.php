@@ -29,7 +29,7 @@
               <a class="nav-link">Hello, Guest</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><span> 0</span></a>
+              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><span id="cart-number">0</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
