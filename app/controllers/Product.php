@@ -18,7 +18,7 @@ class Product extends Controller {
     return $this->model->getProductsByCategory($cat);
   }
   
-  public function getProduct($item_id) {
+  public function getProductById($item_id) {
     return $this->model->getProduct($item_id);
   }
   

@@ -14,6 +14,13 @@ class Product {
     return $this->db->queryAll($query);
   }
 
+  public function getProductsByCategory($cat) {
+    $query = "SELECT * FROM products 
+                WHERE category='$cat';
+                ORDER BY item_name;";
+    return $this->db->queryAll($query);
+  }
+
   public function getProduct($item_id) {
     $query = 'SELECT * FROM products WHERE item_id=?';
     return $this->db->querySingle($query, [$item_id]);
