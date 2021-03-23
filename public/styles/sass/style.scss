@@ -6,7 +6,7 @@ $white: #f3f3f3;
 $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
 $orange: #ee7752;
-$green: #1bb38f;
+$green: #28c5a1;
 
 $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 
@@ -38,12 +38,8 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(45, 112, 245, 0.6);
+  background: rgba($green, 0.8);
   border-radius: 50px;
-
-  &:hover {
-    background: rgba(45, 112, 245, 0.8);
-  }
 }
 
 body {

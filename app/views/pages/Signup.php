@@ -24,7 +24,9 @@
           <input class="form-control  " type="text" placeholder="Last Name" name='lname'
             value="<?= $data['lname'] ?? '' ?>">
         </div>
-        <div class="col">
+      </div>
+      <div class="row mt-2">
+      <div class="col">
           <input class="form-control  " type="text" placeholder="Username" name='username'
             value="<?= $data['username'] ?? '' ?>">
         </div>
