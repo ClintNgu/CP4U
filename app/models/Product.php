@@ -29,7 +29,7 @@ class Product {
   public function updateProduct($data) {
     $query =  "UPDATE users 
                 SET item_name=:item_name, image=:image, description=:description, price=:price, 
-                  quantity=:quantity, supplier_name=:supplier_name, category:= category
+                  quantity=:quantity, supplier_name=:supplier_name, category=:category
                 WHERE item_id=:id;";
     return $this->db->prepareStmt($query, $data)->rowCount();
   }
@@ -41,7 +41,7 @@ class Product {
   
   public function insertProduct($data) {
     $query =  "INSERT INTO products(item_name, image, description, price, quantity, supplier_name, category) 
-                VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, category);";
+                VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, :category);";
     return $this->db->prepareStmt($query, $data);
   }
 }
