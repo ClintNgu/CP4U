@@ -8,8 +8,16 @@ class Login extends Controller
     private $data = ['title' => 'Login'];
 
     public function index($params) {
-      if ($_POST) {
-        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      //check if redirected from sign up page
+      if (isset($_SESSION['signup'])) {
+        $this->data['signup'] = $_SESSION['signup'];
+        unset($_SESSION['signup']);
+      }
+
+      //check login submit
+      if (isset($_POST['loginSubmit'])) {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $this->data = array_merge($this->data, $_POST);
         
         if (!$this->isEmptyFields()) {

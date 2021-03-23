@@ -36,6 +36,9 @@ class Signup extends Controller {
     $user = new User;
     $user->signup($this->data);
 
+    //display signup success
+    $_SESSION['signup'] = '*Successfully Created Account*';
+
     //redirect to login page
     header('Location: ' . URL_ROOT . '/login');
   }
