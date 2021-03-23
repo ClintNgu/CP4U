@@ -1,0 +1,54 @@
+.container {
+  background: white;
+  margin-top: 1rem;
+  border-radius: 5px;
+
+  .summary-section-div {
+    div {
+      float: right;
+
+      #cart-number {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.products-section-div {
+  height: 20vh;
+}
+
+.submit-button {
+  padding-bottom: 1rem;
+  width: 60%;
+  border: none;
+  color: $white;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.submit-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.submit-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.submit-button:hover span {
+  padding-right: 25px;
+}
+
+.submit-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
