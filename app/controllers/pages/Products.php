@@ -17,12 +17,18 @@ class Products extends Controller {
   } 
   
   public function product($params) {
-    $this->data['item_id'] = $params[0] ?? -1;
-    
     // query item 
     $productCtrl = new Product;
-    $product = $productCtrl->getProduct($this->data['item_id']);
-    $this->data['title'] = $product['item_name'] ?? 'Not Found';
+    $product = $productCtrl->getProduct($params[0] ?? -1);
+
+    //item does not exist
+    if (!$product) {
+      header('Location: '. URL_ROOT . '/products');
+      exit;
+    }
+
+    $this->data['title'] = $product['item_name'];
+    $this->data['product'] =  $product;
     
     //render view
     $this->renderView('Product', $this->data);

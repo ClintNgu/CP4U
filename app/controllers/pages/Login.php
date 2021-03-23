@@ -48,9 +48,11 @@ class Login extends Controller
 
       if (!$userRow) {
         $this->data['emptyFields'] = '*Incorrect Username or Password*';
-      } else {
-        $_SESSION['User'] = $userRow;
-        header('Location: ' . URL_ROOT . '/products');
-      }
+        return;
+      } 
+      
+      $_SESSION['User'] = $userRow;
+      unset($_SESSION['User']['pass']);        
+      header('Location: ' . URL_ROOT . '/products');
     }
 }
