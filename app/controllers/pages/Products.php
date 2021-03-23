@@ -1,6 +1,7 @@
 <?php 
 
 use app\core\Controller;
+use app\controllers\Product;
 
 class Products extends Controller {
   private $data = ['title' => 'Products'];
@@ -16,8 +17,12 @@ class Products extends Controller {
   } 
   
   public function product($params) {
-    $this->data['title'] = 'Product Name';
     $this->data['item_id'] = $params[0] ?? -1;
+    
+    // query item 
+    $productCtrl = new Product;
+    $product = $productCtrl->getProduct($this->data['item_id']);
+    $this->data['title'] = $product['item_name'] ?? 'Not Found';
     
     //render view
     $this->renderView('Product', $this->data);

@@ -15,7 +15,7 @@ class Product {
   }
 
   public function getProduct($item_id) {
-    $query = 'SELECT * FROM products WHERE item_id=:?';
+    $query = 'SELECT * FROM products WHERE item_id=?';
     return $this->db->querySingle($query, [$item_id]);
   }
   
@@ -28,7 +28,7 @@ class Product {
   }
 
   public function deleteProduct($item_id) {
-    $query = 'DELETE FROM products WHERE item_id=:?';
+    $query = 'DELETE FROM products WHERE item_id=?';
     return $this->db->prepareStmt($query, [$item_id])->rowCount();
   }
   
