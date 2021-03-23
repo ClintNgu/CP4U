@@ -25,31 +25,28 @@ class Products extends Controller {
     $urlCat = '';
     switch (strtolower($cat)) {
       case 'cpu': 
-        $urlCat = 'cpus';
+        $urlCat = 'CPUs';
         break;
       case 'motherboard': 
-        $urlCat = 'motherboards';
+        $urlCat = 'Motherboards';
         break;
       case 'graphics card': 
-        $urlCat = 'graphics_cards';
+        $urlCat = 'GPUs';
         break;
       case 'ram': 
-        $urlCat = 'rams';
+        $urlCat = 'Rams';
         break;
       case 'm.2': 
-        $urlCat = 'm2s';
+        $urlCat = 'M2s';
         break;
       case 'power supply': 
-        $urlCat = 'power_supplies';
-        break;
-      case 'power supply': 
-        $urlCat = 'power_supplies';
+        $urlCat = 'Power_Supplies';
         break;
       case 'cpu cooler': 
-        $urlCat = 'cpu_coolers';
+        $urlCat = 'Cpu_Coolers';
         break;
       case 'pc case': 
-        $urlCat = 'pc_cases';
+        $urlCat = 'Pc_Cases';
         break;
     }
 
@@ -107,6 +104,7 @@ class Products extends Controller {
     $this->checkParams($params);
     
     //render view
+    $this->data['title'] = 'CPUs';
     $this->data['products'] = $this->getProductsByCategory('cpu');
     $this->renderView('Products', $this->data);
   }
@@ -117,14 +115,16 @@ class Products extends Controller {
 
     //render view
     $this->data['products'] = $this->getProductsByCategory('motherboard');
+    $this->data['title'] = 'Motherboards';
     $this->renderView('Products', $this->data);
   }
   
-  public function graphics_cards($params) {
+  public function gpus($params) {
     //check params
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'GPUs';
     $this->data['products'] = $this->getProductsByCategory('graphics card');
     $this->renderView('Products', $this->data);
   }
@@ -134,6 +134,7 @@ class Products extends Controller {
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'Rams';
     $this->data['products'] = $this->getProductsByCategory('ram');
     $this->renderView('Products', $this->data);
   }
@@ -143,6 +144,7 @@ class Products extends Controller {
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'M2s';
     $this->data['products'] = $this->getProductsByCategory('m.2');
     $this->renderView('Products', $this->data);
   }
@@ -152,6 +154,7 @@ class Products extends Controller {
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'Power Supplies';
     $this->data['products'] = $this->getProductsByCategory('power supply');
     $this->renderView('Products', $this->data);
   }
@@ -161,6 +164,7 @@ class Products extends Controller {
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'CPU Coolers';
     $this->data['products'] = $this->getProductsByCategory('cpu cooler');
     $this->renderView('Products', $this->data);
   }
@@ -170,6 +174,7 @@ class Products extends Controller {
     $this->checkParams($params);
 
     //render view
+    $this->data['title'] = 'PC Cases';
     $this->data['products'] = $this->getProductsByCategory('pc case');
     $this->renderView('Products', $this->data);
   }
