@@ -1,0 +1,38 @@
+footer {
+  background: $logoBackColor;
+  min-height: 40vh;
+
+  .main-left-container {
+    .name {
+      font-weight: 900;
+      background-clip: text;
+      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    img {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
+
+  .main-right-container {
+    width: 35%;
+    text-align: center;
+    padding: 2rem 0;
+
+    i {
+      font-size: 1.6rem;
+      display: inline;
+      color: lightsteelblue;
+    }
+
+    .text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: $white;
+      display: inline;
+    }
+  }
+}

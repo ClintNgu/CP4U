@@ -1,6 +1,3 @@
-$boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
-$logoBackColor: rgb(7, 19, 43);
-
 .products-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -73,12 +70,4 @@ $logoBackColor: rgb(7, 19, 43);
       right: 0;
     }
   }
-}
-
-.d-flex {
-  background: $logoBackColor;
-}
-
-.sidebar-li {
-  font-weight: bold;
 }

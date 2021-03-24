@@ -1,6 +1,6 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 
-<div class="signup-container mb-5 d-flex align-items-center justify-content-center">
+<div class="signup-container pb-5 d-flex align-items-center justify-content-center">
   <div class="left p-1 ps-4 mx-5">
     <p class="text-uppercase text-shadow m-0"> 
       join us and build  

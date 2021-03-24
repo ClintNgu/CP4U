@@ -1,8 +1,9 @@
-// color variables
+/* Color Variables */
 $logoBackColor: rgb(7, 19, 43);
 $inputBackColor: #f4f4f4;
 
-$white: #f3f3f3;
+$white: #fafafa;
+$BackWhite: #eef0fa;
 $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
 $orange: #ee7752;
@@ -10,20 +11,52 @@ $green: #28c5a1;
 
 $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 
-// partials
+/* Partials */
 @import 'Login';
 @import 'Signup';
 @import 'Profile';
 @import 'Nav';
 @import 'Checkout';
 @import 'Products';
+@import 'Footer';
 
-// main styles
+/* Main Styles */
+// scrollbar
+::-webkit-scrollbar {
+  width: 3.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(rgb(131, 131, 131), 0.8);
+  min-height: 15rem;
+  border-radius: 50px;
+}
+
+.main-container {
+  min-height: 100vh;
+}
+
+// tags
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   line-height: 1.5;
+}
+
+body {
+  font-family: 'M PLUS 1p', sans-serif;
+  background: $white;
+  overflow-x: hidden;
+}
+
+input[type='text'] {
+  background: $inputBackColor !important;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
 }
 
 h1,
@@ -33,86 +66,4 @@ h4,
 h5,
 h6 {
   line-height: 1.2;
-}
-
-::-webkit-scrollbar {
-  width: 3.5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba($green, 0.8);
-  border-radius: 50px;
-}
-
-body {
-  font-family: 'M PLUS 1p', sans-serif;
-  // background: $white;
-  background: linear-gradient(-45deg, $orange 40%, $green 40%);
-  // background-size: 400% 400%;
-  // animation: gradient 15s ease infinite;
-  overflow-x: hidden;
-}
-
-input[type='text'] {
-  background: $inputBackColor !important;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-img {
-  object-fit: cover;
-  object-position: center;
-}
-
-.main-container {
-  min-height: 100vh;
-}
-
-footer {
-  background: $logoBackColor;
-  min-height: 50vh;
-
-  .main-left-container {
-    .name {
-      font-weight: 900;
-      background-clip: text;
-      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    img {
-      width: 9rem;
-      height: 9rem;
-    }
-  }
-
-  .main-right-container {
-    width: 35%;
-    text-align: center;
-    padding: 2rem 0;
-
-    i {
-      font-size: 1.6rem;
-      display: inline;
-      color: lightsteelblue;
-    }
-
-    .text {
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: $white;
-      display: inline;
-    }
-  }
 }
