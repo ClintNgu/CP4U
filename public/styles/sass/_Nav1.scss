@@ -6,6 +6,19 @@
 
   .dropdown-menu {
     display: none;
+    border-radius: 0;
+    color: $white;
+    background-color: $navBlue;
+  }
+
+  .dropdown-divider {
+    margin: 0;
+  }
+  .dropdown-item {
+    color: $white;
+    &:hover {
+      background-color: $navBlueHover;
+    }
   }
 
   .nav-item:hover {
@@ -29,7 +42,7 @@
     cursor: pointer;
     &:hover {
       // color: $lightBlue !important;
-      background-color: $turquoise;
+      background-color: $navBlueHover;
     }
   }
 
