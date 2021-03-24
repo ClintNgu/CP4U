@@ -1,50 +1,47 @@
-  <div class="nav-container-div">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand"><img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class="logo-img">
+<nav class="navbar navbar-expand">
+    <h3 class="navbar-brand" href="#">CP4U</h3>
+    <div class="nav-item dropdown productDiv">
+      <a class="nav-link m-0 productText dropdown-toggle text-uppercase"
+      href="<?= URL_ROOT ?>/products">Products</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/CPUs">CPUs</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/GPUs">GPUs</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/Motherboards">Motherboards</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/Rams">RAM Memory</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/M2s">Storage</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/Power_Supplies">Power Supplies</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/CPU_Coolers">CPU Coolers</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item pt-2" href="<?= URL_ROOT ?>/products/PC_Cases">PC Cases</a></li>
+      </ul>
+    </div>
+    <!-- <a class="nav-link text-light" href="#">Admin</a> -->
+    <div class="navbar-nav">
+      <li>
+        <a class="nav-link d-flex justify-content-center" href="#">
+          <i class="fas fa-shopping-cart"></i>&nbsp; 
+          <?= $data['Cart']['qty'] ?? 0 ?>
         </a>
-        <h1 class='name ms-3'>CP<br>4U</h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-desktop"></i> Products</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products">All Products</a></li>
-                <hr>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/CPUs">CPUs</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/GPUs">Graphics Cards</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Motherboards">Motherboards</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Rams">RAM Memory</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/M2s">Storage</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Power_Supplies">Power Supplies</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/CPU_Coolers">CPU Coolers</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/PC_Cases">PC Cases</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user"></i> Admin</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">Hello, Guest</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><span id="cart-number">0</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Orders</a></li>
-                <hr>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/login">Sign In</a></li>
-                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/signup">Sign Up</a></li>
-              </ul>
-            </li>
+      </li>
+      <li >
+        <div class="nav-item dropdown"> 
+          <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
+          <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
+            <li><a class="dropdown-item py-2" href="#">Admin</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <!-- check if user isLoggedIn -->
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login">Sign In</a></li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </li>
+    </div>
   </div>
+</nav>
