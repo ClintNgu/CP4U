@@ -8,6 +8,11 @@ class Login extends Controller
     private $data = ['title' => 'Login', 'textColor' => 'text-danger'];
 
     public function index($params) {
+      //redirect if user is signed in
+      if (isset($_SESSION['User'])) {
+        header('location: ' . URL_ROOT . '/products');
+        exit;
+      }
 
       //check if redirected from sign up page
       if (isset($_SESSION['signup'])) {
@@ -57,7 +62,6 @@ class Login extends Controller
     }
 
     public function signout() {
-      
       unset($_SESSION['User']);
       header('Location: ' . URL_ROOT);
     }

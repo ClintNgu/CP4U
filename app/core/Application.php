@@ -24,10 +24,10 @@ class Application {
       $this->callback = $urls[1];
       unset($urls[1]);
     }
-    
+
     //set params
     $this->params = array_values($urls);
-    
+
     //call controller's callback function
     call_user_func([$this->controller, $this->callback], $this->params);
     
