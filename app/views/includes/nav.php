@@ -39,6 +39,7 @@
             <li><hr class="dropdown-divider"></li>
             <!-- check if user isLoggedIn -->
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login">Sign In</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login/signout">Sign Out</a></li>
           </ul>
         </div>
       </li>

@@ -55,4 +55,10 @@ class Login extends Controller
       unset($_SESSION['User']['pass']);        
       header('Location: ' . URL_ROOT . '/products');
     }
+
+    public function signout() {
+      
+      unset($_SESSION['User']);
+      header('Location: ' . URL_ROOT);
+    }
 }
