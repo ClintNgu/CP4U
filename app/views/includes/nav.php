@@ -42,7 +42,7 @@
   <!-- <a class="nav-link text-light" href="#">Admin</a> -->
   <div class="navbar-nav">
     <li>
-      <a class="nav-link d-flex justify-content-center" href="#">
+      <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/cart">
         <i class="fas fa-shopping-cart"></i>&nbsp;
         <?= $data['Cart']['qty'] ?? 0 ?>
       </a>
