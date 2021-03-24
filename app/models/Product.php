@@ -1,32 +1,47 @@
 <?php
+
 use app\core\Database;
 
-class Product {
+class Product
+{
   private $db;
 
-  public function __construct() {
+  public function __construct()
+  {
     $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
   }
 
-  public function getProducts() {
+  public function getProducts()
+  {
     $query = 'SELECT * FROM products 
                 ORDER BY item_name';
     return $this->db->queryAll($query);
   }
 
-  public function getProductsByCategory($cat) {
+  public function getProductsBySupplierName($supp)
+  {
+    $query = "SELECT * FROM products 
+                WHERE supplier_name='$supp';
+                ORDER BY item_name;";
+    return $this->db->queryAll($query);
+  }
+
+  public function getProductsByCategory($cat)
+  {
     $query = "SELECT * FROM products 
                 WHERE category='$cat';
                 ORDER BY item_name;";
     return $this->db->queryAll($query);
   }
 
-  public function getProduct($item_id) {
+  public function getProduct($item_id)
+  {
     $query = 'SELECT * FROM products WHERE item_id=?';
     return $this->db->querySingle($query, [$item_id]);
   }
-  
-  public function updateProduct($data) {
+
+  public function updateProduct($data)
+  {
     $query =  "UPDATE users 
                 SET item_name=:item_name, image=:image, description=:description, price=:price, 
                   quantity=:quantity, supplier_name=:supplier_name, category=:category
@@ -34,12 +49,14 @@ class Product {
     return $this->db->prepareStmt($query, $data)->rowCount();
   }
 
-  public function deleteProduct($item_id) {
+  public function deleteProduct($item_id)
+  {
     $query = 'DELETE FROM products WHERE item_id=?';
     return $this->db->prepareStmt($query, [$item_id])->rowCount();
   }
-  
-  public function insertProduct($data) {
+
+  public function insertProduct($data)
+  {
     $query =  "INSERT INTO products(item_name, image, description, price, quantity, supplier_name, category) 
                 VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, :category);";
     return $this->db->prepareStmt($query, $data);
