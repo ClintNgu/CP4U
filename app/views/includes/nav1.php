@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand">
     <h3 class="navbar-brand" href="#">CP4U</h3>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle m-0 text-light" data-bs-toggle="dropdown">Products</a>
+    <div class="nav-item dropdown productDiv">
+      <a class="nav-link m-0 productText dropdown-toggle"
+      href="<?= URL_ROOT ?>/products">Products</a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item pb-2 border-bottom" href="<?= URL_ROOT ?>/products">All</a></li>
         <li><a class="dropdown-item py-2 border-bottom" href="<?= URL_ROOT ?>/products/CPUs">CPUs</a></li>
         <li><a class="dropdown-item py-2 border-bottom" href="<?= URL_ROOT ?>/products/GPUs">GPUs</a></li>
         <li><a class="dropdown-item py-2 border-bottom" href="<?= URL_ROOT ?>/products/Motherboards">Motherboards</a></li>
@@ -23,14 +23,10 @@
         </a>
       </li>
       <li >
-        <!-- <a class="nav-link dropdown dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="far fa-user-circle"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end me-3">
-          <li><a class="dropdown-item" href="#">My Profile</a></li>
-
-        </ul> -->
         <div class="nav-item dropdown"> 
-          <a class="nav-link dropdown-toggle m-0 text-light" data-bs-toggle="dropdown"><i class="far fa-user-circle"></i></a>
-          <ul class="dropdown-menu dropdown-menu-end me-2 text-end">
+          <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
+          <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
+            <li><a class="dropdown-item" href="#">Admin</a></li>
             <li><a class="dropdown-item" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
             <li><a class="dropdown-item" href="#">My Orders</a></li>
             <li><hr class="dropdown-divider"></li>
