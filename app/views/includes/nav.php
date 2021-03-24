@@ -38,8 +38,11 @@
             <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- check if user isLoggedIn -->
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login">Sign In</a></li>
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login/signout">Sign Out</a></li>
+            <?php if(!isset($_SESSION['User'])): ?>
+              <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login">Sign In</a></li>
+            <?php else: ?>
+              <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login/signout">Sign Out</a></li>
+            <?php endif; ?>
           </ul>
         </div>
       </li>
