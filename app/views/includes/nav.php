@@ -4,10 +4,6 @@
   <div class="nav-item dropdown productDiv">
     <a class="nav-link m-0 productText dropdown-toggle text-uppercase" href="<?= URL_ROOT ?>/products">Products</a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products">All Products</a></li>
-      <li>
-        <hr class="dropdown-divider">
-      </li>
       <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/products/CPUs">CPUs</a></li>
       <li>
         <hr class="dropdown-divider">
