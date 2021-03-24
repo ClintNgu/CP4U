@@ -2,8 +2,7 @@ $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 $logoBackColor: rgb(7, 19, 43);
 
 .products-container {
-  display: inline-grid;
-  grid-gap: 20px;
+  display: grid;
   grid-template-columns: auto auto auto auto;
 
   .product-div {
@@ -11,6 +10,8 @@ $logoBackColor: rgb(7, 19, 43);
     background: white;
     width: 14rem;
     padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 5px;
     margin-top: 5px;
 
@@ -72,4 +73,12 @@ $logoBackColor: rgb(7, 19, 43);
       right: 0;
     }
   }
+}
+
+.d-flex {
+  background: $logoBackColor;
+}
+
+.sidebar-li {
+  font-weight: bold;
 }
