@@ -1,12 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <div class="collapse navbar-collapse">
-      <div class="navbar-nav">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-      </div>
+<nav class="navbar navbar-expand">
+    <h3 class="navbar-brand" href="#">CP4U</h3>
+    <div class="navbar-nav">
+      <a class="nav-link" href="#">Products</a>
+      <a class="nav-link" href="#" hidden>Admin</a>
     </div>
   </div>
 </nav>

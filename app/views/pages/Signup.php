@@ -1,6 +1,6 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 
-<div class="signup-container pb-5 d-flex align-items-center justify-content-center">
+<div class="signup-container py-5 d-flex align-items-center justify-content-center">
   <div class="left p-1 ps-4 mx-5">
     <p class="text-uppercase text-shadow m-0"> 
       join us and build  
@@ -11,7 +11,7 @@
     </a> 
   </div>
 
-  <div class="right p-4 pt-5 ms-4">
+  <div class="right p-4 ms-4">
     <div class='d-flex align-items-center'>
       <h3 class="d-inline m-0">Sign Up</h3> 
       <span class='text-danger ms-3'> <?= $data['emptyFields'] ?? '' ?> </span>

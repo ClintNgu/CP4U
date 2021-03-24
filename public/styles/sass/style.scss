@@ -1,8 +1,9 @@
 /* Color Variables */
 $logoBackColor: rgb(7, 19, 43);
-$inputBackColor: #f4f4f4;
+$inputBackColor: #f2f2f2;
 
 $white: #fafafa;
+$purple: #7b5aef;
 $BackWhite: #eef0fa;
 $pink: rgb(222, 64, 205);
 $turquoise: rgb(96, 196, 243);
@@ -15,7 +16,8 @@ $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 @import 'Login';
 @import 'Signup';
 @import 'Profile';
-@import 'Nav';
+// @import 'Nav';
+@import 'Nav1';
 @import 'Checkout';
 @import 'Products';
 @import 'Footer';
@@ -33,7 +35,7 @@ $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
 }
 
 .main-container {
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 // tags
@@ -52,6 +54,7 @@ body {
 
 input[type='text'] {
   background: $inputBackColor !important;
+  border: 1px solid rgb(207, 207, 207);
 }
 
 img {
