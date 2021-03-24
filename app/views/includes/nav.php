@@ -12,6 +12,8 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-desktop"></i> Products</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products">All Products</a></li>
+                <hr>
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/CPUs">CPUs</a></li>
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/GPUs">Graphics Cards</a></li>
                 <li><a class="dropdown-item" href="<?= URL_ROOT ?>/products/Motherboards">Motherboards</a></li>
