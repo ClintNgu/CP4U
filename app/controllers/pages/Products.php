@@ -23,13 +23,12 @@ class Products extends Controller
     $this->productCtrl = new Product;
 
     //query all products
-    $this->data['products'] = $this->getProducts();     
-    
-    //get all unique suppliers
-    $this->data['sidebar']['suppliers'] = array_unique(array_map(fn($p) => $p['supplier_name'], $this->data['products'])); 
+    $this->data['products'] = $this->getProducts();
 
+    //get all unique suppliers
+    $this->data['sidebar']['suppliers'] = array_unique(array_map(fn ($p) => $p['supplier_name'], $this->data['products']));
   }
-  
+
   /* VIEWS */
   public function index($params)
   {
@@ -43,26 +42,27 @@ class Products extends Controller
     if (isset($params[0]) && !empty($params[0])) {
       // invalid category
       if (!array_search($params[0], array_map('strtolower', $this->urlCategories))) {
-        header('Location: ' . URL_ROOT . '/products');        
+        header('Location: ' . URL_ROOT . '/products');
         exit;
       }
 
       $this->data['title'] = strtoupper($params[0]);
       $this->data['products'] = array_values($this->filterCategory($params[0]));
     }
-        
+
     // filter by suppliers via ajax
     if (isset($_POST['suppliers'])) {
-      $this->filterSuppliers();  
+      $this->filterSuppliers();
       exit;
     }
 
     $this->renderView('Products', $this->data);
   }
 
-  private function filterSuppliers() {
-    $filtered = array_filter($this->data['products'], function($product) {
-      foreach($_POST['suppliers'] as $supplier) {
+  private function filterSuppliers()
+  {
+    $filtered = array_filter($this->data['products'], function ($product) {
+      foreach ($_POST['suppliers'] as $supplier) {
         if (strtolower($product['supplier_name']) === $supplier) {
           return true;
         }
@@ -74,20 +74,23 @@ class Products extends Controller
     echo $this->displayFilteredProducts($filtered);
   }
 
-  private function displayFilteredProducts($filtered) {
+  private function displayFilteredProducts($filtered)
+  {
     $res = '';
     foreach ($filtered as $p) {
-      ['item_name' => $name, 'image' => $img, 'price' => $price,
-        'urlCategory' => $urlCategory, 'item_id' => $id,] = $p;
+      [
+        'item_name' => $name, 'image' => $img, 'price' => $price,
+        'urlCategory' => $urlCategory, 'item_id' => $id,
+      ] = $p;
 
       $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id'>";
-        $res .= "<div class='item d-flex flex-column align-items-center shadow p-1'>";
-          $res .= "<img src='$img' class='img mt-auto' />";
-          $res .= "<div class='caption d-flex justify-content-between w-100 px-3 pt-5'>";
-            $res .= "<h6 class='pe-5'>$name</h6>";
-            $res .= "<p>$$price</p>";
-          $res .= "</div>";
-        $res .= "</div>";
+      $res .= "<div class='item d-flex flex-column align-items-center shadow p-1'>";
+      $res .= "<img src='$img' class='img mt-auto' />";
+      $res .= "<div class='caption d-flex justify-content-between w-100 px-3 pt-5'>";
+      $res .= "<h6 class='pe-5'>$name</h6>";
+      $res .= "<p>$$price</p>";
+      $res .= "</div>";
+      $res .= "</div>";
       $res .= "</a>";
     }
 
@@ -96,17 +99,17 @@ class Products extends Controller
 
   private function filterCategory($urlCat)
   {
-    $filtered = array_filter($this->data['products'], function($product) use ($urlCat) {
-    // $filtered = array_filter($this->getProducts(), function($product) use ($urlCat) {
+    $filtered = array_filter($this->data['products'], function ($product) use ($urlCat) {
+      // $filtered = array_filter($this->getProducts(), function($product) use ($urlCat) {
       return strtolower($product['urlCategory']) === $urlCat;
     });
 
     return $filtered;
   }
-  
-  /* METHODS */  
+
+  /* METHODS */
   private function renderProduct($id)
-  { 
+  {
     //get item
     $this->data['product'] = $this->getProductById($id);
     $this->data['title'] = $this->data['product']['item_name'];

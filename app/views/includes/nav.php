@@ -40,7 +40,7 @@
       <li><a class="dropdown-item pt-2" href="<?= URL_ROOT ?>/products/PC_Cases">PC Cases</a></li>
     </ul>
   </div>
-  
+
   <div class="navbar-nav">
     <li>
       <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/cart">
@@ -53,8 +53,11 @@
         <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
         <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
           <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/admin">Admin</a></li>
-          <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
-          <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
+          <!-- check if user isLoggedIn -->
+          <?php if (isset($_SESSION['User'])) : ?>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
+          <?php endif; ?>
           <li>
             <hr class="dropdown-divider">
           </li>
