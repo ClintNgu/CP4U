@@ -3,12 +3,10 @@
     border-bottom: 3px solid;
   }
   .sidebar {
+    box-shadow: 10px 10px 20px #999, -13px -13px 20px #fff;
     border-radius: 0.2rem;
     .header {
       font-weight: 800;
-    }
-    label {
-      // font-size: 0.9rem;
     }
   }
   .spinner {
@@ -16,10 +14,11 @@
   }
   .product-item {
     font-family: 'Catamaran', sans-serif;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+
     a {
       text-decoration: none;
       display: block;

@@ -1,12 +1,15 @@
 window.onload = () => {
-  const btn = document.querySelector('input[name=filterSubmit]');
+  const filterBtn = document.querySelector('input[name=filterSubmit]');
   const inputs = [...document.querySelectorAll('input.sidebar-input')];
+  const spinner = document.querySelector('.spinner');
+  const productItem = document.querySelector('.product-item');
 
   const toggleSpinner = () => {
-    document.querySelector('.spinner').classList.toggle('d-none');
-    document.querySelector('.product-item').classList.toggle('d-none');
+    spinner.classList.toggle('d-none');
+    productItem.classList.toggle('d-none');
   };
-  btn.addEventListener('click', () => {
+
+  filterBtn.addEventListener('click', () => {
     let suppliers = inputs.filter(({ checked }) => checked).map(({ value }) => value.toLowerCase());
 
     //get all suppliers
@@ -20,7 +23,7 @@ window.onload = () => {
       data: { suppliers: suppliers },
       beforeSend: toggleSpinner,
       success: (html) => {
-        setTimeout(toggleSpinner, 600);
+        setTimeout(toggleSpinner, 800);
         document.querySelector('.product-item').innerHTML = html;
       },
     });
