@@ -11,24 +11,27 @@ class Products extends Controller
   public function __construct()
   {
     $this->productCtrl = new Product;
-
+    //TODO: filter items
+    echo ($_POST['filter'] ?? 'no filter applied');
+    
     //query all products
-    $this->data['products'] = $this->getProducts();
+    $this->data['products'] = $this->getProducts(); 
+
+    //get all unique suppliers
+    $this->data['sidebar']['suppliers'] = array_unique(array_map(fn($p) => $p['supplier_name'], $this->data['products'])); 
+  }
+  
+  private function getProducts()
+  {
+    $products =  $this->productCtrl->getProducts();
+    $products = $this->addUrlCategory($products);
+    return $products;
   }
 
   private function addUrlCategory($products)
   {
     foreach ($products as $idx => ['category' => $cat]) {
       $products[$idx]['urlCategory'] = $this->setUrlCategory($cat);
-    }
-    return $products;
-  }
-
-  //weirdness going on over here ($products[$idx]['urlCategory'] = $this->setUrlSupplierName($supp);)
-  private function addUrlSupplier($products)
-  {
-    foreach ($products as $idx => ['supplier_name' => $supp]) {
-      $products[$idx]['urlCategory'] = $this->setUrlSupplierName($supp);
     }
     return $products;
   }
@@ -66,53 +69,6 @@ class Products extends Controller
     return $urlCat;
   }
 
-  private function setUrlSupplierName($cat)
-  {
-    $urlCat = '';
-    switch (strtolower($cat)) {
-      case 'amd':
-        $urlCat = 'AMD';
-        break;
-      case 'intel':
-        $urlCat = 'INTEL';
-        break;
-      case 'asrock':
-        $urlCat = 'ASRock';
-        break;
-      case 'asus':
-        $urlCat = 'ASUS';
-        break;
-      case 'msi':
-        $urlCat = 'MSI';
-        break;
-      case 'gigabyte':
-        $urlCat = 'GIGABYTE';
-        break;
-      case 'corsair':
-        $urlCat = 'CORSAIR';
-        break;
-      case 'gskill':
-        $urlCat = 'G.SKILL';
-        break;
-      case 'noctua':
-        $urlCat = 'Noctua';
-        break;
-      case 'samsung':
-        $urlCat = 'SAMSUNG';
-        break;
-    }
-
-    return $urlCat;
-  }
-
-
-  private function getProducts()
-  {
-    $products =  $this->productCtrl->getProducts();
-    $products = $this->addUrlCategory($products);
-    return $products;
-  }
-
   private function getProductsByCategory($cat)
   {
     $products =  $this->productCtrl->getProductsByCategory($cat);
@@ -123,7 +79,7 @@ class Products extends Controller
   private function getProductsBySupplierName($supp)
   {
     $products =  $this->productCtrl->getProductsBySupplierName($supp);
-    $products = $this->addUrlSupplier($products);
+    // $products = $this->addUrlSupplier($products);
     return $products;
   }
 
@@ -144,7 +100,7 @@ class Products extends Controller
   }
 
   private function renderProduct($id)
-  {
+  { 
     //get item
     $this->data['product'] = $this->getProductById($id);
     $this->data['title'] = $this->data['product']['item_name'];
@@ -162,6 +118,14 @@ class Products extends Controller
 
   public function index($params)
   {
+    $this->renderView('Products', $this->data);
+  }
+
+  public function filter($params)
+  {
+    echo '<pre>';
+    var_dump('yas bb');
+    echo '</pre>';
     $this->renderView('Products', $this->data);
   }
 
@@ -250,128 +214,6 @@ class Products extends Controller
     //render view
     $this->data['title'] = 'PC Cases';
     $this->data['products'] = $this->getProductsByCategory('pc case');
-    $this->renderView('Products', $this->data);
-  }
-
-
-  public function amd($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'AMD';
-    $this->data['products'] = $this->getProductsBySupplierName('amd');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function intel($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'INTEL';
-    $this->data['products'] = $this->getProductsBySupplierName('intel');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function asrock($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'ASRock';
-    $this->data['products'] = $this->getProductsBySupplierName('asrock');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function asus($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'ASUS';
-    $this->data['products'] = $this->getProductsBySupplierName('asus');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function msi($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'MSI';
-    $this->data['products'] = $this->getProductsBySupplierName('msi');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function gigabyte($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'GIGABYTE';
-    $this->data['products'] = $this->getProductsBySupplierName('gigabyte');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function corsair($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'CORSAIR';
-    $this->data['products'] = $this->getProductsBySupplierName('corsair');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function gskill($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'GSKILL';
-    $this->data['products'] = $this->getProductsBySupplierName('gskill');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function evga($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'EVGA';
-    $this->data['products'] = $this->getProductsBySupplierName('evga');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function noctua($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'Noctua';
-    $this->data['products'] = $this->getProductsBySupplierName('noctua');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function samsung($params)
-  {
-    //check params
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'SAMSUNG';
-    $this->data['products'] = $this->getProductsBySupplierName('samsung');
     $this->renderView('Products', $this->data);
   }
 }
