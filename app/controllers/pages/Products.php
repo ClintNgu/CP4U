@@ -52,12 +52,27 @@ class Products extends Controller
     });
     
     //display products
-    $this->displayProducts($filtered);
-    echo json_encode($filtered);
+    $this->displayFilteredProducts($filtered);
   }
 
-  private function displayProducts($products) {
-    
+  private function displayFilteredProducts($filtered) {
+    $res = '';
+    foreach ($filtered as $p) {
+      ['item_name' => $name, 'image' => $img, 'price' => $price,
+        'urlCategory' => $urlCategory, 'item_id' => $id,] = $p;
+
+      $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id'>";
+        $res .= "<div class='item d-flex flex-column align-items-center shadow p-1'>";
+          $res .= "<img src='$img' class='img mt-auto' />";
+          $res .= "<div class='caption d-flex justify-content-between w-100 px-3 pt-5'>";
+            $res .= "<h6 class='pe-5'>$name</h6>";
+            $res .= "<p>$$price</p>";
+          $res .= "</div>";
+        $res .= "</div>";
+      $res .= "</a>";
+
+      echo $res;
+    }
   }
 
   public function cpus($params)

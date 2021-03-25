@@ -21,14 +21,9 @@
 
     <!-- products -->
     <div class="product-items col h-100">
-      <?php foreach ($data['products'] as
-        [
-        'item_name' => $name, 
-        'image' => $img,
-        'price' => $price,
-        'urlCategory' => $urlCategory,
-        'item_id' => $id,
-        ]): ?>
+      <?php foreach ($data['products'] as $p): ?>
+      <?php ['item_name' => $name, 'image' => $img,'price' => $price,
+            'urlCategory' => $urlCategory,'item_id' => $id,] = $p ?>
         <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>''>
           <div class="item d-flex flex-column align-items-center shadow p-1">
             <img src="<?= $img ?>" class='img mt-auto'>

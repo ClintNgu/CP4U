@@ -14,9 +14,10 @@ window.onload = () => {
       url: `${window.location.href.replace(/\/+$/, '')}/filterSuppliers`,
       method: 'POST',
       data: { suppliers: suppliers },
-      success: (json) => {
-        const products = Object.values(JSON.parse(json));
-        products.map((product, idx) => console.log(`${idx}: ${product}`));
+      success: (html) => {
+        document.querySelector('.product-items').innerHTML = html;
+        // const products = Object.values(JSON.parse(json));
+        // products.map((product, idx) => console.log(`${idx}: ${product}`));
       },
     });
   });
