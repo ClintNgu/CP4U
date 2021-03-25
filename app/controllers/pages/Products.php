@@ -21,7 +21,6 @@ class Products extends Controller
   public function __construct()
   {
     $this->productCtrl = new Product;
-    //TODO: filter items
 
     //query all products
     $this->data['products'] = $this->getProducts();     
@@ -34,19 +33,14 @@ class Products extends Controller
   /* VIEWS */
   public function index($params)
   {
-    
-    echo '<pre>GET data: ';
-    var_dump($_GET['filter'] ?? 'no GET');
-    echo '</pre>';
-
     $this->renderView('Products', $this->data);
   }
 
   public function filterSuppliers() {
-    // if (!isset($_POST['suppliers'])) {  
-    //   header('location: ' . URL_ROOT . '/products');
-    //   exit;
-    // }
+    if (!isset($_POST['suppliers'])) {  
+      header('location: ' . URL_ROOT . '/products');
+      exit;
+    }
     
     $filtered = array_filter($this->data['products'], function($product) {
       foreach($_POST['suppliers'] as $supplier) {
