@@ -30,9 +30,26 @@
 
   .dropdown-menu {
     display: none;
+    display: block;
+    pointer-events: none;
+    transform: translate(0, -100%);
+    opacity: 0%;
     border-radius: 0;
     color: $white;
     background-color: $navBlue;
+  }
+
+  .nav-item:hover {
+    .productText {
+      text-decoration: solid;
+    }
+    .dropdown-menu {
+      display: block;
+      opacity: 100%;
+      pointer-events: all;
+      transform: translate(0, 0);
+      transition: all 0.3s ease;
+    }
   }
 
   .dropdown-divider {
@@ -42,12 +59,6 @@
     color: $white;
     &:hover {
       background-color: $navBlueHover;
-    }
-  }
-
-  .nav-item:hover {
-    .dropdown-menu {
-      display: block;
     }
   }
 
@@ -64,10 +75,6 @@
     font-weight: 600;
     border-radius: 2px;
     cursor: pointer;
-    &:hover {
-      // color: $lightBlue !important;
-      background-color: $navBlueHover;
-    }
   }
 
   //right side
@@ -81,9 +88,6 @@
       font-weight: 600;
       margin: 0 0.4rem;
       transition: all 0.4s ease;
-      &:hover {
-        color: $navBlueHover !important;
-      }
     }
 
     i {
