@@ -14,7 +14,7 @@ $category = $product['category'];
 ?>
 <div class="product-container">
   <div class="product-left-div">
-    <img src="<?php echo $image; ?>">
+    <img src="<?= $image; ?>">
   </div>
   <div class="product-right-div">
     <h3><?= $title; ?></h3>
