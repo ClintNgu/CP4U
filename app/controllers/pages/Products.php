@@ -7,6 +7,16 @@ class Products extends Controller
 {
   private $data = ['title' => 'Products'];
   private $productCtrl;
+  private $urlCategories = [
+    'cpu' => 'CPUs',
+    'graphics card' => 'GPUs',
+    'motherboard' => 'Motherboards',
+    'ram' => 'Rams',
+    'm.2' => 'M2s',
+    'power supply' => 'Power_Supplies',
+    'cpu cooler' => 'CPU_Coolers',
+    'pc case' => 'PC_Cases',
+  ];
 
   public function __construct()
   {
@@ -153,18 +163,7 @@ class Products extends Controller
 
   private function setUrlCategory($cat)
   {
-    $urlCategories = [
-      'cpu' => 'CPUs',
-      'graphics card' => 'GPUs',
-      'motherboard' => 'Motherboards',
-      'ram' => 'Rams',
-      'm.2' => 'M2s',
-      'power supply' => 'Power_Supplies',
-      'cpu cooler' => 'CPU_Coolers',
-      'pc cases' => 'PC_Cases',
-    ];
-
-    return $urlCategories[strtolower($cat)];
+    return $this->urlCategories[strtolower($cat)];
   }
 
   private function getProductsByCategory($cat)
