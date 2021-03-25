@@ -1,11 +1,14 @@
 .products-container {
+  .product-title {
+    border-bottom: 3px solid;
+  }
   .sidebar {
     border-radius: 0.2rem;
     .header {
       font-weight: 800;
     }
     label {
-      font-size: 0.9rem;
+      // font-size: 0.9rem;
     }
   }
   .spinner {
@@ -33,11 +36,11 @@
         margin-top: auto;
         color: rgb(70, 69, 69);
         h6 {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           font-weight: 600;
         }
         p {
-          font-size: 1.8rem;
+          font-size: 2rem;
           font-weight: 800;
         }
       }

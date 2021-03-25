@@ -15,12 +15,12 @@ window.onload = () => {
     }
 
     $.ajax({
-      url: `${window.location.href.replace(/\/+$/, '')}/filterSuppliers`,
+      url: window.location.href,
       method: 'POST',
       data: { suppliers: suppliers },
       beforeSend: toggleSpinner,
       success: (html) => {
-        setTimeout(toggleSpinner, 500);
+        setTimeout(toggleSpinner, 600);
         document.querySelector('.product-item').innerHTML = html;
       },
     });

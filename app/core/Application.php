@@ -20,7 +20,7 @@ class Application {
     $this->controller = new $this->controller;
     
     //set callback function
-    if (isset($urls[1]) && method_exists($this->controller, $urls[1])) {
+    if (isset($urls[1]) && method_exists($this->controller, $urls[1]) && is_callable([$this->controller, $urls[1]])) {
       $this->callback = $urls[1];
       unset($urls[1]);
     }

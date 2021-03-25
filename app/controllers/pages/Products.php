@@ -5,7 +5,7 @@ use app\controllers\Product;
 
 class Products extends Controller
 {
-  private $data = ['title' => 'Products'];
+  private $data = ['title' => 'PRODUCTS'];
   private $productCtrl;
   private $urlCategories = [
     'cpu' => 'CPUs',
@@ -33,15 +33,34 @@ class Products extends Controller
   /* VIEWS */
   public function index($params)
   {
+    // render product
+    if (isset($params[1])) {
+      $this->renderProduct($params[1]);
+      exit;
+    }
+
+    // filter by categories
+    if (isset($params[0]) && !empty($params[0])) {
+      // invalid category
+      if (!array_search($params[0], array_map('strtolower', $this->urlCategories))) {
+        header('Location: ' . URL_ROOT . '/products');        
+        exit;
+      }
+
+      $this->data['title'] = strtoupper($params[0]);
+      $this->data['products'] = array_values($this->filterCategory($params[0]));
+    }
+        
+    // filter by suppliers via ajax
+    if (isset($_POST['suppliers'])) {
+      $this->filterSuppliers();  
+      exit;
+    }
+
     $this->renderView('Products', $this->data);
   }
 
-  public function filterSuppliers() {
-    if (!isset($_POST['suppliers'])) {  
-      header('location: ' . URL_ROOT . '/products');
-      exit;
-    }
-    
+  private function filterSuppliers() {
     $filtered = array_filter($this->data['products'], function($product) {
       foreach($_POST['suppliers'] as $supplier) {
         if (strtolower($product['supplier_name']) === $supplier) {
@@ -50,9 +69,9 @@ class Products extends Controller
       }
       return false;
     });
-    
-    //display products
-    $this->displayFilteredProducts($filtered);
+
+    //display filtered products
+    echo $this->displayFilteredProducts($filtered);
   }
 
   private function displayFilteredProducts($filtered) {
@@ -70,91 +89,20 @@ class Products extends Controller
           $res .= "</div>";
         $res .= "</div>";
       $res .= "</a>";
-
-      echo $res;
     }
+
+    return empty($res) ? "<h3>No Items Found!</h3>" : $res;
   }
 
-  public function cpus($params)
+  private function filterCategory($urlCat)
   {
-    $this->checkParams($params);
+    $filtered = array_filter($this->data['products'], function($product) use ($urlCat) {
+    // $filtered = array_filter($this->getProducts(), function($product) use ($urlCat) {
+      return strtolower($product['urlCategory']) === $urlCat;
+    });
 
-    //render view
-    $this->data['title'] = 'CPUs';
-    $this->data['products'] = $this->getProductsByCategory('cpu');
-    $this->renderView('Products', $this->data);
+    return $filtered;
   }
-
-  public function motherboards($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['products'] = $this->getProductsByCategory('motherboard');
-    $this->data['title'] = 'Motherboards';
-    $this->renderView('Products', $this->data);
-  }
-
-  public function gpus($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'GPUs';
-    $this->data['products'] = $this->getProductsByCategory('graphics card');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function rams($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'Rams';
-    $this->data['products'] = $this->getProductsByCategory('ram');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function m2s($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'M2s';
-    $this->data['products'] = $this->getProductsByCategory('m.2');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function power_supplies($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'Power Supplies';
-    $this->data['products'] = $this->getProductsByCategory('power supply');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function cpu_coolers($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'CPU Coolers';
-    $this->data['products'] = $this->getProductsByCategory('cpu cooler');
-    $this->renderView('Products', $this->data);
-  }
-
-  public function pc_cases($params)
-  {
-    $this->checkParams($params);
-
-    //render view
-    $this->data['title'] = 'PC Cases';
-    $this->data['products'] = $this->getProductsByCategory('pc case');
-    $this->renderView('Products', $this->data);
-  }
-
   
   /* METHODS */  
   private function renderProduct($id)
@@ -171,7 +119,6 @@ class Products extends Controller
     }
 
     $this->renderView('Product', $this->data);
-    exit;
   }
 
   private function getProducts()
@@ -194,26 +141,11 @@ class Products extends Controller
     return $this->urlCategories[strtolower($cat)];
   }
 
-  private function getProductsByCategory($cat)
-  {
-    $products =  $this->productCtrl->getProductsByCategory($cat);
-    $products = $this->addUrlCategory($products);
-    return $products;
-  }
-
   private function getProductById($id)
   {
     $products = [$this->productCtrl->getProductById($id)];
     $this->addUrlCategory($products);
 
     return $products[0];
-  }
-
-  private function checkParams($params)
-  {
-    if (isset($params[0])) {
-      $this->renderProduct($params[0]);
-      exit;
-    }
   }
 }

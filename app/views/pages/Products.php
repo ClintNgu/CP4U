@@ -2,9 +2,12 @@
 <script type='text/javascript' src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
 
 <div class="products-container">
+  <div class="d-flex m-auto p-3">
+    <h2 class="text-center product-title fw-bolder d-inline-block m-auto"><?= $data['title'] ?></h2>
+  </div>
   <!-- sidebar filter -->
-  <div class="row">
-    <div class="sidebar col-2 m-4 px-3 h-100 me-0 bg-dark">
+  <div class="row ms-4">
+    <div class="sidebar col-2 mt-4 px-4 py-3 h-100 bg-dark">
       <?php foreach ($data['sidebar'] as $name => $sub): ?>
         <div class="mt-4">
           <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>
