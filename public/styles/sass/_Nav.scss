@@ -12,13 +12,14 @@
       }
 
       img {
-        width: 2.7rem;
-        height: 2.7rem;
+        width: 2.3rem;
+        height: 2.3rem;
       }
       h1 {
+        font-family: 'Catamaran', sans-serif;
         font-weight: 900;
         margin: 0;
-        font-size: 1rem;
+        font-size: 1.1rem;
         background-clip: text;
         background: $gradientText;
         -webkit-background-clip: text;

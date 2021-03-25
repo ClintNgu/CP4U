@@ -2,7 +2,7 @@
   <a href="<?= URL_ROOT ?>" class='nav-logo'>
     <div class='nav-brand d-flex justify-content-center align-items-center'>
       <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class=''>
-      <h1 class=''>CP<br>4U</h1>
+      <h1 class='ms-1'>CP<br>4U</h1>
     </div>
   </a>
 

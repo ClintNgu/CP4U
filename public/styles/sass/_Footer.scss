@@ -4,6 +4,7 @@ footer {
 
   .main-left-container {
     .name {
+      font-family: 'Catamaran', sans-serif;
       font-weight: 900;
       background-clip: text;
       background: $gradientText;
@@ -26,6 +27,7 @@ footer {
       font-size: 1.6rem;
       display: inline;
       color: $navBlueHover;
+      color: lightsteelblue;
     }
 
     .text {
