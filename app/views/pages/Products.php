@@ -3,7 +3,7 @@
 
 <div class="products-container">
   <div class="d-flex m-auto p-3">
-    <h2 class="text-center product-title fw-bolder d-inline-block m-auto"><?= $data['title'] ?></h2>
+    <h2 class="text-center product-title d-inline-block m-auto"><?= str_replace('_', ' ',$data['title']) ?></h2>
   </div>
   <!-- sidebar filter -->
   <div class="row ms-4">

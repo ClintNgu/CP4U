@@ -6,7 +6,7 @@ footer {
     .name {
       font-weight: 900;
       background-clip: text;
-      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      background: $gradientText;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }

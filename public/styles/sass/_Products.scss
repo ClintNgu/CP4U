@@ -1,6 +1,15 @@
 .products-container {
   .product-title {
-    border-bottom: 3px solid;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: rgba(170, 50, 220, 0.6);
+    color: $turquoise;
+    color: #333;
+    border-bottom: 0.3rem ridge #333;
+    border-top: 0.3rem ridge #333;
+    padding: 0.3rem;
+    // text-shadow: 3px 1px 1px rgba($turquoise, 0.3), -3px -1px 2px #333;
   }
   .sidebar {
     box-shadow: 10px 10px 20px #999, -13px -13px 20px #fff;
