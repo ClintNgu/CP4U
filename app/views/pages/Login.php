@@ -13,8 +13,8 @@
     <div class="right p-4 py-5 ms-4">
         <div class='d-flex align-items-center'>
             <h3 class="d-inline m-0">Login</h3>
-            <span class='ms-3 <?= $data['textColor'] ?>'> 
-                <?= $data['emptyFields'] ?? ($data['signup'] ?? '') ?> 
+            <span class='ms-3 <?= $data['textColor'] ?>'>
+                <?= $data['emptyFields'] ?? ($data['signup'] ?? '') ?>
             </span>
         </div>
         <form method='post' class='mt-4'>

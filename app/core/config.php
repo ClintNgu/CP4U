@@ -1,4 +1,4 @@
-<?php 
+<?php
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'cp4u_db');

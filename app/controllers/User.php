@@ -1,17 +1,21 @@
-<?php 
+<?php
+
 namespace app\controllers;
 
 use app\core\Controller;
 
-class User extends Controller {
+class User extends Controller
+{
   private $model;
 
-  public function __construct() {
+  public function __construct()
+  {
     //init model
-    $this->model = $this->loadModel('User'); 
+    $this->model = $this->loadModel('User');
   }
 
-  public function login($post) {
+  public function login($post)
+  {
     $userInfo = [
       'username' => $post['emailOrUser'],
       'email' => $post['emailOrUser'],
@@ -20,10 +24,10 @@ class User extends Controller {
 
     //return user row
     return $this->model->login($userInfo);
-
   }
 
-  public function signup($post) {
+  public function signup($post)
+  {
     $userInfo = [
       'fname' => $post['fname'],
       'lname' =>  $post['lname'],

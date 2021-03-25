@@ -1,16 +1,19 @@
 <?php
+
 use app\core\Controller;
 use app\controllers\User;
 
-class Signup extends Controller {
+class Signup extends Controller
+{
   private $data = ['title' => 'Sign Up'];
-  
-  public function index($params) {
+
+  public function index($params)
+  {
     //check POST
     if (isset($_POST['signupSubmit'])) {
       $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
       $this->data = array_merge($this->data, $_POST);
-      
+
       if (!$this->isEmptyFields()) {
         $this->signup();
       }
@@ -20,7 +23,8 @@ class Signup extends Controller {
     $this->renderView('Signup', $this->data);
   }
 
-  private function isEmptyFields() {
+  private function isEmptyFields()
+  {
     foreach ($_POST as $_ => $val) {
       if (empty($val)) {
         $this->data['emptyFields'] = '*Fields Cannot Be Empty*';
@@ -31,7 +35,8 @@ class Signup extends Controller {
     return false;
   }
 
-  private function signup() {
+  private function signup()
+  {
     //insert user to db
     $user = new User;
     $user->signup($this->data);
