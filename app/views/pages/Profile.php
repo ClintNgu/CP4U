@@ -1,4 +1,4 @@
-<?php include_once APP_ROOT . '/views/includes/header.php'; ?>
+<?php include APP_ROOT . '/views/includes/header.php'; ?>
 
 <div class="profile-container-div">
   <img class="profile-image" src="https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg" alt="avatar-template">
@@ -23,4 +23,4 @@
   </div>
 </div>
 
-<?php include_once APP_ROOT . '/views/includes/footer.php'; ?>
+<?php include APP_ROOT . '/views/includes/footer.php'; ?>

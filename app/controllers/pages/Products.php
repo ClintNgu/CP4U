@@ -62,8 +62,8 @@ class Products extends Controller
     echo json_encode($filtered);
   }
 
-  private displayProducts($) {
-
+  private function displayProducts($products) {
+    
   }
 
   public function cpus($params)
