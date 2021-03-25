@@ -7,7 +7,7 @@
   </div>
   <!-- sidebar filter -->
   <div class="row ms-4">
-    <div class="sidebar shadow-lg col-2 my-4 px-4 py-3 h-100 bg-dark">
+    <div class="sidebar col-2 my-4 px-4 py-3 h-100 bg-dark">
       <?php foreach ($data['sidebar'] as $name => $sub) : ?>
         <div class="mt-4">
           <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>

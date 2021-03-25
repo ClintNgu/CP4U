@@ -11,6 +11,7 @@
       font-weight: 500;
       padding: 1rem 1.5rem;
       background-color: $orange;
+      box-shadow: 2px 2px 4px rgb(93, 93, 93);
     }
 
     width: 30%;
@@ -31,9 +32,8 @@
   .right {
     width: 40%;
     background: $white;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: $boxShadow;
-
     span {
       font-size: 0.9rem;
     }

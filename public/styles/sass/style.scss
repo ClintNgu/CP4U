@@ -13,7 +13,9 @@ $turquoise: rgb(96, 196, 243);
 $orange: #ee7752;
 $green: #28c5a1;
 
-$boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
+// $boxShadow: 10px 10px 20px rgba(37, 37, 37, 0.4);
+$boxShadow: 3px 3px 5px rgb(34, 34, 34);
+// $boxShadow: 3px 3px 5px rgb(34, 34, 34), -1px -1px 5px #f0f0f0;
 
 /* Partials */
 @import 'Login';
