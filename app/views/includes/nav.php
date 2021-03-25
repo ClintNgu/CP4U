@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand">
-  <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" width="100px" height="100px">
-  <h1 class='name ms-3'>CP<br>4U</h1>
+  <div class='nav-brand d-flex justify-content-center align-items-center'>
+    <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class=''>
+    <h1 class=''>CP<br>4U</h1>
+  </div>
   <div class="nav-item dropdown productDiv">
     <a class="nav-link m-0 productText dropdown-toggle text-uppercase" href="<?= URL_ROOT ?>/products">Products</a>
     <ul class="dropdown-menu">
@@ -35,7 +37,7 @@
       <li><a class="dropdown-item pt-2" href="<?= URL_ROOT ?>/products/PC_Cases">PC Cases</a></li>
     </ul>
   </div>
-  <!-- <a class="nav-link text-light" href="#">Admin</a> -->
+  
   <div class="navbar-nav">
     <li>
       <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/cart">

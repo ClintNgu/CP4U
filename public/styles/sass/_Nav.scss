@@ -4,6 +4,22 @@
   background-color: $logoBackColor;
   padding: 0 1rem;
 
+  .nav-brand {
+    img {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+    h1 {
+      font-weight: 900;
+      margin: 0;
+      font-size: 1rem;
+      background-clip: text;
+      background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
   .dropdown-menu {
     display: none;
     border-radius: 0;
@@ -66,12 +82,4 @@
       font-size: 1.4rem;
     }
   }
-}
-
-.name {
-  font-weight: 900;
-  background-clip: text;
-  background: -webkit-linear-gradient(45deg, $pink 0% 40%, $turquoise 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
