@@ -1,9 +1,11 @@
 .product-container {
   margin: auto;
-  width: 60%;
   display: flex;
   background-color: white;
+  padding: 1rem;
   img {
+    width: 400px;
+    height: 400px;
     margin-top: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
@@ -13,7 +15,35 @@
     margin-top: 1rem;
     margin-left: 1rem;
 
+    h3 {
+      font-size: 40px;
+    }
+
+    .description-p {
+      font-size: 1.5rem;
+    }
+
+    .brand-div {
+      font-size: 15px;
+      display: flex;
+    }
+
+    .category-div {
+      font-size: 15px;
+      display: flex;
+    }
+
+    h4 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    label {
+      font-size: 25px;
+    }
+
     button {
+      width: 50%;
       vertical-align: bottom;
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -24,7 +54,6 @@
       text-align: center;
       font-size: 15px;
       padding: 5px;
-      width: 100%;
       transition: all 0.5s;
       cursor: pointer;
     }
