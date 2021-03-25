@@ -22,11 +22,11 @@
   <!-- sidebar filter -->
   <div class="sidebar col-2 bg-dark h-100 p-3">
     <?php foreach ($data['sidebar'] as $name => $sub): ?>
-      <div class="mb-4">
+      <div class="my-3">
         <h6 class='text-light border-bottom pb-1 fw-bold'><?= strtoupper($name) ?></h6>
         <?php foreach ($data['sidebar'][$name] as $sub): ?>
         <label class='text-light'>
-          <input type="checkbox" value='<?= $sub ?>' class='sidebar-input'>
+          <input type="checkbox" value='<?= $sub ?>' class='sidebar-input mb-2'>
           &nbsp;<?= $sub ?>
         </label><br>
         <?php endforeach; ?>

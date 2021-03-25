@@ -5,5 +5,6 @@ require_once APP_ROOT . '/core/Application.php';
 
 session_start();
 
-$app = new Application;
+$app = new Application;;
 $app->run(); 
+

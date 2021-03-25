@@ -22,26 +22,52 @@ class Products extends Controller
   {
     $this->productCtrl = new Product;
     //TODO: filter items
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
-    
-    //query all products
-    $this->data['products'] = $this->getProducts(); 
 
+    //query all products
+    $this->data['products'] = $this->getProducts();     
+    
     //get all unique suppliers
     $this->data['sidebar']['suppliers'] = array_unique(array_map(fn($p) => $p['supplier_name'], $this->data['products'])); 
+
   }
   
   /* VIEWS */
   public function index($params)
   {
+    
+    echo '<pre>GET data: ';
+    var_dump($_GET['filter'] ?? 'no GET');
+    echo '</pre>';
+
     $this->renderView('Products', $this->data);
+  }
+
+  public function filterSuppliers() {
+    // if (!isset($_POST['suppliers'])) {  
+    //   header('location: ' . URL_ROOT . '/products');
+    //   exit;
+    // }
+    
+    $filtered = array_filter($this->data['products'], function($product) {
+      foreach($_POST['suppliers'] as $supplier) {
+        if (strtolower($product['supplier_name']) === $supplier) {
+          return true;
+        }
+      }
+      return false;
+    });
+    
+    //display products
+    $this->displayProducts($filtered);
+    echo json_encode($filtered);
+  }
+
+  private displayProducts($) {
+
   }
 
   public function cpus($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -52,7 +78,6 @@ class Products extends Controller
 
   public function motherboards($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -63,7 +88,6 @@ class Products extends Controller
 
   public function gpus($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -74,7 +98,6 @@ class Products extends Controller
 
   public function rams($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -85,7 +108,6 @@ class Products extends Controller
 
   public function m2s($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -96,7 +118,6 @@ class Products extends Controller
 
   public function power_supplies($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -107,7 +128,6 @@ class Products extends Controller
 
   public function cpu_coolers($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view
@@ -118,7 +138,6 @@ class Products extends Controller
 
   public function pc_cases($params)
   {
-    //check params
     $this->checkParams($params);
 
     //render view

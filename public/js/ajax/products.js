@@ -3,11 +3,21 @@ window.onload = () => {
   const inputs = [...document.querySelectorAll('input.sidebar-input')];
 
   btn.addEventListener('click', () => {
-    const suppliers = inputs.filter(({ checked }) => checked).map(({ value }) => value);
+    let suppliers = inputs.filter(({ checked }) => checked).map(({ value }) => value.toLowerCase());
+
+    //get all suppliers
+    if (suppliers.length === 0) {
+      suppliers = inputs.map(({ value }) => value.toLowerCase());
+    }
+
     $.ajax({
+      url: `${window.location.href.replace(/\/+$/, '')}/filterSuppliers`,
       method: 'POST',
-      data: { suppliers },
-      success: () => alert('success ajax'),
+      data: { suppliers: suppliers },
+      success: (json) => {
+        const products = Object.values(JSON.parse(json));
+        products.map((product, idx) => console.log(`${idx}: ${product}`));
+      },
     });
   });
 };
