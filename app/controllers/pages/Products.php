@@ -12,7 +12,9 @@ class Products extends Controller
   {
     $this->productCtrl = new Product;
     //TODO: filter items
-    echo ($_POST['filter'] ?? 'no filter applied');
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
     
     //query all products
     $this->data['products'] = $this->getProducts(); 
@@ -21,111 +23,9 @@ class Products extends Controller
     $this->data['sidebar']['suppliers'] = array_unique(array_map(fn($p) => $p['supplier_name'], $this->data['products'])); 
   }
   
-  private function getProducts()
-  {
-    $products =  $this->productCtrl->getProducts();
-    $products = $this->addUrlCategory($products);
-    return $products;
-  }
-
-  private function addUrlCategory($products)
-  {
-    foreach ($products as $idx => ['category' => $cat]) {
-      $products[$idx]['urlCategory'] = $this->setUrlCategory($cat);
-    }
-    return $products;
-  }
-
-  private function setUrlCategory($cat)
-  {
-    $urlCat = '';
-    switch (strtolower($cat)) {
-      case 'cpu':
-        $urlCat = 'CPUs';
-        break;
-      case 'motherboard':
-        $urlCat = 'Motherboards';
-        break;
-      case 'graphics card':
-        $urlCat = 'GPUs';
-        break;
-      case 'ram':
-        $urlCat = 'Rams';
-        break;
-      case 'm.2':
-        $urlCat = 'M2s';
-        break;
-      case 'power supply':
-        $urlCat = 'Power_Supplies';
-        break;
-      case 'cpu cooler':
-        $urlCat = 'Cpu_Coolers';
-        break;
-      case 'pc case':
-        $urlCat = 'PC_Cases';
-        break;
-    }
-
-    return $urlCat;
-  }
-
-  private function getProductsByCategory($cat)
-  {
-    $products =  $this->productCtrl->getProductsByCategory($cat);
-    $products = $this->addUrlCategory($products);
-    return $products;
-  }
-
-  private function getProductsBySupplierName($supp)
-  {
-    $products =  $this->productCtrl->getProductsBySupplierName($supp);
-    // $products = $this->addUrlSupplier($products);
-    return $products;
-  }
-
-  private function getProductById($id)
-  {
-    $products = [$this->productCtrl->getProductById($id)];
-    $this->addUrlCategory($products);
-
-    return $products[0];
-  }
-
-  private function checkParams($params)
-  {
-    if (isset($params[0])) {
-      $this->renderProduct($params[0]);
-      exit;
-    }
-  }
-
-  private function renderProduct($id)
-  { 
-    //get item
-    $this->data['product'] = $this->getProductById($id);
-    $this->data['title'] = $this->data['product']['item_name'];
-    unset($this->data['products']);
-
-    //no item found
-    if (empty($this->data['title'])) {
-      header('Location: ' . URL_ROOT . '/products');
-      exit;
-    }
-
-    $this->renderView('Product', $this->data);
-    exit;
-  }
-
+  /* VIEWS */
   public function index($params)
   {
-    $this->renderView('Products', $this->data);
-  }
-
-  public function filter($params)
-  {
-    echo '<pre>';
-    var_dump('yas bb');
-    echo '</pre>';
     $this->renderView('Products', $this->data);
   }
 
@@ -215,5 +115,78 @@ class Products extends Controller
     $this->data['title'] = 'PC Cases';
     $this->data['products'] = $this->getProductsByCategory('pc case');
     $this->renderView('Products', $this->data);
+  }
+
+  
+  /* METHODS */  
+  private function renderProduct($id)
+  { 
+    //get item
+    $this->data['product'] = $this->getProductById($id);
+    $this->data['title'] = $this->data['product']['item_name'];
+    unset($this->data['products']);
+
+    //no item found
+    if (empty($this->data['title'])) {
+      header('Location: ' . URL_ROOT . '/products');
+      exit;
+    }
+
+    $this->renderView('Product', $this->data);
+    exit;
+  }
+
+  private function getProducts()
+  {
+    $products =  $this->productCtrl->getProducts();
+    $products = $this->addUrlCategory($products);
+    return $products;
+  }
+
+  private function addUrlCategory($products)
+  {
+    foreach ($products as $idx => ['category' => $cat]) {
+      $products[$idx]['urlCategory'] = $this->setUrlCategory($cat);
+    }
+    return $products;
+  }
+
+  private function setUrlCategory($cat)
+  {
+    $urlCategories = [
+      'cpu' => 'CPUs',
+      'graphics card' => 'GPUs',
+      'motherboard' => 'Motherboards',
+      'ram' => 'Rams',
+      'm.2' => 'M2s',
+      'power supply' => 'Power_Supplies',
+      'cpu cooler' => 'CPU_Coolers',
+      'pc cases' => 'PC_Cases',
+    ];
+
+    return $urlCategories[strtolower($cat)];
+  }
+
+  private function getProductsByCategory($cat)
+  {
+    $products =  $this->productCtrl->getProductsByCategory($cat);
+    $products = $this->addUrlCategory($products);
+    return $products;
+  }
+
+  private function getProductById($id)
+  {
+    $products = [$this->productCtrl->getProductById($id)];
+    $this->addUrlCategory($products);
+
+    return $products[0];
+  }
+
+  private function checkParams($params)
+  {
+    if (isset($params[0])) {
+      $this->renderProduct($params[0]);
+      exit;
+    }
   }
 }
