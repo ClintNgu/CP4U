@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand">
-  <div class='nav-brand d-flex justify-content-center align-items-center'>
-    <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class=''>
-    <h1 class=''>CP<br>4U</h1>
-  </div>
+  <a href="<?= URL_ROOT ?>" class='nav-logo'>
+    <div class='nav-brand d-flex justify-content-center align-items-center'>
+      <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class=''>
+      <h1 class=''>CP<br>4U</h1>
+    </div>
+  </a>
+
   <div class="nav-item dropdown productDiv">
     <a class="nav-link m-0 productText dropdown-toggle text-uppercase" href="<?= URL_ROOT ?>/products">Products</a>
     <ul class="dropdown-menu">
