@@ -20,20 +20,27 @@
     </div>
 
     <!-- products -->
-    <div class="product-items col h-100">
-      <?php foreach ($data['products'] as $p): ?>
-      <?php ['item_name' => $name, 'image' => $img,'price' => $price,
-            'urlCategory' => $urlCategory,'item_id' => $id,] = $p ?>
-        <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>''>
-          <div class="item d-flex flex-column align-items-center shadow p-1">
-            <img src="<?= $img ?>" class='img mt-auto'>
-            <div class="caption d-flex justify-content-between w-100 px-3 pt-5">
-              <h6 class='pe-5'><?= $name ?></h6>
-              <p>$<?= $price ?></p>
+    <div class="products-item-container col h-100">
+      <div class="spinner d-none d-flex justify-content-center align-items-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="product-item">
+        <?php foreach ($data['products'] as $p): ?>
+        <?php ['item_name' => $name, 'image' => $img,'price' => $price,
+              'urlCategory' => $urlCategory,'item_id' => $id,] = $p ?>
+          <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>''>
+            <div class="item d-flex flex-column align-items-center shadow p-1">
+              <img src="<?= $img ?>" class='img mt-auto'>
+              <div class="caption d-flex justify-content-between w-100 px-3 pt-5">
+                <h6 class='pe-5'><?= $name ?></h6>
+                <p>$<?= $price ?></p>
+              </div>
             </div>
-          </div>
-        </a>
-      <?php endforeach; ?>
+          </a>
+        <?php endforeach; ?>
+      </div>
     </div>
   </div>
 </div>
