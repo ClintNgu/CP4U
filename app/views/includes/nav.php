@@ -52,16 +52,21 @@
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
         <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
-          <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/admin">Admin</a></li>
-          <!-- check if user isLoggedIn -->
+          
+          <!-- check if admin -->
+          <?php if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) : ?>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/admin">Admin</a></li>
+          <?php endif; ?>
+          
+          <!-- user profile and user orders -->
           <?php if (isset($_SESSION['User'])) : ?>
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
             <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
+            <li><hr class="dropdown-divider"></li>
           <?php endif; ?>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <!-- check if user isLoggedIn -->
+
+
+          <!-- user signin or logout -->
           <?php if (!isset($_SESSION['User'])) : ?>
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/login">Sign In</a></li>
           <?php else : ?>
