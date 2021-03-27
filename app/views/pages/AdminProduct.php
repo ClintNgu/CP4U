@@ -1,4 +1,9 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
+<?php //echo '<pre>';
+//var_dump($data);
+//echo '</pre>';
+$product = $data['product'];
+?>
 
 <div class="container">
   <label class="form-label">Item Name</label>
@@ -28,7 +33,7 @@
   <label class="form-label">Category</label>
   <input type="text" class="input form-control mt-2" name="category">
   <br>
-  <button type='submit' name='updateItemSubmit' class='submit-button p-2 w-100 d-block mt-4 btn btn-dark'><span>Update Info</span></button>
+  <button type='submit' name='updateItemSubmit' class='update-button p-2 w-100 d-block mt-4 btn btn-dark'><span>Update Info</span></button>
 </div>
 
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
