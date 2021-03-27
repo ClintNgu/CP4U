@@ -11,4 +11,8 @@ class Cart extends Controller
     //render view
     $this->renderView('Cart', $this->data);
   }
+
+  public function addToCart()
+  {
+  }
 }
