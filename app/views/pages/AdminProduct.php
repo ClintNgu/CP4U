@@ -33,7 +33,8 @@ $product = $data['product'];
   <label class="form-label">Category</label>
   <input type="text" class="input form-control mt-2" name="category">
   <br>
-  <button type='submit' name='updateItemSubmit' class='update-button p-2 w-100 d-block mt-4 btn btn-dark'><span>Update Info</span></button>
+  <button type='submit' name='updateItemSubmit' class='update-button p-2 w-100 mt-4'><span>Update Info</span></button>
+  <button type='submit' name='deleteItemSubmit' class='delete-button p-2 w-100 mt-4'><span>Delete</span></button>
 </div>
 
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
