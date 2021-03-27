@@ -1,0 +1,39 @@
+.update-button {
+  width: 30%;
+  vertical-align: bottom;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  background-color: $logoBackColor;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.update-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.update-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.update-button:hover span {
+  padding-right: 25px;
+}
+
+.update-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

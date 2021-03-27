@@ -12,11 +12,8 @@
   <!-- product item -->
   <div class="product-item">
     <?php foreach ($data['products'] as $p) : ?>
-      <?php [
-        'item_name' => $name, 'image' => $img, 'price' => $price,
-        'urlCategory' => $urlCategory, 'item_id' => $id,
-      ] = $p ?>
-      <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>'>
+      <?php ['item_name' => $name, 'image' => $img, 'price' => $price, 'urlCategory' => $urlCategory, 'item_id' => $id] = $p ?>
+      <a href='<?= URL_ROOT . "/adminproduct/$urlCategory/$id" ?>'>
         <div class="item-info">
           <img src="<?= $img ?>" class=' img mt-auto'>
           <h6 class='pe-5'><?= $name ?></h6>
@@ -25,6 +22,6 @@
     <?php endforeach; ?>
   </div>
 </div>
-<!-- end product item -->
 
+<!-- end product item -->
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
