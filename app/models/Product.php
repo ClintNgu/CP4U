@@ -42,7 +42,7 @@ class Product
 
   public function updateProduct($data)
   {
-    $query =  "UPDATE users 
+    $query =  "UPDATE products 
                 SET item_name=:item_name, image=:image, description=:description, price=:price, 
                   quantity=:quantity, supplier_name=:supplier_name, category=:category
                 WHERE item_id=:id;";
