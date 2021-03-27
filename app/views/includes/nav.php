@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand">
+<nav class="navbar navbar-expand d-flex justify-content-between">
   <a href="<?= URL_ROOT ?>" class='nav-logo'>
     <div class='nav-brand d-flex justify-content-center align-items-center'>
       <img src="<?= URL_ROOT ?>/img/logo.png" alt="logo" class=''>
