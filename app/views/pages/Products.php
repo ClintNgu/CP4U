@@ -6,15 +6,15 @@
     <h2 class="text-center product-title d-inline-block m-auto"><?= str_replace('_', ' ',$data['title']) ?></h2>
   </div>
   <!-- sidebar filter -->
-  <div class="row ms-4">
-    <div class="sidebar col-2 my-4 px-4 py-3 h-100 bg-dark">
+  <div class="d-flex ms-4">
+    <div class="sidebar bg-dark h-100">
       <?php foreach ($data['sidebar'] as $name => $sub) : ?>
         <div class="mt-4">
           <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>
           <?php foreach ($data['sidebar'][$name] as $sub) : ?>
             <label class='text-light'>
               <input type="checkbox" value='<?= $sub ?>' class='sidebar-input mb-3'>
-              &nbsp;<?= $sub ?>
+              &nbsp;<?= $sub ?> 
             </label><br>
           <?php endforeach; ?>
         </div>

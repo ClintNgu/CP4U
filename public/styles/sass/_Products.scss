@@ -12,7 +12,15 @@
     // text-shadow: 3px 1px 1px rgba($turquoise, 0.3), -3px -1px 2px #333;
   }
   .sidebar {
-    box-shadow: 10px 10px 20px #999, -13px -13px 20px #fff;
+    // box-shadow: 10px 10px 20px #999, -13px -13px 20px #fff;
+    // height: 100%;
+    width: 15rem;
+    padding: 1rem 2rem;
+    z-index: 10;
+    top: 1rem;
+    overflow-y: auto;
+    position: sticky;
+    -webkit-position: sticky;
     border-radius: 0.2rem;
     .header {
       font-weight: 800;
@@ -23,7 +31,7 @@
   }
   .product-item {
     font-family: 'Catamaran', sans-serif;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
