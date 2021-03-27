@@ -35,3 +35,8 @@
 <body>
   <?php include APP_ROOT . '/views/includes/nav.php'; ?>
   <div class="main-container">
+  
+  <!-- scroll up btn -->
+  <div class="btn-scroll-up d-flex align-items-center justify-content-center d-none">
+    <i class="fas fa-arrow-up fs-5"></i>
+  </div>

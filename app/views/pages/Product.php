@@ -1,5 +1,4 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
-<script type='text/javascript' src='<?= URL_ROOT ?>/js/product.js'></script>
 <?php //echo '<pre>';
 //var_dump($data);
 //echo '</pre>';
@@ -14,11 +13,6 @@ $quantity = $product['quantity'];
 $category = $product['category'];
 ?>
 <div class="product-container">
-
-  <div class="btn-scroll-up d-flex align-items-center justify-content-center">
-    <i class="fas fa-arrow-up fs-5"></i>
-  </div>
-
   <div class="product-left-div">
     <img src="<?= $image; ?>">
   </div>

@@ -1,14 +1,16 @@
 .products-container {
+  padding: 1rem;
+
   .product-title {
     font-family: 'Catamaran', sans-serif;
     font-weight: 900;
-    font-size: 2.5rem;
-    color: rgba(170, 50, 220, 0.6);
-    color: $turquoise;
+    font-size: 2.4rem;
     color: #333;
     border-bottom: 0.3rem ridge #333;
   }
+
   .sidebar {
+    border-radius: 0.2rem;
     height: 35rem;
     width: 15rem;
     padding: 0.5rem 2rem;
@@ -21,13 +23,25 @@
     .header {
       font-weight: 800;
     }
+    input[type='checkbox'] {
+      transform: scale(1.1);
+    }
+    label {
+      font-size: 0.9rem;
+      &:hover {
+        input[type='checkbox'] {
+          cursor: pointer;
+        }
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
   .spinner {
     height: 45vh;
   }
   .product-item {
     font-family: 'Catamaran', sans-serif;
-    padding: 0 0 1rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -54,7 +68,7 @@
         margin-top: auto;
         color: rgb(70, 69, 69);
         h6 {
-          font-size: 1.4rem;
+          font-size: 1.25rem;
           font-weight: 600;
         }
         p {
