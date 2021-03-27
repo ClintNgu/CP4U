@@ -27,6 +27,13 @@ class Products extends Controller
 
     //get all unique suppliers
     $this->data['sidebar']['suppliers'] = array_unique(array_map(fn ($p) => $p['supplier_name'], $this->data['products']));
+    
+    //get price ranges
+    $this->data['sidebar']['prices'] = ['< $250', '$250 - $499', '$500 - $749', '$750 - $999', '$1000+'];
+    
+    //shuffle products
+    shuffle($this->data['products']);
+    
   }
 
   /* VIEWS */
@@ -50,13 +57,9 @@ class Products extends Controller
       $this->data['products'] = array_values($this->filterCategory($params[0]));
     }
 
-    //shuffle products
-    shuffle($this->data['products']);
-
-
-    // filter by suppliers via ajax
-    if (isset($_POST['suppliers'])) {
-      $this->filterSuppliers();
+    // filter ajax req
+    if (isset($_POST['suppliers']) || isset($_POST['prices'])) {
+      $this->ajaxRequest();
       exit;
     }
 
@@ -64,19 +67,56 @@ class Products extends Controller
     $this->renderView('Products', $this->data);
   }
 
-  private function filterSuppliers()
-  {
-    $filtered = array_filter($this->data['products'], function ($product) {
-      foreach ($_POST['suppliers'] as $supplier) {
-        if (strtolower($product['supplier_name']) === $supplier) {
-          return true;
-        }
-      }
-      return false;
-    });
+  public function ajaxRequest() {
+    $filtered = $this->filterSuppliers($this->data['products'], $_POST['suppliers']);
+    $filtered = $this->filterPrices($filtered, $_POST['prices']);
 
     //display filtered products
     echo $this->displayFilteredProducts($filtered);
+  }
+
+  /* METHODS */
+  private function filterSuppliers($products, $suppliers)
+  {
+    $filtered = array_filter($products, function ($product) use ($suppliers) {
+      foreach ($suppliers as $supplier) 
+        if (strtolower($product['supplier_name']) === $supplier) 
+          return true;
+        return false;
+    });
+
+    return $filtered;
+  }
+
+  private function filterPrices($products, $priceRanges) {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    
+    $priceRanges = array_map(fn($s) => str_replace(['$', ' '], '', $s), $priceRanges);
+    $filtered = array_filter($products, function($product) use($priceRanges) {
+      (int)['price' => $price] = $product;
+
+      foreach($priceRanges as $range) {
+        [$min, $max] = explode('-', $range);        
+        if (str_contains($min, '<')) {
+          if ($price < (int)substr($min, 1)) 
+            return true;
+        } else if (str_contains($min, '+')) {
+          if ($price >= (int)substr($min, 0, -1)) 
+            return true;
+        } else {
+          if ($price >= (int)$min && $price <= (int)$max) 
+            return true;
+        }
+      }
+
+      return false;
+    });
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    return $filtered;
   }
 
   private function displayFilteredProducts($filtered)
@@ -112,23 +152,6 @@ class Products extends Controller
     return $filtered;
   }
 
-  /* METHODS */
-  private function renderProduct($id)
-  {
-    //get item
-    $this->data['product'] = $this->getProductById($id);
-    $this->data['title'] = $this->data['product']['item_name'];
-    unset($this->data['products']);
-
-    //no item found
-    if (empty($this->data['title'])) {
-      header('Location: ' . URL_ROOT . '/products');
-      exit;
-    }
-
-    $this->renderView('Product', $this->data);
-  }
-
   private function getProducts()
   {
     $products =  $this->productCtrl->getProducts();
@@ -149,6 +172,22 @@ class Products extends Controller
     return $this->urlCategories[strtolower($cat)];
   }
 
+  private function renderProduct($id)
+  {
+    //get item
+    $this->data['product'] = $this->getProductById($id);
+    $this->data['title'] = $this->data['product']['item_name'];
+    unset($this->data['products']);
+
+    //no item found
+    if (empty($this->data['title'])) {
+      header('Location: ' . URL_ROOT . '/products');
+      exit;
+    }
+
+    $this->renderView('Product', $this->data);
+  }
+  
   private function getProductById($id)
   {
     $products = [$this->productCtrl->getProductById($id)];

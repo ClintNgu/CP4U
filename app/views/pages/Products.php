@@ -1,12 +1,11 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
-<script type='text/javascript' src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
-
 <div class="products-container">
   <div class="d-flex m-auto mb-4">
     <h2 class="text-center product-title d-inline-block m-auto"><?= str_replace('_', ' ',$data['title']) ?></h2>
   </div>
-  <!-- sidebar filter -->
+
   <div class="d-flex">
+    <!-- sidebar -->
     <div class="sidebar bg-dark">
       <?php foreach ($data['sidebar'] as $name => $sub) : ?>
         <div class="mt-4 <?= $name ?>">
@@ -20,15 +19,20 @@
         </div>
       <?php endforeach; ?>
       <input type='submit' name='filterSubmit' class="btn btn-warning w-100 fw-bold my-4" value='Apply Filters'>
-    </div>
+    </div> 
+    <!-- end sidebar  -->
 
     <!-- products -->
     <div class="products-item-container col h-100">
+      <!-- spinner -->
       <div class="spinner d-none d-flex justify-content-center align-items-center">
         <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       </div>
+      <!-- end spinner -->
+      
+      <!-- product item -->
       <div class="product-item">
         <?php foreach ($data['products'] as $p) : ?>
           <?php [
@@ -47,6 +51,11 @@
         <?php endforeach; ?>
       </div>
     </div>
+    <!-- end product item -->
   </div>
 </div>
+
+<!-- ajax js -->
+<script src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
+
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>

@@ -15,7 +15,7 @@
 
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+  
   <!-- stylesheet -->
   <style>
     <?= include ROOT . '/public/styles/css/style.css';  ?>
@@ -30,13 +30,14 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
+
 
 <body>
   <?php include APP_ROOT . '/views/includes/nav.php'; ?>
   <div class="main-container">
-  
-  <!-- scroll up btn -->
-  <div class="btn-scroll-up d-flex align-items-center justify-content-center d-none">
-    <i class="fas fa-arrow-up fs-5"></i>
-  </div>
+    <!-- scroll up btn -->
+    <div class="btn-scroll-up d-flex align-items-center justify-content-center d-none">
+      <i class="fas fa-arrow-up fs-5"></i>
+    </div>
