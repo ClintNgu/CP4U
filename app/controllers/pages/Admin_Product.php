@@ -4,12 +4,12 @@ use app\core\Controller;
 
 class Cart extends Controller
 {
-  private $data = ['title' => 'Cart'];
+  private $data = ['title' => 'Admin_Product'];
 
   public function index($params)
   {
 
     //render view
-    $this->renderView('Cart', $this->data);
+    $this->renderView('Admin_Product', $this->data);
   }
 }

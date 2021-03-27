@@ -2,33 +2,33 @@
 <?php //echo '<pre>';
 //var_dump($data);
 //echo '</pre>';
+
 $product = $data['product'];
-$title = $data['title'];
-$supplier = $product['supplier_name'];
-$id = $product['item_id'];
-$image = $product['image'];
-$description = $product['description'];
-$price = $product['price'];
+$item_id = $product['item_id'];
 $quantity = $product['quantity'];
-$category = $product['category'];
+
+if (isset($_SESSION['User'])) {
+  $user = $_SESSION['User'];
+  $user_id = $user['user_id'];
+}
 ?>
 <div class="product-container">
   <div class="product-left-div">
-    <img src="<?= $image; ?>">
+    <img src="<?= $product['image']; ?>">
   </div>
   <div class="product-right-div">
-    <h3><?= $title; ?></h3>
-    <p class="description-p"><?= $description; ?></p>
+    <h3><?= $data['title']; ?></h3>
+    <p class="description-p"><?= $product['description']; ?></p>
     <div class="brand-div">
-      <p>Brand: <?= $supplier; ?></p>
+      <p>Brand: <?= $product['supplier_name']; ?></p>
     </div>
     <div class="category-div">
-      <p>Category: <?= $category; ?></p>
+      <p>Category: <?= $product['category']; ?></p>
     </div>
-    <h4><?= '$' . $price . '.00'; ?></h4>
+    <h4><?= '$' . $product['price'] . '.00'; ?></h4>
     <label>Quantity:<span><?= $quantity; ?></span></label>
     <br>
-    <button id="<?= $id; ?>"><span>Add to Cart </span></button>
+    <button type="submit" name='addToCartSubmit' id="<?= $item_id; ?>"><span>Add to Cart </span></button>
   </div>
 </div>
 
