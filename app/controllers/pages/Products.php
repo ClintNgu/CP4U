@@ -50,12 +50,17 @@ class Products extends Controller
       $this->data['products'] = array_values($this->filterCategory($params[0]));
     }
 
+    //shuffle products
+    shuffle($this->data['products']);
+
+
     // filter by suppliers via ajax
     if (isset($_POST['suppliers'])) {
       $this->filterSuppliers();
       exit;
     }
 
+    //display products
     $this->renderView('Products', $this->data);
   }
 
