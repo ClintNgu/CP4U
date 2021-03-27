@@ -2,9 +2,9 @@ const scrollBtn = document.querySelector('.btn-scroll-up');
 
 window.addEventListener('scroll', () => {
   if (window.pageYOffset >= 350) {
-    scrollBtn.classList.remove('d-none');
+    scrollBtn.classList.add('btn-scroll-up-active');
   } else {
-    scrollBtn.classList.add('d-none');
+    scrollBtn.classList.remove('btn-scroll-up-active');
   }
 });
 
