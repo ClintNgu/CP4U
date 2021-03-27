@@ -2,12 +2,12 @@
 <script type='text/javascript' src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
 
 <div class="products-container">
-  <div class="d-flex m-auto p-3">
+  <div class="d-flex m-auto mt-3 mb-4">
     <h2 class="text-center product-title d-inline-block m-auto"><?= str_replace('_', ' ',$data['title']) ?></h2>
   </div>
   <!-- sidebar filter -->
-  <div class="d-flex ms-4">
-    <div class="sidebar bg-dark h-100">
+  <div class="d-flex px-3">
+    <div class="sidebar bg-dark">
       <?php foreach ($data['sidebar'] as $name => $sub) : ?>
         <div class="mt-4">
           <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>
