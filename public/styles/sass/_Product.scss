@@ -2,7 +2,7 @@
   font-family: 'Catamaran', sans-serif;
   background-color: #fff;
   min-height: 100vh;
-  padding: 2rem 4rem;
+  padding: 2rem 2.5rem 4rem;
 
   .product-item {
     .img-container {
@@ -19,15 +19,35 @@
           font-size: 1.9rem;
         }
       }
-      .descript-body {
-        p {
-          font-size: 1.1rem;
-          font-weight: 400;
-          letter-spacing: 0.8px;
-          margin-bottom: 0.4rem;
-          span {
-            font-size: 1.15rem;
-            font-weight: 600;
+
+      p {
+        font-size: 1.1rem;
+        font-weight: 400;
+        letter-spacing: 0.8px;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      span {
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+
+      .quan-container {
+        i {
+          font-size: 0.7rem;
+        }
+        .count-container {
+          border-radius: 0;
+          width: 8rem;
+          border: 1px solid $logoBackColor;
+          .btn {
+            border-radius: 0;
+          }
+          .minus {
+            border-right: 1px solid $logoBackColor;
+          }
+          .plus {
+            border-left: 1px solid $logoBackColor;
           }
         }
       }

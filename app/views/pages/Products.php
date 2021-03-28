@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<!-- ajax js -->
+<!-- ajax -->
 <script src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
 
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
