@@ -24,6 +24,9 @@ class Products extends Controller
 
     //query all products
     $this->data['products'] = $this->getProducts();
+    
+    //shuffle products
+    shuffle($this->data['products']);
 
     //get all unique suppliers
     $this->data['sidebar']['suppliers'] = array_unique(array_map(fn ($p) => $p['supplier_name'], $this->data['products']));
@@ -188,7 +191,6 @@ class Products extends Controller
 
     $this->renderView('Product', $this->data);
   }
-
   private function getProductById($id)
   {
     $products = [$this->productCtrl->getProductById($id)];
