@@ -8,7 +8,6 @@ class Cart extends Controller
 
   public function index($params)
   {
-    header('location: ' . URL_ROOT . '/cart');
     var_dump($_POST);
     //render view
     $this->renderView('Cart', $this->data);
