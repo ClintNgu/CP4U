@@ -6,6 +6,7 @@
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 
+<a href="<?= URL_ROOT . "/additem" ?>" class="add-item-button p-2 d-block mt-4 btn btn-dark"><span>Add New Item</span></a>
 <div class="main-container">
   <!-- product item -->
   <div class="admin-product-item">
