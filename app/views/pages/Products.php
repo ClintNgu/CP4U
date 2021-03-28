@@ -21,7 +21,7 @@
         <?php endforeach; ?>
       </div>
       <div class="end">
-        <input type='submit' name='filterSubmit' class="btn btn w-100" value='Apply Filters'>
+        <input type='submit' name='filterSubmit' class="btn btn-warning w-100" value='Apply Filters'>
       </div>
     </div> 
     <!-- end sidebar  -->

@@ -22,6 +22,8 @@ plusBtn.addEventListener('click', () => {
 
 cartBtn.addEventListener('click', () => {
   // get product id
-
+  const data = {
+    item_id: id,
+  };
   console.log(itemId.value);
 });

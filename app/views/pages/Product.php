@@ -35,7 +35,7 @@
         <span>In Stock: </span><p class='remain'><?= $remain ?></p><br>
         <span>Brand: </span><p class='brand'><?= $supplier ?></p><br>
         <span>Category: </span><p class='cat'><?= $cat ?></p><br>
-        <span>Description: </span><p class='descript'><?= $descript ?></p><br>
+        <p class='descript pe-3'><span>Description: </span><?= $descript ?></p><br>
       </div>
       <div class="quan-container">
         <p><span>Quantity: </span></p>
@@ -47,7 +47,7 @@
       </div>
         
       <div class="btn-container w-100">
-        <input type="submit" name='cartSubmit' class="btn" value="Add to Cart">
+        <input type="submit" name='cartSubmit' class="btn btn-warning" value="Add to Cart">
       </div>
     </div>
   </div>
