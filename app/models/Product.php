@@ -18,11 +18,10 @@ class Product
     return $this->db->queryAll($query);
   }
 
-  public function getProductsBySupplierName($supp)
+  public function getProductsByName($item)
   {
     $query = "SELECT * FROM products 
-                WHERE supplier_name='$supp';
-                ORDER BY item_name;";
+                WHERE item_name='$item'";
     return $this->db->queryAll($query);
   }
 

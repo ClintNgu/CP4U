@@ -8,6 +8,9 @@ class AddItem extends Controller
 
   public function index($params)
   {
+    if (isset($_POST['addItemSubmit'])) {
+      echo "add item button";
+    }
     //render view
     $this->renderView('AddItem', $this->data);
   }
