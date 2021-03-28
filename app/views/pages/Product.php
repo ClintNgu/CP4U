@@ -20,7 +20,7 @@
   </nav>
 
   <div class="product-item d-flex justify-content-center mt-4">
-    <div class="img-container">
+    <div class="img-container d-flex align-items-center justify-content-center">
       <img src="<?= $imgSrc ?>" width=350>
     </div>
     <div class="descript-container ms-5">

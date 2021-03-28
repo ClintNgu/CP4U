@@ -6,7 +6,6 @@
 
   .product-item {
     .img-container {
-      text-align: center;
       width: 40%;
     }
     .descript-container {
@@ -16,8 +15,8 @@
           font-weight: 900;
         }
         .price {
-          font-weight: 600;
-          font-size: 1.8rem;
+          font-weight: 500;
+          font-size: 1.9rem;
         }
       }
       .descript-body {
@@ -27,7 +26,7 @@
           letter-spacing: 0.8px;
           margin-bottom: 0.4rem;
           span {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
           }
         }
