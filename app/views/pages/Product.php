@@ -30,6 +30,8 @@
       </div>
       <hr class="mx-2">
       <div class="descript-body pe-5">
+        <p class='remain'><span>In Stock: </span><?= $remain ?></p>
+        <p class='brand'><span>Brand: </span><?= $supplier ?></p>
         <p class='cat'><span>Category: </span><?= $cat ?></p>
         <p class='descript'><span>Description: </span><?= $descript ?></p>
       </div>

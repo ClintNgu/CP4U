@@ -7,18 +7,22 @@
   <div class="d-flex">
     <!-- sidebar -->
     <div class="sidebar bg-dark">
-      <?php foreach ($data['sidebar'] as $name => $sub) : ?>
-        <div class="mt-4 <?= $name ?>">
-          <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>
-          <?php foreach ($data['sidebar'][$name] as $sub) : ?>
-            <label class='text-light'>
-              <input type="checkbox" value='<?= $sub ?>' class='sidebar-input mb-3'>
-              &nbsp;<?= $sub ?> 
-            </label><br>
-          <?php endforeach; ?>
-        </div>
-      <?php endforeach; ?>
-      <input type='submit' name='filterSubmit' class="btn btn-warning w-100 fw-bold my-4" value='Apply Filters'>
+      <div class="top">
+        <?php foreach ($data['sidebar'] as $name => $sub) : ?>
+          <div class="mt-4 <?= $name ?>">
+            <h5 class='text-light border-bottom pb-1 header mb-3'><?= strtoupper($name) ?></h5>
+            <?php foreach ($data['sidebar'][$name] as $sub) : ?>
+              <label class='text-light'>
+                <input type="checkbox" value='<?= $sub ?>' class='sidebar-input mb-3'>
+                &nbsp;<?= $sub ?> 
+              </label><br>
+            <?php endforeach; ?>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <div class="end">
+        <input type='submit' name='filterSubmit' class="btn btn w-100" value='Apply Filters'>
+      </div>
     </div> 
     <!-- end sidebar  -->
 
