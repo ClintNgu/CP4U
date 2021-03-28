@@ -1,6 +1,6 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="products-container">
-  <div class="d-flex m-auto mb-4">
+  <div class="d-flex m-auto mb-4 mt-2">
     <h2 class="text-center product-title d-inline-block m-auto"><?= str_replace('_', ' ',$data['title']) ?></h2>
   </div>
 

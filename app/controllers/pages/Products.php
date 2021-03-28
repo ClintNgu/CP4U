@@ -192,7 +192,7 @@ class Products extends Controller
   private function getProductById($id)
   {
     $products = [$this->productCtrl->getProductById($id)];
-    $this->addUrlCategory($products);
+    $products = $this->addUrlCategory($products);
 
     return $products[0];
   }

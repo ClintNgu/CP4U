@@ -1,35 +1,44 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
-<?php //echo '<pre>';
-//var_dump($data);
-//echo '</pre>';
-
-$product = $data['product'];
-$item_id = $product['item_id'];
-$quantity = $product['quantity'];
-
-if (isset($_SESSION['User'])) {
-  $user = $_SESSION['User'];
-  $user_id = $user['user_id'];
-}
+<?php [
+  'item_name' => $name, 
+  'image' => $imgSrc, 
+  'description' => $descript, 
+  'price' => $price, 
+  'quantity' => $remain, 
+  'supplier_name' => $supplier, 
+  'urlCategory' => $urlCat, 
+  'category' => $cat] = $data['product'];
 ?>
+
 <div class="product-container">
-  <div class="product-left-div">
-    <img src="<?= $product['image']; ?>">
-  </div>
-  <div class="product-right-div">
-    <h3><?= $data['title']; ?></h3>
-    <p class="description-p"><?= $product['description']; ?></p>
-    <div class="brand-div">
-      <p>Brand: <?= $product['supplier_name']; ?></p>
+  <nav class='breadcrumb-container'>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products">Products</a></li>
+      <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products/<?= $urlCat ?>"><?= $urlCat ?></a></li>
+      <li class="breadcrumb-item active"><?= $name ?></li>
+    </ol>
+  </nav>
+
+  <div class="product-item d-flex justify-content-center mt-4">
+    <div class="img-container">
+      <img src="<?= $imgSrc ?>" width=350>
     </div>
-    <div class="category-div">
-      <p>Category: <?= $product['category']; ?></p>
+    <div class="descript-container ms-5">
+      <div class="descript-head">
+        <h2 class='name'><?= $name ?></h2>
+        <h4 class='price mt-3'>$<?= $price ?>.00</h2>
+      </div>
+      <hr class="mx-2">
+      <div class="descript-body pe-5">
+        <p class='cat'><span>Category: </span><?= $cat ?></p>
+        <p class='descript'><span>Description: </span><?= $descript ?></p>
+      </div>
+      <div class="btn-container w-100">
+        <button class="btn">Add to Cart</button>
+      </div>
     </div>
-    <h4><?= '$' . $product['price'] . '.00'; ?></h4>
-    <label>Quantity:<span><?= $quantity; ?></span></label>
-    <br>
-    <button type="submit" name='addToCartSubmit' id="<?= $item_id; ?>"><span>Add to Cart </span></button>
   </div>
+
 </div>
 
 

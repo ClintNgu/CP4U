@@ -1,87 +1,47 @@
 .product-container {
-  margin: auto;
-  display: flex;
-  background-color: white;
-  padding: 1rem;
+  font-family: 'Catamaran', sans-serif;
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 2rem 4rem;
 
-  img {
-    width: 400px;
-    height: 400px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-  }
-
-  .product-right-div {
-    margin-top: 1rem;
-    margin-left: 1rem;
-
-    h3 {
-      font-size: 40px;
-    }
-
-    .description-p {
-      font-size: 1.5rem;
-    }
-
-    .brand-div {
-      font-size: 15px;
-      display: flex;
-    }
-
-    .category-div {
-      font-size: 15px;
-      display: flex;
-    }
-
-    h4 {
-      font-size: 40px;
-      font-weight: bold;
-    }
-
-    label {
-      font-size: 25px;
-    }
-
-    button {
-      width: 50%;
-      vertical-align: bottom;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 4px;
-      background-color: $logoBackColor;
-      border: none;
-      color: #ffffff;
+  .product-item {
+    .img-container {
       text-align: center;
-      font-size: 15px;
-      padding: 5px;
-      transition: all 0.5s;
-      cursor: pointer;
+      width: 40%;
     }
-
-    button span {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      transition: 0.5s;
-    }
-
-    button span:after {
-      content: '\00bb';
-      position: absolute;
-      opacity: 0;
-      top: 0;
-      right: -20px;
-      transition: 0.5s;
-    }
-
-    button:hover span {
-      padding-right: 25px;
-    }
-
-    button:hover span:after {
-      opacity: 1;
-      right: 0;
+    .descript-container {
+      width: 40%;
+      .descript-head {
+        .name {
+          font-weight: 900;
+        }
+        .price {
+          font-weight: 600;
+          font-size: 1.8rem;
+        }
+      }
+      .descript-body {
+        p {
+          font-size: 1.1rem;
+          font-weight: 400;
+          letter-spacing: 0.8px;
+          span {
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
+      }
+      .btn-container {
+        .btn {
+          font-size: 1.3rem;
+          font-weight: 700;
+          border-radius: 0;
+          margin-top: 1.6rem;
+          background-color: $yellow;
+          text-align: center;
+          width: 100%;
+        }
+      }
     }
   }
 }
