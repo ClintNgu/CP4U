@@ -74,7 +74,7 @@ class Products extends Controller
     $filtered = $this->filterSuppliers($this->data['products'], $_POST['suppliers']);
     $filtered = $this->filterPrices($filtered, $_POST['prices']);
 
-    //display filtered products
+    // display filtered products
     echo $this->displayFilteredProducts($filtered);
   }
 
@@ -102,18 +102,15 @@ class Products extends Controller
 
       foreach ($priceRanges as $range) {
         [$min, $max] = explode('-', $range);
-        if (str_contains($min, '<')) {
-          if ($price < (int)substr($min, 1))
-            return true;
-        } else if (str_contains($min, '+')) {
-          if ($price >= (int)substr($min, 0, -1))
-            return true;
-        } else {
-          if ($price >= (int)$min && $price <= (int)$max)
-            return true;
+        if (
+          (str_contains($min, '<') && $price < (int)substr($min, 1)) ||
+          (str_contains($min, '+') && $price >= (int)substr($min, 0, -1)) ||
+          ($price >= (int)$min && $price <= (int)$max)
+        ) {
+          return true;
         }
       }
-
+      
       return false;
     });
 
