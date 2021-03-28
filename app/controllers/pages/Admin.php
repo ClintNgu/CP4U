@@ -65,13 +65,18 @@ class Admin extends Controller
     $this->data['title'] = $this->data['product']['item_name'];
     unset($this->data['products']);
 
-    $this->renderView('Admin', $this->data);
-  }
+    //no item found
+    if (empty($this->data['title'])) {
+      header('Location: ' . URL_ROOT . '/admin');
+      exit;
+    }
 
+    $this->renderView('AdminProduct', $this->data);
+  }
   private function getProductById($id)
   {
     $products = [$this->productCtrl->getProductById($id)];
-    $this->addUrlCategory($products);
+    $products = $this->addUrlCategory($products);
 
     return $products[0];
   }
