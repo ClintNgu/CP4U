@@ -27,20 +27,9 @@ class User
     return $this->db->querySingle($query, $data);
   }
 
-  // private function queryUserId($id) {
-  //   $query =  "SELECT * FROM user WHERE id=?";
-  //   return $this->db->querySingle($query, [$id]);
-  // }
-
-  // private function queryUsers() {
-  //   $query =  "SELECT * FROM user;";
-  //   return $this->queryAll($query);
-  // }
-
   public function insertUser($data)
   {
     // ex.: look in signup controller
-
     $query =  "INSERT INTO users(fname, lname, username, email, pass, street, is_admin) 
                 VALUES(:fname, :lname, :username, :email, :pass, :street, 0);";
     return $this->db->prepareStmt($query, $data);
