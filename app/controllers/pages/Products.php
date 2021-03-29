@@ -6,36 +6,25 @@ use app\controllers\Product;
 class Products extends Controller
 {
   private $data = ['title' => 'PRODUCTS'];
-  private $productCtrl;
-  private $urlCategories = [
-    'cpu' => 'CPUs',
-    'graphics card' => 'GPUs',
-    'motherboard' => 'Motherboards',
-    'ram' => 'Rams',
-    'm.2' => 'M2s',
-    'power supply' => 'Power_Supplies',
-    'cpu cooler' => 'CPU_Coolers',
-    'pc case' => 'PC_Cases',
-  ];
-
+  private static $productCtrl;
+  
+  
   public function __construct()
   {
-    $this->productCtrl = new Product;
+    //init product controller
+    self::$productCtrl = new Product;
 
-    //query all products
-    $this->data['products'] = $this->getProducts();
+    //query all products from db
+    $this->data['products'] = self::$productCtrl->getProducts();
     
     //shuffle products
     shuffle($this->data['products']);
 
-    //get all unique suppliers
+    //set sidebar suppliers
     $this->data['sidebar']['suppliers'] = array_unique(array_map(fn ($p) => $p['supplier_name'], $this->data['products']));
 
-    //get price ranges
+    //set sidebar price ranges
     $this->data['sidebar']['prices'] = ['< $250', '$250 - $499', '$500 - $749', '$750 - $999', '$1000+'];
-
-    //shuffle products
-    shuffle($this->data['products']);
   }
 
   /* VIEWS */
@@ -50,11 +39,11 @@ class Products extends Controller
     // filter by categories
     if (isset($params[0]) && !empty($params[0])) {
       // invalid category
-      if (!array_search($params[0], array_map('strtolower', $this->urlCategories))) {
+      if (!self::$productCtrl->isValidCategory($params[0])) {
         header('Location: ' . URL_ROOT . '/products');
         exit;
       }
-
+      
       $this->data['title'] = strtoupper($params[0]);
       $this->data['products'] = array_values($this->filterCategory($params[0]));
     }
@@ -65,7 +54,7 @@ class Products extends Controller
       exit;
     }
 
-    //display products
+    // display products
     $this->renderView('Products', $this->data);
   }
 
@@ -146,39 +135,18 @@ class Products extends Controller
   private function filterCategory($urlCat)
   {
     $filtered = array_filter($this->data['products'], function ($product) use ($urlCat) {
-      // $filtered = array_filter($this->getProducts(), function($product) use ($urlCat) {
       return strtolower($product['urlCategory']) === $urlCat;
     });
 
     return $filtered;
   }
 
-  private function getProducts()
-  {
-    $products =  $this->productCtrl->getProducts();
-    $products = $this->addUrlCategory($products);
-    return $products;
-  }
-
-  private function addUrlCategory($products)
-  {
-    foreach ($products as $idx => ['category' => $cat]) {
-      $products[$idx]['urlCategory'] = $this->setUrlCategory($cat);
-    }
-    return $products;
-  }
-
-  private function setUrlCategory($cat)
-  {
-    return $this->urlCategories[strtolower($cat)];
-  }
-
   private function renderProduct($id)
   {
     //get item
-    $this->data['product'] = $this->getProductById($id);
-    $this->data['title'] = $this->data['product']['item_name'];
     unset($this->data['products']);
+    $this->data['product'] = self::$productCtrl->getProductById($id);
+    $this->data['title'] = $this->data['product']['item_name'];
 
     //no item found
     if (empty($this->data['title'])) {
@@ -187,12 +155,5 @@ class Products extends Controller
     }
 
     $this->renderView('Product', $this->data);
-  }
-  private function getProductById($id)
-  {
-    $products = [$this->productCtrl->getProductById($id)];
-    $products = $this->addUrlCategory($products);
-
-    return $products[0];
   }
 }
