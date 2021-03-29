@@ -43,7 +43,7 @@
 
   <div class="navbar-nav">
     <li>
-      <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/cart">
+      <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/Cart">
         <i class="fas fa-shopping-cart"></i>&nbsp;
         <?= $data['Cart']['qty'] ?? 0 ?>
       </a>
@@ -55,12 +55,12 @@
           
           <!-- check if admin -->
           <?php if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) : ?>
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/admin">Admin</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/Admin">Admin</a></li>
           <?php endif; ?>
           
           <!-- user profile and user orders -->
           <?php if (isset($_SESSION['User'])) : ?>
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/Profile">My Profile</a></li>
             <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
             <li><hr class="dropdown-divider"></li>
           <?php endif; ?>

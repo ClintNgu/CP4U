@@ -27,7 +27,6 @@ filterBtn.addEventListener('click', () => {
       toggleSpinner();
       $('html, body').animate({ scrollTop: 50 }, 1);
     },
-
     success: (html) => {
       setTimeout(toggleSpinner, 900);
       // console.log(html);
