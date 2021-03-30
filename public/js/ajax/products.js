@@ -16,6 +16,13 @@ const toggleSpinner = () => {
 
 // Load More Items
 const showItems = (items, count) => {
+  const { length } = items;
+
+  if (count > length) {
+    count = length;
+    loadMoreBtn.classList.add('d-none');
+  }
+
   for (let i = 0; i < count; i++) {
     items[i].classList.remove('d-none');
   }
@@ -47,9 +54,13 @@ filterBtn.addEventListener('click', () => {
     },
     success: (html) => {
       setTimeout(toggleSpinner, 800);
+
       document.querySelector('.product-item').innerHTML = html;
+
+      // reset load more btn
       items = [...document.querySelectorAll('.item-wrapper')];
       showItemsCount = 10;
+      loadMoreBtn.classList.remove('d-none');
 
       showItems(items, showItemsCount);
     },
