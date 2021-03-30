@@ -1,0 +1,41 @@
+.cart-container {
+  .cart-item {
+    img {
+      width: 200px;
+      height: 200px;
+      padding: 5px;
+    }
+    .cart-info {
+      .name {
+        font-weight: 500;
+      }
+      .price {
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        margin-bottom: 0.5rem;
+      }
+      span {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .cart-delete-button {
+        padding: 5px;
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+        border-radius: 5px;
+      }
+
+      .cart-delete-button:hover {
+        background-color: red;
+        color: white;
+      }
+    }
+  }
+}
