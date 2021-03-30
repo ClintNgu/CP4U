@@ -49,9 +49,11 @@
       }
     }
   }
+
   .spinner {
     height: 45vh;
   }
+
   .product-item {
     font-family: 'Catamaran', sans-serif;
     display: grid;
@@ -89,5 +91,12 @@
         }
       }
     }
+  }
+
+  .loadMoreBtn {
+    border-radius: 0;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    box-shadow: 1px 1px 5px #333;
   }
 }

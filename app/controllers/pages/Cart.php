@@ -18,7 +18,7 @@ class Cart extends Controller
       $this->ajaxRequests();
     }
 
-    $this->data['Cart'] = $_SESSION['Cart'] ?? null;
+    $this->data['Cart'] ??= $_SESSION['Cart'];
 
     //render view
     $this->renderView('Cart', $this->data);

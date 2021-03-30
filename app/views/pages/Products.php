@@ -43,7 +43,7 @@
             'item_name' => $name, 'image' => $img, 'price' => $price,
             'urlCategory' => $urlCategory, 'item_id' => $id,
           ] = $p ?>
-          <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>'>
+          <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>' class='item-wrapper d-none'>
             <div class="item d-flex flex-column align-items-center shadow p-1">
               <img src="<?= $img ?>" class=' img mt-auto'>
               <div class="caption d-flex justify-content-between w-100 px-3 pt-5">
@@ -54,6 +54,10 @@
           </a>
         <?php endforeach; ?>
       </div>
+      <div class="text-center mt-5">
+        <button class="btn loadMoreBtn btn-primary">Load More</button>
+      </div> 
+
     </div>
     <!-- end product item -->
   </div>

@@ -118,7 +118,7 @@ class Products extends Controller
         'urlCategory' => $urlCategory, 'item_id' => $id,
       ] = $p;
 
-      $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id'>";
+      $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id' class='item-wrapper d-none'>";
       $res .= "<div class='item d-flex flex-column align-items-center shadow p-1'>";
       $res .= "<img src='$img' class='img mt-auto' />";
       $res .= "<div class='caption d-flex justify-content-between w-100 px-3 pt-5'>";
