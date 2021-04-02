@@ -1,4 +1,5 @@
 const spinner = document.querySelector('.spinner');
+const searchBox = document.querySelector('.products-container .search-box');
 const productItem = document.querySelector('.product-item');
 
 const filterBtn = document.querySelector('input[name=filterSubmit]');
@@ -9,10 +10,16 @@ const loadMoreBtn = document.querySelector('button.loadMoreBtn');
 let items = [...document.querySelectorAll('.item-wrapper')];
 let showItemsCount = 10;
 
+// Spinner
 const toggleSpinner = () => {
   spinner.classList.toggle('d-none');
   productItem.classList.toggle('d-none');
 };
+
+// Search
+// searchBox.addEventListener('change', (e) => {
+//   console.log(e);
+// });
 
 // Load More Items
 const showItems = (items, count) => {
@@ -28,19 +35,19 @@ const showItems = (items, count) => {
   }
 };
 
-loadMoreBtn.addEventListener('click', () => {
+loadMoreBtn.onclick = () => {
   showItemsCount += 10;
   showItems(items, showItemsCount);
-});
+};
 
-//  Filter Ajax
+// Filter Ajax
 const findChecked = (inputs = []) => {
   let filtered = inputs.filter(({ checked }) => checked);
   filtered = (filtered.length === 0 ? inputs : filtered).map(({ value }) => value.toLowerCase());
   return filtered;
 };
 
-filterBtn.addEventListener('click', () => {
+filterBtn.onclick = () => {
   let suppliers = findChecked(supplierInputs);
   let prices = findChecked(priceInputs);
 
@@ -54,18 +61,16 @@ filterBtn.addEventListener('click', () => {
     },
     success: (html) => {
       setTimeout(toggleSpinner, 800);
-
       document.querySelector('.product-item').innerHTML = html;
 
-      // reset load more btn
+      //reset load more btn
       items = [...document.querySelectorAll('.item-wrapper')];
       showItemsCount = 10;
       loadMoreBtn.classList.remove('d-none');
-
       showItems(items, showItemsCount);
     },
   });
-});
+};
 
 // On Load
 showItems(items, showItemsCount); // init first 10 items
