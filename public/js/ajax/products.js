@@ -28,17 +28,18 @@ const toggleSpinner = () => {
 };
 
 // Search Box
-searchBox.oninput = (e) => {
-  const { value: searchVal } = e.target;
+searchBox.oninput = async (e) => {
+  const { value } = e.target;
+  const data = new FormData();
+  data.append('searchVal', JSON.stringify(value));
 
-  $.ajax({
+  const response = await fetch(window.location.href, {
     method: 'POST',
-    data: { searchVal },
-    success: (html) => {
-      productItem.innerHTML = html;
-      initItems();
-    },
+    body: data,
   });
+
+  productItem.innerHTML = await response.text();
+  initItems();
 };
 
 // Load More Btn
@@ -67,20 +68,22 @@ const findChecked = (inputs = []) => {
   return filtered;
 };
 
-filterBtn.onclick = () => {
+filterBtn.onclick = async () => {
   let suppliers = findChecked(supplierInputs);
   let prices = findChecked(priceInputs);
+  toggleSpinner();
 
-  $.ajax({
+  const data = new FormData();
+  data.append('suppliers', JSON.stringify(suppliers));
+  data.append('prices', JSON.stringify(prices));
+  const response = await fetch(window.location.href, {
     method: 'POST',
-    data: { suppliers, prices },
-    beforeSend: toggleSpinner,
-    success: (html) => {
-      setTimeout(toggleSpinner, 600);
-      productItem.innerHTML = html;
-      initItems();
-    },
+    body: data,
   });
+
+  setTimeout(toggleSpinner, 700);
+  productItem.innerHTML = await response.text();
+  initItems();
 };
 
 // On Load

@@ -59,9 +59,9 @@ class Products extends Controller
   private function ajaxHandler()
   {
     $filtered = $this->data['products'];
-    $filtered = isset($_POST['suppliers']) ? $this->filterSuppliers($filtered, $_POST['suppliers']) : $filtered;
-    $filtered = isset($_POST['prices']) ? $this->filterPrices($filtered, $_POST['prices']) : $filtered;
-    $filtered = isset($_POST['searchVal']) ? $this->filterSearch($filtered, $_POST['searchVal']) : $filtered;   
+    $filtered = isset($_POST['suppliers']) ? $this->filterSuppliers($filtered, json_decode($_POST['suppliers'])) : $filtered;
+    $filtered = isset($_POST['prices']) ? $this->filterPrices($filtered, json_decode($_POST['prices'])) : $filtered;
+    $filtered = isset($_POST['searchVal']) ? $this->filterSearch($filtered, json_decode($_POST['searchVal'])) : $filtered;   
     
     // display filtered products
     echo $this->displayFilteredProducts($filtered);
