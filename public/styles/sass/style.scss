@@ -22,7 +22,7 @@ $boxShadow: 3px 3px 5px rgb(34, 34, 34);
 /* Main Styles */
 // scrollbar
 ::-webkit-scrollbar {
-  width: 3.5px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -41,7 +41,7 @@ $boxShadow: 3px 3px 5px rgb(34, 34, 34);
     width: 55px;
     height: 55px;
     color: $white;
-    background: $pink;
+    background: rgba($pink, 0.9);
     box-shadow: 0 0 10px rgba(#000, 0.25);
     border-radius: 50%;
     border: none;
