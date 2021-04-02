@@ -78,7 +78,11 @@ class Products extends Controller
   }
 
   private function filterSearch($products, $searchVal) {
-    $searchVal = str_replace('$', '', $searchVal);
+    $searchVal = $searchVal === '$' ? '' : $searchVal;  
+    $searchVal = isset($searchVal[0]) && $searchVal[0] === '$' && 
+                 isset($searchVal[1]) && is_numeric($searchVal[1]) 
+                 ? substr($searchVal, 1) : $searchVal;
+    
     $filtered = array_filter($products, function ($product) use ($searchVal) {
         if (
           str_contains(strtolower($product['item_name']), strtolower($searchVal)) ||
