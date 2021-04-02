@@ -36,21 +36,19 @@ class Products extends Controller
       exit;
     }
 
-    // filter by categories
+    // filter categories
     if (isset($params[0]) && !empty($params[0])) {
-      // invalid category
       if (!self::$productCtrl->isValidCategory($params[0])) {
         header('Location: ' . URL_ROOT . '/products');
-        exit;
+      } else {
+        $this->data['title'] = strtoupper($params[0]);
+        $this->data['products'] = array_values($this->filterCategory($params[0]));
       }
-      
-      $this->data['title'] = strtoupper($params[0]);
-      $this->data['products'] = array_values($this->filterCategory($params[0]));
     }
 
-    // filter ajax req
-    if (isset($_POST['suppliers']) || isset($_POST['prices'])) {
-      $this->ajaxRequest();
+    // filter ajax request
+    if (isset($_POST['suppliers']) || isset($_POST['prices']) || isset($_POST['searchVal'])) {
+      $this->ajaxHandler();
       exit;
     }
 
@@ -58,23 +56,48 @@ class Products extends Controller
     $this->renderView('Products', $this->data);
   }
 
-  public function ajaxRequest()
+  private function ajaxHandler()
   {
-    $filtered = $this->filterSuppliers($this->data['products'], $_POST['suppliers']);
-    $filtered = $this->filterPrices($filtered, $_POST['prices']);
-
+    $filtered = $this->data['products'];
+    $filtered = isset($_POST['suppliers']) ? $this->filterSuppliers($filtered, $_POST['suppliers']) : $filtered;
+    $filtered = isset($_POST['prices']) ? $this->filterPrices($filtered, $_POST['prices']) : $filtered;
+    $filtered = isset($_POST['searchVal']) ? $this->filterSearch($filtered, $_POST['searchVal']) : $filtered;   
+    
     // display filtered products
     echo $this->displayFilteredProducts($filtered);
   }
 
   /* METHODS */
+  private function filterCategory($urlCat)
+  {
+    $filtered = array_filter($this->data['products'], function ($product) use ($urlCat) {
+      return strtolower($product['urlCategory']) === $urlCat;
+    });
+
+    return $filtered;
+  }
+
+  private function filterSearch($products, $searchVal) {
+    $searchVal = str_replace('$', '', $searchVal);
+    $filtered = array_filter($products, function ($product) use ($searchVal) {
+        if (
+          str_contains(strtolower($product['item_name']), strtolower($searchVal)) ||
+          str_contains(strtolower($product['price']), strtolower($searchVal))
+        ) {
+          return true;
+        }
+    });
+
+    return $filtered;
+  }
+
   private function filterSuppliers($products, $suppliers)
   {
     $filtered = array_filter($products, function ($product) use ($suppliers) {
       foreach ($suppliers as $supplier)
-        if (strtolower($product['supplier_name']) === $supplier)
+        if (strtolower($product['supplier_name']) === $supplier) {
           return true;
-      return false;
+        }
     });
 
     return $filtered;
@@ -82,15 +105,13 @@ class Products extends Controller
 
   private function filterPrices($products, $priceRanges)
   {
-    error_reporting(0);
-    ini_set('display_errors', 0);
-
     $priceRanges = array_map(fn ($s) => str_replace(['$', ' '], '', $s), $priceRanges);
     $filtered = array_filter($products, function ($product) use ($priceRanges) {
       (int)['price' => $price] = $product;
 
       foreach ($priceRanges as $range) {
-        [$min, $max] = explode('-', $range);
+        $range = explode('-', $range);
+        $min = $range[0]; $max = $range[1] ?? null;
         if (
           (str_contains($min, '<') && $price < (int)substr($min, 1)) ||
           (str_contains($min, '+') && $price >= (int)substr($min, 0, -1)) ||
@@ -99,12 +120,7 @@ class Products extends Controller
           return true;
         }
       }
-      
-      return false;
     });
-
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
 
     return $filtered;
   }
@@ -112,12 +128,13 @@ class Products extends Controller
   private function displayFilteredProducts($filtered)
   {
     $res = '';
-    foreach ($filtered as $p) {
-      [
-        'item_name' => $name, 'image' => $img, 'price' => $price,
-        'urlCategory' => $urlCategory, 'item_id' => $id,
-      ] = $p;
-
+    foreach ($filtered as [
+      'item_name' => $name, 
+      'image' => $img, 
+      'price' => $price, 
+      'urlCategory' => $urlCategory, 
+      'item_id' => $id,
+    ]) {
       $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id' class='item-wrapper d-none'>";
       $res .= "<div class='item d-flex flex-column align-items-center shadow p-1'>";
       $res .= "<img src='$img' class='img mt-auto' />";
@@ -130,15 +147,6 @@ class Products extends Controller
     }
 
     return empty($res) ? "<h3>No Items Found!</h3>" : $res;
-  }
-
-  private function filterCategory($urlCat)
-  {
-    $filtered = array_filter($this->data['products'], function ($product) use ($urlCat) {
-      return strtolower($product['urlCategory']) === $urlCat;
-    });
-
-    return $filtered;
   }
 
   private function renderProduct($id)

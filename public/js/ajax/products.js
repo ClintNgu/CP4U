@@ -7,21 +7,41 @@ const supplierInputs = [...document.querySelectorAll('.sidebar .suppliers input[
 const priceInputs = [...document.querySelectorAll('.sidebar .prices input[type=checkbox]')];
 
 const loadMoreBtn = document.querySelector('button.loadMoreBtn');
-let items = [...document.querySelectorAll('.item-wrapper')];
-let showItemsCount = 10;
+
+const LOAD_COUNT = 8;
+let showItemsCount;
+let items;
+
+// init items
+const initItems = () => {
+  items = [...document.querySelectorAll('.item-wrapper')];
+  showItemsCount = LOAD_COUNT;
+  loadMoreBtn.classList.remove('d-none');
+  showItems(items, showItemsCount);
+};
 
 // Spinner
 const toggleSpinner = () => {
   spinner.classList.toggle('d-none');
   productItem.classList.toggle('d-none');
+  $('html, body').animate({ scrollTop: 60 }, 100);
 };
 
-// Search
-// searchBox.addEventListener('change', (e) => {
-//   console.log(e);
-// });
+// Search Box
+searchBox.oninput = (e) => {
+  const { value: searchVal } = e.target;
 
-// Load More Items
+  $.ajax({
+    method: 'POST',
+    data: { searchVal },
+    success: (html) => {
+      productItem.innerHTML = html;
+      initItems();
+    },
+  });
+};
+
+// Load More Btn
 const showItems = (items, count) => {
   const { length } = items;
 
@@ -36,7 +56,7 @@ const showItems = (items, count) => {
 };
 
 loadMoreBtn.onclick = () => {
-  showItemsCount += 10;
+  showItemsCount += LOAD_COUNT;
   showItems(items, showItemsCount);
 };
 
@@ -52,25 +72,16 @@ filterBtn.onclick = () => {
   let prices = findChecked(priceInputs);
 
   $.ajax({
-    url: window.location.href,
     method: 'POST',
     data: { suppliers, prices },
-    beforeSend: () => {
-      toggleSpinner();
-      $('html, body').animate({ scrollTop: 50 }, 1);
-    },
+    beforeSend: toggleSpinner,
     success: (html) => {
-      setTimeout(toggleSpinner, 800);
-      document.querySelector('.product-item').innerHTML = html;
-
-      //reset load more btn
-      items = [...document.querySelectorAll('.item-wrapper')];
-      showItemsCount = 10;
-      loadMoreBtn.classList.remove('d-none');
-      showItems(items, showItemsCount);
+      setTimeout(toggleSpinner, 600);
+      productItem.innerHTML = html;
+      initItems();
     },
   });
 };
 
 // On Load
-showItems(items, showItemsCount); // init first 10 items
+initItems();
