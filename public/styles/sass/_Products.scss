@@ -19,13 +19,16 @@
       background: transparent !important;
       border: none;
       border-bottom: 1.5px solid rgb(196, 196, 196);
-      padding: 0.35rem;
+      padding: 0.3rem;
       width: 13rem;
       letter-spacing: normal;
-      transition: all 0.2s;
+      transition: all 0.2s ease-in-out;
       &:focus {
         outline: none;
+        border-bottom-width: 2.5px;
+        margin-bottom: -1px;
         border-bottom-color: rgb(114, 114, 114);
+        border-bottom-color: $turquoise;
       }
     }
   }
@@ -50,7 +53,7 @@
       transform: scale(1.1);
     }
     label {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       &:hover {
         input[type='checkbox'] {
           cursor: pointer;
