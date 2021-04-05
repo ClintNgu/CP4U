@@ -2,8 +2,7 @@
 
 <!--If we want to implement a search-->
 <form method="post" class="search-section d-flex">
-  <input class="search-bar form-control me-2" name="searchValue" placeholder="Search" aria-label="Search">
-  <button type="submit" name="searchButton" class="search-button p-2 d-block btn btn-dark" type="submit"><span>Search </span></button>
+  <input type="text" class="search-box" placeholder="Search..">
 </form>
 
 <a href="<?= URL_ROOT . "/additem" ?>" class="add-item-button p-2 d-block mt-4 btn btn-dark"><span>Add New Item</span></a>

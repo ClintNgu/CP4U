@@ -34,11 +34,6 @@ class Admin extends Controller
       exit;
     }
 
-    if (isset($_POST['searchButton'])) {
-      $searchValue = $_POST['searchValue'];
-      echo $searchValue;
-    }
-
     //render view
     $this->renderView('Admin', $this->data);
   }
