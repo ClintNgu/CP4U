@@ -37,10 +37,11 @@ class AddItem extends Controller
 
   private function addProduct()
   {
-    //insert user to db
+    //insert product to db
     $product = new Product;
     $product->insertProduct($this->data);
-    //display signup success
+
+    //display insert success
     echo "Insertion successful";
   }
 }

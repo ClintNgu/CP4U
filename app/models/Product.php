@@ -40,8 +40,8 @@ class Product
 
   public function insertProduct($data)
   {
-    $query =  "INSERT INTO products(item_name, image, description, price, quantity, supplier_name, category) 
-                VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, :category);";
-    return self::$db->prepareStmt($query, $data);
+    $query = 'INSERT INTO products(item_name, image, description, price, quantity, supplier_name, category) 
+              VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, :category);';
+    return $this->db->prepareStmt($query, $data);
   }
 }

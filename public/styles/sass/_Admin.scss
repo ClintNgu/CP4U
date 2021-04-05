@@ -38,37 +38,21 @@
   right: 0;
 }
 
-.search-button {
+.search-box {
+  background: transparent !important;
   border: none;
-  color: $white;
-  text-align: center;
-  transition: all 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-.search-button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.search-button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.search-button:hover span {
-  padding-right: 25px;
-}
-
-.search-button:hover span:after {
-  opacity: 1;
-  right: 0;
+  border-bottom: 1.5px solid rgb(196, 196, 196);
+  padding: 0.3rem;
+  width: 13rem;
+  letter-spacing: normal;
+  transition: all 0.2s ease-in-out;
+  &:focus {
+    outline: none;
+    border-bottom-width: 2.5px;
+    margin-bottom: -1px;
+    border-bottom-color: rgb(114, 114, 114);
+    border-bottom-color: $turquoise;
+  }
 }
 
 .admin-product-item {
