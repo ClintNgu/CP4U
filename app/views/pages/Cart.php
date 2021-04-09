@@ -1,38 +1,58 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="cart-container">
-  <h3>Shopping Cart</h3>
-  <hr>
-
-  <div class="cart-items">
-    <?php
-    //echo '<pre>Cart Items: ';
-    //var_dump($data['Cart'] ?? 'No Items in Cart!');
-    //echo '</pre>';
-    ?>
-
-    <?php
-    foreach ($data['Cart'] as $p) : ?>
-      <?php [
-        'id' => $id, 'name' => $name, 'price' => $price,
-        'imgSrc' => $imgSrc, 'quantity' => $quantity,
-      ] = $p ?>
-      <div class="cart-item d-flex mt-3">
-        <img src="<?= $imgSrc ?>">
-        <div class="cart-info">
-          <h2 class='name'><?= $name ?></h2>
-          <p><span>Quantity: <?= $quantity ?></span></p>
-          <h4 class='price mt-3'>$<?= $quantity * $price ?>.00</h2>
-            <button class="cart-delete-button">Delete</button>
+  <h2 class='title text-center'>Cart</h2>
+  <div class="cart-items mt-5">
+    <?php if(!isset($data['Cart']) || empty($data['Cart'])): ?>
+      <h4>No Items in Cart</h4>
+    <?php else: ?>
+      <?php 
+        $subtotal = 0;
+        foreach($data['Cart'] as $idx => $cartItem): 
+          [ 'imgSrc' => $img, 'name' => $name, 'price' => $price, 'quantity' => $quan, ] = $cartItem; 
+          $subtotal += (int)$price;
+          ?>
+          <div class="row">
+            <div class="col-2 text-center">
+              <img src="<?= $img ?>">
+            </div>
+            <div class="col">
+              <h6 class='text-muted'>Name</h6>
+              <h6 class='name'><?= $name ?></h6>
+            </div>
+            <div class="col-2">
+              <h6 class='text-muted'>Quantity</h6>
+              <h6 class='name'><?= $quan ?></h6>
+            </div>
+            <div class="col-2 text-end">
+              <h6 class='text-muted'>Price</h6>
+              <h6 class='name'>$<?= $quan*$price ?>.00</h6>
+            </div>
+            <div class="col text-end">
+              <input class="btn btn-secondary btn-sm remove-btn" value="Remove" data-idx='<?= $idx ?>' type='submit' />
+            </div>
+            <hr class='mt-3'>
+          </div>
+        <?php endforeach; ?>
+        <div class="w-50 text-end ms-auto price-container">
+          <div class="row mb-2">
+            <div class="col fs-6 text-muted">Subtotal: </div>
+            <div class="col-3 text-muted">$<?= $subtotal ?>.00</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col fs-6 text-muted">Tax: </div>
+            <div class="col-3 text-muted">$<?= number_format($subtotal*.15, 2) ?></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col fs-6 fw-bold">Grand Total: </div>
+            <div class="col-3 fs-5 fw-bolder">$<?= number_format($subtotal*1.15, 2) ?></div>
+          </div>
         </div>
-      </div>
-      <hr>
-    <?php endforeach; ?>
-
+        <div class="w-100 mt-3 text-end">
+          <a class="btn btn-primary fw-bold py-3" href="<?=URL_ROOT?>/Checkout">Proceed to Checkout</a>
+        </div>
+    <?php endif; ?>
   </div>
-  <input class="btn btn-danger" id='clearCartBtn' value="Clear Cart" type='submit'>
 </div>
 
-
 <script src='<?= URL_ROOT ?>/js/ajax/cart.js'></script>
-
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
