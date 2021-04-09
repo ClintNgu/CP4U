@@ -4,7 +4,7 @@
   <div class="summary-section-div">
     <div><i class="fas fa-shopping-cart"></i><span id="cart-number"><?= isset($_SESSION["Cart"]) ? count($_SESSION["Cart"]) : 0 ?></span>
     </div>
-    <h4 class="mb-3">Summary</h4>
+    <h4 class="mb-3">Order Summary</h4>
   </div>
   <hr>
   <div class="products-section-div">
@@ -19,8 +19,10 @@
           <div class="text-center">
             <img src="<?= $img ?>">
           </div>
-          <div>
+          <div class="col">
             <h6 class="name"><?= $quan ?> x <?= $name ?></h6>
+          </div>
+          <div class="col-2 text-end">
             <h6 class="name">$<?= $quan * $price ?>.00</h6>
           </div>
           <hr class="mt-3">
@@ -43,7 +45,7 @@
       <div class="col-4 fs-5 fw-bold">$<?= number_format($subtotal * 1.15, 2) ?></div>
     </div>
   </div>
-  <button type="submit" class="submit-button p-2 w-100 d-block mt-4 btn btn-dark"><span>Checkout</span></button>
+  <button type="submit" class="submit-button p-2 w-100 d-block mt-4 btn btn-dark"><span>Place Order</span></button>
 </div>
 
 <?php include APP_ROOT . "/views/includes/footer.php"; ?>
