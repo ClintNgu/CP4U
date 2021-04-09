@@ -92,7 +92,7 @@ class Cart extends Controller
       $res .= '</div>';
       $res .= '</div>';
       $res .= '<div class="w-100 mt-3 text-end">';
-      $res .= '<a class="btn btn-primary fw-bold py-3" href="'. URL_ROOT.'/Checkout">Proceed to Checkout</a>';
+      $res .= '<a class="btn btn-primary fw-bold py-2" href="'. URL_ROOT.'/Checkout">Proceed to Checkout</a>';
       $res .= '</div>';
     }
       

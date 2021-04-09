@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="w-100 mt-3 text-end">
-          <a class="btn btn-primary fw-bold py-3" href="<?=URL_ROOT?>/Checkout">Proceed to Checkout</a>
+          <a class="btn btn-primary fw-bold py-2" href="<?=URL_ROOT?>/Checkout">Proceed to Checkout</a>
         </div>
     <?php endif; ?>
   </div>
