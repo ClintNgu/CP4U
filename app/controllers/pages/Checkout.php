@@ -8,6 +8,9 @@ class Checkout extends Controller
 
   public function index($params)
   {
+
+    $this->data['Cart'] ??= $_SESSION['Cart'];
+
     //render view
     $this->renderView('Checkout', $this->data);
   }
