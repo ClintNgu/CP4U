@@ -11,52 +11,115 @@
   'category' => $cat] = $data['product'];
 ?>
 <div class="product-container">
-  <form action="<?= URL_ROOT ?>/Cart" method='POST'>
+  <?php if(isset($_SESSION['User']['is_admin'])): ?>
+    <form method="post" class='d-flex'>
     <input hidden name='id' value='<?= $id ?>'/>
-    <input hidden name='name' value='<?= $name ?>'/>
-    <input hidden name='price' value='<?= $price ?>'/>
-    <input hidden name='imgSrc' value='<?= $imgSrc ?>'/>
-    <input hidden name='quantity' value='1'/>
-
-    <nav class='breadcrumb-container'>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products">Products</a></li>
-        <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products/<?= $urlCat ?>"><?= $urlCat ?></a></li>
-        <li class="breadcrumb-item active"><?= $name ?></li>
-      </ol>
-    </nav>
-
-    <div class="product-item d-flex justify-content-center mt-4">
-      <div class="img-container d-flex align-items-center justify-content-center">
-        <img src="<?= $imgSrc ?>" width=400>
-      </div>
-      <div class="descript-container ms-5">
-        <div class="descript-head">
-          <h2 class='name'><?= $name ?></h2>
-          <h4 class='price mt-3'>$<?= $price ?>.00</h2>
-        </div>
-        <hr class="mx-2">
-        <div class="descript-body pe-5">
-          <span>In Stock: </span><p class='remain'><?= $remain ?></p><br>
-          <span>Brand: </span><p class='brand'><?= $supplier ?></p><br>
-          <span>Category: </span><p class='cat'><?= $cat ?></p><br>
-          <p class='descript pe-3'><span>Description: </span><?= $descript ?></p><br>
-        </div>
-        <div class="quan-container">
-          <p><span>Quantity: </span></p>
-          <div class="d-flex align-items-center justify-content-between count-container">
-            <div class="btn m-0 minus"><i class="fas fa-minus"></i></div>
-            <div class="quantityDiv h5 mb-1">1</div>
-            <div class="btn m-0 plus"><i class="fas fa-plus"></i></div>
+      <div class="w-50 ms-auto">
+        <div class='d-flex mb-3'>
+          <div class='w-100'>
+            <label class="form-label">Product Name</label>
+            <input type="text" name='name' class="form-control" value='<?=$name?>'>  
+          </div>
+          <div class='w-100 ms-4'>
+            <label class="form-label">Product Brand</label>
+            <input type="text" name='supplier' class="form-control" value='<?=$supplier?>'>  
           </div>
         </div>
-          
-        <div class="btn-container w-100">
-          <input type="submit" name='cartSubmit' class="btn btn-warning" value="Add to Cart">
+        <div class='d-flex mb-3'>
+          <div class='w-100'>
+            <label class="form-label">Product Price</label>
+            <input type="text" name='price' class="form-control" value='<?=$price?>'>
+          </div>
+          <div class='w-100 ms-4'>
+            <label class="form-label">Product Quantity</label>
+            <input type="text" name='quantity' class="form-control" value='<?=$remain?>'> 
+          </div>
+        </div>
+        <div class='mb-3'>
+          <label class="form-label">Product Category</label>
+          <input type="text" name='cat' class="form-control" value='<?=$cat?>'>  
+        </div>
+        <div class='mb-3'>
+          <label class="form-label">Product Image</label>
+          <input type="text" name='imgSrc' class="form-control" value='<?=$imgSrc?>'>  
+        </div>
+        <div class='mb-3'>
+          <label class="form-label">Product Description</label>
+          <input type="text" name='descript' class="form-control" value='<?=$descript?>'>  
+        </div>
+        <input type="submit" class="btn btn-warning w-100 fw-bold" name='updateBtn' value='Update'>
+        <input type="submit" class="btn btn-danger w-100 fw-bold mt-1" name='deleteBtn' value='Delete'>
+      </div>
+      <div 
+        class="w-25 h-100 d-flex p-4 m-auto" 
+        style='border-width:1.7px !important; border:.3rem solid lightgray; box-shadow: 2px 2px 8px #bbb;'
+      >
+        <div class="descript-container">
+          <h5 class='fw-bold'><u>- Preview -</u></h5>
+          <div class="descript-head d-flex mt-3">
+          <div>
+            <h6><?= $name ?></h6>
+            <h6>$<?= $price ?>.00</h6>
+          </div>
+          <img src="<?= $imgSrc ?>" width=100 height=100 class='ms-auto'>
+          </div>
+          <hr class='d-block m-4 mx-3'>
+          <div>
+            <span class='fw-bold'>In Stock: </span><span class='mb-1 p-0'><?= $remain ?></span><br>
+            <span class='fw-bold'>Brand: </span><span class='mb-1 p-0'><?= $supplier ?></span><br>
+            <span class='fw-bold'>Category: </span><span class='mb-1 p-0'><?= $cat ?></span><br>
+            <span class='fw-bold'>Description: </span><span class='mb-1 p-0'><?= $descript ?></span><br>
+          </div>
+      </div>
+    </form>
+  <?php else: ?>
+    <form action="<?= URL_ROOT ?>/Cart" method='POST'>
+      <input hidden name='id' value='<?= $id ?>'/>
+      <input hidden name='name' value='<?= $name ?>'/>
+      <input hidden name='price' value='<?= $price ?>'/>
+      <input hidden name='imgSrc' value='<?= $imgSrc ?>'/>
+      <input hidden name='quantity' value='1'/>
+
+      <nav class='breadcrumb-container'>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products">Products</a></li>
+          <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products/<?= $urlCat ?>"><?= $urlCat ?></a></li>
+          <li class="breadcrumb-item active"><?= $name ?></li>
+        </ol>
+      </nav>
+
+      <div class="product-item d-flex justify-content-center mt-4">
+        <div class="img-container d-flex align-items-center justify-content-center">
+          <img src="<?= $imgSrc ?>" width=400>
+        </div>
+        <div class="descript-container ms-5">
+          <div class="descript-head">
+            <h2 class='name'><?= $name ?></h2>
+            <h4 class='price mt-3'>$<?= $price ?>.00</h2>
+          </div>
+          <hr class="mx-2">
+          <div class="descript-body pe-5">
+            <span>In Stock: </span><p class='remain'><?= $remain ?></p><br>
+            <span>Brand: </span><p class='brand'><?= $supplier ?></p><br>
+            <span>Category: </span><p class='cat'><?= $cat ?></p><br>
+            <p class='descript pe-3'><span>Description: </span><?= $descript ?></p><br>
+          </div>
+          <div class="quan-container">
+            <p><span>Quantity: </span></p>
+            <div class="d-flex align-items-center justify-content-between count-container">
+              <div class="btn m-0 minus"><i class="fas fa-minus"></i></div>
+              <div class="quantityDiv h5 mb-1">1</div>
+              <div class="btn m-0 plus"><i class="fas fa-plus"></i></div>
+            </div>
+          </div>
+            
+          <div class="btn-container w-100">
+            <input type="submit" name='cartSubmit' class="btn btn-warning" value="Add to Cart">
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  <?php endif; ?>
 
 </div>
 

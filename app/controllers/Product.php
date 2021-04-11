@@ -48,16 +48,16 @@ class Product extends Controller
 
   public function updateProduct($data)
   {
-    return self::$model->getProduct($data);
+    return self::$model->updateProduct($data);
   }
 
   public function deleteProduct($item_id)
   {
-    return self::$model->getProduct($item_id);
+    return self::$model->deleteProduct($item_id);
   }
 
   public function insertProduct($data)
   {
-    return self::$model->getProduct($data);
+    return self::$model->insertProduct($data);
   }
 }

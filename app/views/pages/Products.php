@@ -1,5 +1,9 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="products-container">
+  <div class="text-end mb-4">
+    <a href="" class="btn btn-primary" style='border-radius:0; font-weight:600;'>New Product</a>
+  </div>
+
   <div class="header-wrapper">
     <h2 class="product-title m-0"><?= str_replace('_', ' ',$data['title']) ?></h2>
     <input type="text" class="search-box" placeholder="Search..">
@@ -27,7 +31,7 @@
       </div>
     </div> 
     <!-- end sidebar  -->
-
+    
     <!-- products -->
     <div class="products-item-container col h-100">
       <!-- spinner -->
@@ -37,7 +41,20 @@
         </div>
       </div>
       <!-- end spinner -->
-      
+
+      <!-- admin delete msg -->
+      <?php if(isset($data['productDeleted'])): ?>
+        <p class='text-success fw-bold h6 mb-3'><?= $data['productDeleted'] ?></p>
+      <?php endif; ?>
+
+      <?php if(isset($_SESSION['User']['is_admin'])): ?>
+        <div class='mb-3 d-flex justify-content-between'>
+          <p class='text-success fw-bold h6'><?= $data['productDeleted'] ?? '' ?></p>
+          
+        </div>
+      <?php endif; ?>
+
+
       <!-- product item -->
       <div class="product-item">
         <?php foreach ($data['products'] as $p) : ?>

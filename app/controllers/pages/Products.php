@@ -51,6 +51,11 @@ class Products extends Controller
       $this->ajaxHandler();
       exit;
     }
+    // admin deleted product msg
+    if (isset($_SESSION['productDeleted'])) {
+      $this->data['productDeleted'] = $_SESSION['productDeleted'];
+      unset($_SESSION['productDeleted']);
+    }
 
     // display products
     $this->renderView('Products', $this->data);
@@ -166,6 +171,36 @@ class Products extends Controller
       exit;
     }
 
+    //admin update product
+    if (isset($_POST['updateBtn'])) {
+      $this->updateProduct();
+      die;
+    }
+
+    //admin delete product 
+    if (isset($_POST['deleteBtn'])) {
+      // self::$productCtrl->deleteProduct($_POST['id']);
+      $_SESSION['productDeleted'] = '* Product Deleted Successfully *';
+      header('Location: ' . URL_ROOT . '/products');
+      die;
+    }
+
     $this->renderView('Product', $this->data);
+  }
+
+  private function updateProduct() {
+    $product = [
+      'item_name' => $_POST['name'],
+      'image' => $_POST['imgSrc'],
+      'description' => $_POST['descript'],
+      'price' => $_POST['price'],
+      'quantity' => $_POST['quantity'],
+      'supplier_name' => $_POST['supplier'],
+      'category' => $_POST['cat'],
+      'id' => $_POST['id'],
+    ];
+
+    self::$productCtrl->updateProduct($product);
+    header("Refresh:0");
   }
 }
