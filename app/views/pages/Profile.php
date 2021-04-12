@@ -21,7 +21,7 @@ if (!isset($_SESSION["User"])) {
       <button class="edit-profile-button p-2 d-block mt-4 btn btn-dark"><span>Change Password</span></button>
     </div>
     <div class="edit-section-div">
-      <form method="post">
+      <form id="myform" method="post">
         <div class="p-2">
           <input class="form-control" type="text" placeholder="Password" name="password">
         </div>
@@ -38,7 +38,7 @@ if (!isset($_SESSION["User"])) {
         </div>
       </form>
     </div>
-    <button type="submit" class="proflie-delete-button" name="deleteButton"><span>Delete Profile</span></button>
+    <button form="myform" type="submit" class="proflie-delete-button" name="deleteButton"><span>Delete Profile</span></button>
   </div>
 <?php
 }

@@ -56,7 +56,7 @@ class User
 
   public function deleteUser($user_id)
   {
-    $query = 'DELETE FROM users WHERE user_id=?';
-    return self::$db->prepareStmt($query, [$user_id])->rowCount();
+    $query = 'DELETE FROM users WHERE user_id=?;';
+    return $this->db->prepareStmt($query, [$user_id])->rowCount();
   }
 }

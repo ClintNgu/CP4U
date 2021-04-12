@@ -15,8 +15,9 @@ class Profile extends Controller
 
   public function index($param)
   {
+    $user_id = $_SESSION["User"];
+
     if (isset($_POST['saveButton'])) {
-      $user_id = $_SESSION["User"];
       $password = $_POST['password'];
       $confirmPassword = $_POST['confirmPassword'];
 
@@ -39,6 +40,12 @@ class Profile extends Controller
     if (isset($_POST['cancelButton'])) {
       header("Refresh:0");
     }
+
+    // if (isset($_POST['deleteButton'])) {
+    //   self::$userCtrl->deleteUser($user_id['user_id']);
+    //   header('Location: ' . URL_ROOT . '/signup');
+    //   die;
+    // }
 
     //render view
     $this->renderView('Profile', $this->data);
