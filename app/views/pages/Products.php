@@ -1,17 +1,15 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="products-container">
-  <?php if(isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 1): ?>  
+  <?php if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 1) : ?>
     <div class="text-end mb-4">
-      <a 
-        href="<?= URL_ROOT ?>/products/add" class="link btn" 
-        style='border-radius:0; background:steelblue; color:#fff; font-weight:500; box-shadow: 1px 1px 3px gray'>
-          Add Product 
+      <a href="<?= URL_ROOT ?>/products/add" class="link btn" style='border-radius:0; background:steelblue; color:#fff; font-weight:500; box-shadow: 1px 1px 3px gray'>
+        Add Product
       </a>
     </div>
   <?php endif; ?>
 
   <div class="header-wrapper">
-    <h2 class="product-title m-0"><?= str_replace('_', ' ',$data['title']) ?></h2>
+    <h2 class="product-title m-0"><?= str_replace('_', ' ', $data['title']) ?></h2>
     <input type="text" class="search-box" placeholder="Search..">
   </div>
 
@@ -26,7 +24,7 @@
             <?php foreach ($data['sidebar'][$name] as $sub) : ?>
               <label class='text-light'>
                 <input type="checkbox" value='<?= $sub ?>' class='sidebar-input mb-3'>
-                &nbsp;<?= $sub ?> 
+                &nbsp;<?= $sub ?>
               </label><br>
             <?php endforeach; ?>
           </div>
@@ -35,9 +33,9 @@
       <div class="end">
         <input type='submit' name='filterSubmit' class="btn btn-warning w-100 mt-2" value='Apply Filters'>
       </div>
-    </div> 
+    </div>
     <!-- end sidebar  -->
-    
+
     <!-- products -->
     <div class="products-item-container col h-100">
       <!-- spinner -->
@@ -49,7 +47,7 @@
       <!-- end spinner -->
 
       <!-- admin delete msg -->
-      <?php if(isset($data['productDeleted'])): ?>
+      <?php if (isset($data['productDeleted'])) : ?>
         <p class='text-success fw-bold h6 mb-3'><?= $data['productDeleted'] ?></p>
       <?php endif; ?>
 
@@ -73,7 +71,7 @@
       </div>
       <div class="text-center mt-5">
         <button class="btn loadMoreBtn btn-primary">Load More</button>
-      </div> 
+      </div>
 
     </div>
     <!-- end product item -->
