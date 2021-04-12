@@ -18,7 +18,7 @@
       <li class="breadcrumb-item active"><?= $name ?></li>
     </ol>
   </nav>
-  <?php if(isset($_SESSION['User']['is_admin'])): ?>
+  <?php if(isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 1): ?>
     <form method="post" class='d-flex'>
     <input hidden name='id' value='<?= $id ?>'/>
       <div class="w-50 ms-auto p-4" style="border:1.5px solid #dedede; box-shadow: 1px 1px 6px #dedede;">
