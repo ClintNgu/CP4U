@@ -35,7 +35,7 @@ class User
     return $this->db->prepareStmt($query, $data);
   }
 
-  public function updateUserPassword($data)
+  public function updateUser($data)
   {
     // ex.:
     // $data = [
@@ -49,7 +49,9 @@ class User
     // ];
 
     $query =  "UPDATE users 
-                SET pass=:pass
+                SET username=:username,
+                street=:street,
+                pass=:pass
                 WHERE user_id=:id;";
     return $this->db->prepareStmt($query, $data)->rowCount();
   }

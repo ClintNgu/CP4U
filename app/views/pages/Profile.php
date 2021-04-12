@@ -18,10 +18,19 @@ if (!isset($_SESSION["User"])) {
       <br>
       <label class="address-label"><?= $user["street"]; ?></label>
       <br>
-      <button class="edit-profile-button p-2 d-block mt-4 btn btn-dark"><span>Change Password</span></button>
     </div>
     <div class="edit-section-div">
+
       <form id="myform" method="post">
+        <div class="p-2">
+          <input class="form-control" type="text" placeholder="Username" name="username" value="<?= $user["username"]; ?>">
+        </div>
+        <div class="p-2">
+          <input class="form-control" type="text" placeholder="Street" name="street" value="<?= $user["street"]; ?>">
+        </div>
+
+        <button class="edit-profile-button p-2 d-block mt-4 btn btn-dark"><span>Change Password</span></button>
+
         <div class="p-2">
           <input class="form-control" type="text" placeholder="Password" name="password">
         </div>
