@@ -36,15 +36,15 @@
         <div class="w-50 text-end ms-auto price-container">
           <div class="row mb-2">
             <div class="col fs-6 text-muted">Subtotal: </div>
-            <div class="col-3 text-muted">$<?= $subtotal ?>.00</div>
+            <div class="col-3 text-muted">$<?= $subtotal*$quan ?>.00</div>
           </div>
           <div class="row mb-2">
             <div class="col fs-6 text-muted">Tax: </div>
-            <div class="col-3 text-muted">$<?= number_format($subtotal*.15, 2) ?></div>
+            <div class="col-3 text-muted">$<?= number_format($subtotal*$quan*.15, 2) ?></div>
           </div>
           <div class="row mb-2">
             <div class="col fs-6 fw-bold">Grand Total: </div>
-            <div class="col-3 fs-5 fw-bolder">$<?= number_format($subtotal*1.15, 2) ?></div>
+            <div class="col-3 fs-5 fw-bolder">$<?= number_format($subtotal*$quan*1.15, 2) ?></div>
           </div>
         </div>
         <div class="w-100 mt-3 text-end">
