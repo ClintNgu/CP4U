@@ -35,7 +35,7 @@ class User
     return $this->db->prepareStmt($query, $data);
   }
 
-  protected function updateUserPassword($data)
+  public function updateUserPassword($data)
   {
     // ex.:
     // $data = [
