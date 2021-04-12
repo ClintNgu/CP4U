@@ -1,0 +1,19 @@
+.add-container {
+  background: linear-gradient(-45deg, $orange 40%, $green 40%);
+  min-height: 95vh;
+  display: grid;
+  place-items: center;
+  box-shadow: $boxShadow;
+  .wrapper {
+    border-radius: 0.3rem;
+    width: 50%;
+    padding: 3rem 1.7rem;
+  }
+  input {
+    background: #fff !important;
+  }
+  input[type='submit'] {
+    background: $pink !important;
+    color: #fff;
+  }
+}

@@ -51,6 +51,7 @@ class Products extends Controller
       $this->ajaxHandler();
       exit;
     }
+
     // admin deleted product msg
     if (isset($_SESSION['productDeleted'])) {
       $this->data['productDeleted'] = $_SESSION['productDeleted'];
@@ -59,6 +60,54 @@ class Products extends Controller
 
     // display products
     $this->renderView('Products', $this->data);
+  }
+
+  public function add($params) {    
+    if(!isset($_SESSION['User']['is_admin'])) {
+      header('Location: ' . URL_ROOT . '/products');
+      die;
+    } 
+
+    $this->data['title'] = 'Add Product';
+    
+    //successfully added product
+    $this->data['msg'] = $_SESSION['msg'] ?? null;
+    $this->data['textColor'] = $_SESSION['textColor'] ?? null;
+    unset($_SESSION['msg']);
+    unset($_SESSION['textColor']);
+
+    // admin add new product
+    if (isset($_POST['addProductBtn'])) {
+      $newProduct = [
+        'item_name' => $_POST['name'],
+        'image' => $_POST['imgSrc'],
+        'description' => $_POST['descript'],
+        'price' => $_POST['price'],
+        'quantity' => $_POST['quantity'],
+        'supplier_name' => $_POST['supplier'],
+        'category' => $_POST['category'],
+      ];
+      
+      foreach($newProduct as $_ => $val) {
+        if (empty($val)) {
+          $this->data['msg'] = '* Fields cannot be empty *';
+          $this->data['textColor'] = 'text-danger';
+          break;
+        }
+      }
+
+      if (!isset($this->data['msg'])) {
+        $_SESSION['msg'] = '* Product Added Successfully *';
+        $_SESSION['textColor'] = 'text-success';
+        self::$productCtrl->insertProduct($newProduct);  
+        
+        //prevent duplicate POST on refresh
+        header('location: ' . URL_ROOT . '/products/add');
+        die;
+      }
+    }
+    
+    $this->renderView('AddProduct', $this->data);
   }
 
   private function ajaxHandler()
@@ -179,7 +228,7 @@ class Products extends Controller
 
     //admin delete product 
     if (isset($_POST['deleteBtn'])) {
-      // self::$productCtrl->deleteProduct($_POST['id']);
+      self::$productCtrl->deleteProduct($_POST['id']);
       $_SESSION['productDeleted'] = '* Product Deleted Successfully *';
       header('Location: ' . URL_ROOT . '/products');
       die;
@@ -196,7 +245,7 @@ class Products extends Controller
       'price' => $_POST['price'],
       'quantity' => $_POST['quantity'],
       'supplier_name' => $_POST['supplier'],
-      'category' => $_POST['cat'],
+      'category' => $_POST['category'],
       'id' => $_POST['id'],
     ];
 

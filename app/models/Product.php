@@ -42,6 +42,6 @@ class Product
   {
     $query = 'INSERT INTO products(item_name, image, description, price, quantity, supplier_name, category) 
               VALUES(:item_name, :image, :description, :price, :quantity, :supplier_name, :category);';
-    return $this->db->prepareStmt($query, $data);
+    return self::$db->prepareStmt($query, $data);
   }
 }

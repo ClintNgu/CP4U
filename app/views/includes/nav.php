@@ -53,11 +53,6 @@
         <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
         <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
           
-          <!-- check if admin -->
-          <?php if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) : ?>
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/Admin">Admin</a></li>
-          <?php endif; ?>
-          
           <!-- user profile and user orders -->
           <?php if (isset($_SESSION['User'])) : ?>
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/Profile">My Profile</a></li>

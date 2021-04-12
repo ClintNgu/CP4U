@@ -3,7 +3,9 @@
   background-color: #fff;
   min-height: 100vh;
   padding: 2rem 2.5rem 4rem;
-
+  input:not([type='submit']) {
+    background-color: #fff !important;
+  }
   .product-item {
     .img-container {
       width: 40%;

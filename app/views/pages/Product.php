@@ -11,19 +11,29 @@
   'category' => $cat] = $data['product'];
 ?>
 <div class="product-container">
+  <nav class='breadcrumb-container mb-4'>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products">Products</a></li>
+      <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products/<?= $urlCat ?>"><?= $urlCat ?></a></li>
+      <li class="breadcrumb-item active"><?= $name ?></li>
+    </ol>
+  </nav>
   <?php if(isset($_SESSION['User']['is_admin'])): ?>
     <form method="post" class='d-flex'>
     <input hidden name='id' value='<?= $id ?>'/>
-      <div class="w-50 ms-auto">
-        <div class='d-flex mb-3'>
-          <div class='w-100'>
-            <label class="form-label">Product Name</label>
-            <input type="text" name='name' class="form-control" value='<?=$name?>'>  
-          </div>
-          <div class='w-100 ms-4'>
-            <label class="form-label">Product Brand</label>
-            <input type="text" name='supplier' class="form-control" value='<?=$supplier?>'>  
-          </div>
+      <div class="w-50 ms-auto p-4" style="border:1.5px solid #dedede; box-shadow: 1px 1px 6px #dedede;">
+      <h4 class='fw-bold mb-3'>Edit Product</h4>
+        <div class='mb-3'>
+          <label class="form-label">Product Name</label>
+          <input type="text" name='name' class="form-control" value='<?=$name?>'>  
+        </div>
+        <div class='mb-3'>
+          <label class="form-label">Product Description</label>
+          <input type="text" name='descript' class="form-control" value='<?=$descript?>'>  
+        </div>
+        <div class='mb-3'>
+          <label class="form-label">Product Image</label>
+          <input type="text" name='imgSrc' class="form-control" value='<?=$imgSrc?>'>  
         </div>
         <div class='d-flex mb-3'>
           <div class='w-100'>
@@ -35,25 +45,40 @@
             <input type="text" name='quantity' class="form-control" value='<?=$remain?>'> 
           </div>
         </div>
-        <div class='mb-3'>
-          <label class="form-label">Product Category</label>
-          <input type="text" name='cat' class="form-control" value='<?=$cat?>'>  
-        </div>
-        <div class='mb-3'>
-          <label class="form-label">Product Image</label>
-          <input type="text" name='imgSrc' class="form-control" value='<?=$imgSrc?>'>  
-        </div>
-        <div class='mb-3'>
-          <label class="form-label">Product Description</label>
-          <input type="text" name='descript' class="form-control" value='<?=$descript?>'>  
+        <div class='mb-3 d-flex'>
+          <div class="w-100">
+          <label class="form-label">Product Brand</label>
+            <select class='form-select' name='supplier'>
+              <option <?= $supplier === 'AMD' ? 'selected' : '' ?> value="AMD">AMD</option>
+              <option <?= $supplier === 'Intel' ? 'selected' : '' ?> value="Intel">Intel</option>
+              <option <?= $supplier === 'ASUS' ? 'selected' : '' ?> value="ASUS">ASUS</option>
+              <option <?= $supplier === 'GIGABYTE' ? 'selected' : '' ?> value="GIGABYTE">GIGABYTE</option>
+              <option <?= $supplier === 'MSI' ? 'selected' : '' ?> value="MSI">MSI</option>
+              <option <?= $supplier === 'ASRock' ? 'selected' : '' ?> value="ASRock">ASRock</option>
+              <option <?= $supplier === 'G.Skill' ? 'selected' : '' ?> value="G.Skill">G.Skill</option>
+              <option <?= $supplier === 'SAMSUNG' ? 'selected' : '' ?> value="SAMSUNG">SAMSUNG</option>
+              <option <?= $supplier === 'EVGA' ? 'selected' : '' ?> value="EVGA">EVGA</option>
+              <option <?= $supplier === 'CORSAIR' ? 'selected' : '' ?> value="CORSAIR">CORSAIR</option>
+              <option <?= $supplier === 'Noctua' ? 'selected' : '' ?> value="Noctua">Noctua</option>
+            </select>
+          </div>
+          <div class="w-100 ms-4">
+            <label class="form-label">Product Category</label>
+            <select class='form-select' name='category'>
+              <option <?= $cat === 'CPU' ? 'selected' : '' ?> value="CPU">CPU</option>
+              <option <?= $cat === 'Motherboard' ? 'selected' : '' ?> value="Motherboard">Motherboard</option>
+              <option <?= $cat === 'Graphics Card' ? 'selected' : '' ?> value="Graphics Card">Graphics Card</option>
+              <option <?= $cat === 'RAM' ? 'selected' : '' ?> value="RAM">RAM</option>
+              <option <?= $cat === 'Power Supply' ? 'selected' : '' ?> value="Power Supply">Power Supply</option>
+              <option <?= $cat === 'CPU Cooler' ? 'selected' : '' ?> value="CPU Cooler">CPU Cooler</option>
+              <option <?= $cat === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case</option>
+            </select>   
+          </div>
         </div>
         <input type="submit" class="btn btn-warning w-100 fw-bold" name='updateBtn' value='Update'>
         <input type="submit" class="btn btn-danger w-100 fw-bold mt-1" name='deleteBtn' value='Delete'>
       </div>
-      <div 
-        class="w-25 h-100 d-flex p-4 m-auto" 
-        style='border-width:1.7px !important; border:.3rem solid lightgray; box-shadow: 2px 2px 8px #bbb;'
-      >
+      <div class="w-25 h-100 d-flex p-4 m-auto" style='border:1.7px solid lightgray; box-shadow: 2px 2px 8px #bbb;'>
         <div class="descript-container">
           <h5 class='fw-bold'><u>- Preview -</u></h5>
           <div class="descript-head d-flex mt-3">
@@ -79,14 +104,6 @@
       <input hidden name='price' value='<?= $price ?>'/>
       <input hidden name='imgSrc' value='<?= $imgSrc ?>'/>
       <input hidden name='quantity' value='1'/>
-
-      <nav class='breadcrumb-container'>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products">Products</a></li>
-          <li class="breadcrumb-item"><a href="<?= URL_ROOT ?>/products/<?= $urlCat ?>"><?= $urlCat ?></a></li>
-          <li class="breadcrumb-item active"><?= $name ?></li>
-        </ol>
-      </nav>
 
       <div class="product-item d-flex justify-content-center mt-4">
         <div class="img-container d-flex align-items-center justify-content-center">

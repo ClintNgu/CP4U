@@ -1,8 +1,14 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="products-container">
-  <div class="text-end mb-4">
-    <a href="" class="btn btn-primary" style='border-radius:0; font-weight:600;'>New Product</a>
-  </div>
+  <?php if(isset($_SESSION['User']['is_admin'])): ?>  
+    <div class="text-end mb-4">
+      <a 
+        href="<?= URL_ROOT ?>/products/add" class="link btn" 
+        style='border-radius:0; background:steelblue; color:#fff; font-weight:500; box-shadow: 1px 1px 3px gray'>
+          Add Product 
+      </a>
+    </div>
+  <?php endif; ?>
 
   <div class="header-wrapper">
     <h2 class="product-title m-0"><?= str_replace('_', ' ',$data['title']) ?></h2>
@@ -47,14 +53,6 @@
         <p class='text-success fw-bold h6 mb-3'><?= $data['productDeleted'] ?></p>
       <?php endif; ?>
 
-      <?php if(isset($_SESSION['User']['is_admin'])): ?>
-        <div class='mb-3 d-flex justify-content-between'>
-          <p class='text-success fw-bold h6'><?= $data['productDeleted'] ?? '' ?></p>
-          
-        </div>
-      <?php endif; ?>
-
-
       <!-- product item -->
       <div class="product-item">
         <?php foreach ($data['products'] as $p) : ?>
@@ -84,5 +82,4 @@
 
 <!-- ajax -->
 <script src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
-
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>
