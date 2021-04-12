@@ -34,7 +34,6 @@ class Cart extends Controller
     // add item to cart
     unset($_POST['cartSubmit']);
     array_push($_SESSION['Cart'], $_POST);
-    unset($_POST);
 
     // redirect to prevent duplicate POST on page refresh
     header('Location: '. URL_ROOT . '/Cart');

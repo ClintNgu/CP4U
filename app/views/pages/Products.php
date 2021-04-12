@@ -1,6 +1,6 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="products-container">
-  <?php if(isset($_SESSION['User']['is_admin'])): ?>  
+  <?php if((int)$_SESSION['User']['is_admin'] === 1): ?>  
     <div class="text-end mb-4">
       <a 
         href="<?= URL_ROOT ?>/products/add" class="link btn" 
