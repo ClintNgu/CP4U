@@ -23,14 +23,16 @@ class Product extends Controller
     self::$model = $this->loadModel('Product');
   }
 
-  private function addUrlCategory($products) {
+  private function addUrlCategory($products)
+  {
     foreach ($products as $idx => ['category' => $cat]) {
       $products[$idx]['urlCategory'] = $this->urlCategories[strtolower($cat)];
     }
     return $products;
   }
 
-  public function isValidCategory($postCat) {
+  public function isValidCategory($postCat)
+  {
     return array_search($postCat, array_map('strtolower', $this->urlCategories));
   }
 

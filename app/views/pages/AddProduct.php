@@ -4,7 +4,7 @@
   <div class="wrapper bg-light">
     <div>
       <h4 class='fw-bold d-inline'>New Product</h4>
-        <span class='<?=$data['textColor'] ?? ''?> ms-2'><?=$data['msg'] ?? ''?></span>
+      <span class='<?= $data['textColor'] ?? '' ?> ms-2'><?= $data['msg'] ?? '' ?></span>
     </div>
     <form method='post' class='mt-4'>
       <input type="text" class="input form-control" placeholder="Name" name="name" value='<?= $_POST['name'] ?? '' ?>'>
@@ -38,12 +38,12 @@
           <option <?= isset($_POST['category']) && $_POST['category'] === 'Power Supply' ? 'selected' : '' ?> value="Power Supply">Power Supply</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'CPU Cooler' ? 'selected' : '' ?> value="CPU Cooler">CPU Cooler</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case</option>
-        </select>      
+        </select>
       </div>
       <input type="submit" name='addProductBtn' value='Add' class='btn d-block w-100 mt-3'>
     </form>
   </div>
-  
+
 </div>
 
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>

@@ -33,25 +33,27 @@
   </div>
 
   <div class="checkout-price-section">
-    <div class="container">
-      <div class="ms-auto">
-        <div class="row mb-2">
-          <div class="col fs-6 text-muted">Subtotal: </div>
-          <div class="col-4 text-muted text-end">$<?= $subtotal ?>.00</div>
+    <form method="post">
+      <div class="container">
+        <div class="ms-auto">
+          <div class="row mb-2">
+            <div class="col fs-6 text-muted">Subtotal: </div>
+            <div class="col-4 text-muted text-end">$<?= $subtotal ?>.00</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col fs-6 text-muted">Tax: </div>
+            <div class="col-4 text-muted text-end">$<?= number_format($subtotal * .15, 2) ?></div>
+          </div>
+          <div class="row mb-2">
+            <div class="col fs-5 fw-bold">Grand Total: </div>
+            <div class="col-4 fs-5 fw-bold text-end">$<?= number_format($subtotal * 1.15, 2) ?></div>
+          </div>
         </div>
-        <div class="row mb-2">
-          <div class="col fs-6 text-muted">Tax: </div>
-          <div class="col-4 text-muted text-end">$<?= number_format($subtotal * .15, 2) ?></div>
-        </div>
-        <div class="row mb-2">
-          <div class="col fs-5 fw-bold">Grand Total: </div>
-          <div class="col-4 fs-5 fw-bold text-end">$<?= number_format($subtotal * 1.15, 2) ?></div>
-        </div>
+        <hr>
+        <button type="submit" name="placeOrder" class="submit-button p-2 w-100 d-block mt-4 btn btn-dark"><span>Place Order</span></button>
       </div>
-      <hr>
-      <button type="submit" class="submit-button p-2 w-100 d-block mt-4 btn btn-dark"><span>Place Order</span></button>
-    </div>
   </div>
+  </form>
 </div>
 
 <?php include APP_ROOT . "/views/includes/footer.php"; ?>

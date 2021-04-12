@@ -7,8 +7,8 @@ class Products extends Controller
 {
   private $data = ['title' => 'PRODUCTS'];
   private static $productCtrl;
-  
-  
+
+
   public function __construct()
   {
     //init product controller
@@ -16,7 +16,7 @@ class Products extends Controller
 
     //query all products from db
     $this->data['products'] = self::$productCtrl->getProducts();
-    
+
     //shuffle products
     shuffle($this->data['products']);
 
@@ -62,14 +62,15 @@ class Products extends Controller
     $this->renderView('Products', $this->data);
   }
 
-  public function add($params) {    
-    if(isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0) {
+  public function add($params)
+  {
+    if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0) {
       header('Location: ' . URL_ROOT . '/products');
       die;
-    } 
+    }
 
     $this->data['title'] = 'Add Product';
-    
+
     //successfully added product
     $this->data['msg'] = $_SESSION['msg'] ?? null;
     $this->data['textColor'] = $_SESSION['textColor'] ?? null;
@@ -87,8 +88,8 @@ class Products extends Controller
         'supplier_name' => $_POST['supplier'],
         'category' => $_POST['category'],
       ];
-      
-      foreach($newProduct as $_ => $val) {
+
+      foreach ($newProduct as $_ => $val) {
         if (empty($val)) {
           $this->data['msg'] = '* Fields cannot be empty *';
           $this->data['textColor'] = 'text-danger';
@@ -99,14 +100,14 @@ class Products extends Controller
       if (!isset($this->data['msg'])) {
         $_SESSION['msg'] = '* Product Added Successfully *';
         $_SESSION['textColor'] = 'text-success';
-        self::$productCtrl->insertProduct($newProduct);  
-        
+        self::$productCtrl->insertProduct($newProduct);
+
         //prevent duplicate POST on refresh
         header('location: ' . URL_ROOT . '/products/add');
         die;
       }
     }
-    
+
     $this->renderView('AddProduct', $this->data);
   }
 
@@ -115,8 +116,8 @@ class Products extends Controller
     $filtered = $this->data['products'];
     $filtered = isset($_POST['suppliers']) ? $this->filterSuppliers($filtered, json_decode($_POST['suppliers'])) : $filtered;
     $filtered = isset($_POST['prices']) ? $this->filterPrices($filtered, json_decode($_POST['prices'])) : $filtered;
-    $filtered = isset($_POST['searchVal']) ? $this->filterSearch($filtered, json_decode($_POST['searchVal'])) : $filtered;   
-    
+    $filtered = isset($_POST['searchVal']) ? $this->filterSearch($filtered, json_decode($_POST['searchVal'])) : $filtered;
+
     // display filtered products
     echo $this->displayFilteredProducts($filtered);
   }
@@ -131,19 +132,20 @@ class Products extends Controller
     return $filtered;
   }
 
-  private function filterSearch($products, $searchVal) {
-    $searchVal = $searchVal === '$' ? '' : $searchVal;  
-    $searchVal = isset($searchVal[0]) && $searchVal[0] === '$' && 
-                 isset($searchVal[1]) && is_numeric($searchVal[1]) 
-                 ? substr($searchVal, 1) : $searchVal;
-    
+  private function filterSearch($products, $searchVal)
+  {
+    $searchVal = $searchVal === '$' ? '' : $searchVal;
+    $searchVal = isset($searchVal[0]) && $searchVal[0] === '$' &&
+      isset($searchVal[1]) && is_numeric($searchVal[1])
+      ? substr($searchVal, 1) : $searchVal;
+
     $filtered = array_filter($products, function ($product) use ($searchVal) {
-        if (
-          str_contains(strtolower($product['item_name']), strtolower($searchVal)) ||
-          str_contains(strtolower($product['price']), strtolower($searchVal))
-        ) {
-          return true;
-        }
+      if (
+        str_contains(strtolower($product['item_name']), strtolower($searchVal)) ||
+        str_contains(strtolower($product['price']), strtolower($searchVal))
+      ) {
+        return true;
+      }
     });
 
     return $filtered;
@@ -169,7 +171,8 @@ class Products extends Controller
 
       foreach ($priceRanges as $range) {
         $range = explode('-', $range);
-        $min = $range[0]; $max = $range[1] ?? null;
+        $min = $range[0];
+        $max = $range[1] ?? null;
         if (
           (str_contains($min, '<') && $price < (int)substr($min, 1)) ||
           (str_contains($min, '+') && $price >= (int)substr($min, 0, -1)) ||
@@ -187,10 +190,10 @@ class Products extends Controller
   {
     $res = '';
     foreach ($filtered as [
-      'item_name' => $name, 
-      'image' => $img, 
-      'price' => $price, 
-      'urlCategory' => $urlCategory, 
+      'item_name' => $name,
+      'image' => $img,
+      'price' => $price,
+      'urlCategory' => $urlCategory,
       'item_id' => $id,
     ]) {
       $res .= "<a href='" . URL_ROOT . "/products/$urlCategory/$id' class='item-wrapper d-none'>";
@@ -237,7 +240,8 @@ class Products extends Controller
     $this->renderView('Product', $this->data);
   }
 
-  private function updateProduct() {
+  private function updateProduct()
+  {
     $product = [
       'item_name' => $_POST['name'],
       'image' => $_POST['imgSrc'],

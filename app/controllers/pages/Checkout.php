@@ -11,6 +11,9 @@ class Checkout extends Controller
 
     $this->data['Cart'] ??= $_SESSION['Cart'];
 
+    if (isset($_POST['placeOrder'])) {
+    }
+
     //render view
     $this->renderView('Checkout', $this->data);
   }
