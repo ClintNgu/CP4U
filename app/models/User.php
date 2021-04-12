@@ -35,7 +35,7 @@ class User
     return $this->db->prepareStmt($query, $data);
   }
 
-  protected function updateUser($data)
+  protected function updateUserPassword($data)
   {
     // ex.:
     // $data = [
@@ -49,8 +49,14 @@ class User
     // ];
 
     $query =  "UPDATE users 
-                SET fname=:fname, lname=:lname, username=:username, email=:email, pass=:pass, street=:street
+                SET pass=:pass
                 WHERE user_id=:id;";
     return $this->db->prepareStmt($query, $data)->rowCount();
+  }
+
+  public function deleteUser($user_id)
+  {
+    $query = 'DELETE FROM users WHERE user_id=?';
+    return self::$db->prepareStmt($query, [$user_id])->rowCount();
   }
 }

@@ -8,6 +8,12 @@ class Profile extends Controller
 
   public function index($param)
   {
+    $user = $_SESSION["User"];
+
+    if (isset($_POST['saveButton'])) {
+      echo "User ID: " . $user['user_id'];
+    }
+
     //render view
     $this->renderView('Profile', $this->data);
   }
