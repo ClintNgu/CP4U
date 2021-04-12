@@ -43,7 +43,7 @@ class User extends Controller
 
   public function updateUser($data)
   {
-    return $this->model->updateUserPassword($data);
+    return $this->model->updateUser($data);
   }
 
   public function deleteUser($user_id)

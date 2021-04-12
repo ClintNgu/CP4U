@@ -18,22 +18,30 @@ class Profile extends Controller
     $user_id = $_SESSION["User"];
 
     if (isset($_POST['saveButton'])) {
+      $username = $_POST['username'];
+      $street = $_POST['street'];
       $password = $_POST['password'];
       $confirmPassword = $_POST['confirmPassword'];
 
-      if ($password == "" || $confirmPassword == "") {
+      if ($username == "" || $street == "" || $password == "" || $confirmPassword == "") {
         $this->data['emptyPassword'] = '*Fields Cannot Be Empty*';
       } else if ($password != $confirmPassword) {
         $this->data['emptyPassword'] = '*Passwords Don\'t Match*';
       } else {
         $user = [
+          'username' => $username,
+          'street' => $street,
           'pass' => $password,
           'id' => $user_id['user_id'],
         ];
 
         //update password
         self::$userCtrl->updateUser($user);
-        $this->data['successChange'] = '*Password was changed*';
+        // if ($_POST) {
+        //   echo "<script type='text/javascript'>alert('account updated successfully!')</script>";
+        // }
+        header('Location: ' . URL_ROOT . '/products');
+        die;
       }
     }
 
