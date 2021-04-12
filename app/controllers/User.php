@@ -40,4 +40,14 @@ class User extends Controller
     //insert user to db
     $this->model->signup($userInfo);
   }
+
+  public function updateUser($data)
+  {
+    return $this->model->updateUserPassword($data);
+  }
+
+  public function deleteUser($user_id)
+  {
+    return $this->model->deleteUser($user_id);
+  }
 }

@@ -21,22 +21,24 @@ if (!isset($_SESSION["User"])) {
       <button class="edit-profile-button p-2 d-block mt-4 btn btn-dark"><span>Change Password</span></button>
     </div>
     <div class="edit-section-div">
-      <form>
-        <div class="form-group p-2">
+      <form method="post">
+        <div class="p-2">
           <input class="form-control" type="text" placeholder="Password" name="password">
         </div>
-        <div class="form-group p-2">
+        <div class="p-2">
           <input class="form-control" type="text" placeholder="Confirm Password" name="confirmPassword">
         </div>
-        <div class="form-group p-3">
-          <form method="post">
-            <button type="submit" class="save-button" name="saveButton">Save Changes</button>
-            <button class="cancel-button" name="cancelButton">Cancel</button>
-          </form>
+        <div class="p-2">
+          <span class='alert-danger ms-3'> <?= $data['emptyPassword'] ?? '' ?> </span>
+          <span class='alert-success ms-3'> <?= $data['successChange'] ?? '' ?> </span>
+        </div>
+        <div class="p-3">
+          <button type="submit" class="save-button" name="saveButton">Save Changes</button>
+          <button type="submit" class="cancel-button" name="cancelButton">Cancel</button>
         </div>
       </form>
     </div>
-    <button class="proflie-delete-button"><span>Delete Profile</span></button>
+    <button type="submit" class="proflie-delete-button" name="deleteButton"><span>Delete Profile</span></button>
   </div>
 <?php
 }
