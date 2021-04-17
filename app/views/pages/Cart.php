@@ -47,8 +47,8 @@
           <div class="col-3 fs-5 fw-bolder">$<?= number_format($subtotal * $quan * 1.15, 2) ?></div>
         </div>
       </div>
-      <div class="w-100 mt-3 text-end">
-        <a class="btn btn-primary fw-bold py-2" href="<?= URL_ROOT ?>/Checkout">Proceed to Checkout</a>
+      <div class="w-100 mt-4 text-end">
+        <a class="btn btn-primary fw-bold px-5 py-3" href="<?= URL_ROOT ?>/Checkout">Checkout</a>
       </div>
     <?php endif; ?>
   </div>

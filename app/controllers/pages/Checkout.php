@@ -8,11 +8,13 @@ class Checkout extends Controller
 
   public function index($params)
   {
-
-    $this->data['Cart'] ??= $_SESSION['Cart'];
-
-    if (isset($_POST['placeOrder'])) {
+    if (!isset($_SESSION['Cart'][$_SESSION['cartId']])) {
+      header('location: ' . URL_ROOT . '/products');
+      die;
     }
+
+    // send cart items to view
+    $this->data['Cart'] = $_SESSION['Cart'][$_SESSION['cartId']];
 
     //render view
     $this->renderView('Checkout', $this->data);

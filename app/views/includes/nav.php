@@ -60,8 +60,8 @@
         <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
         <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
           <?php if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0): ?>
-            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/Profile">My Profile</a></li>
-            <li><a class="dropdown-item py-2" href="#">My Orders</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
+            <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/myorders">My Orders</a></li>
             <li><hr class="dropdown-divider"></li>
           <?php endif; ?>
 

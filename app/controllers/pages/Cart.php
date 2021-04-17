@@ -100,8 +100,8 @@ class Cart extends Controller
       $res .= '<div class="col-3 fs-5 fw-bolder">$' . number_format($subtotal * 1.15, 2) . '</div>';
       $res .= '</div>';
       $res .= '</div>';
-      $res .= '<div class="w-100 mt-3 text-end">';
-      $res .= '<a class="btn btn-primary fw-bold py-2" href="' . URL_ROOT . '/Checkout">Proceed to Checkout</a>';
+      $res .= '<div class="w-100 mt-4 text-end">';
+      $res .= '<a class="btn btn-primary fw-bold px-5 py-3" href="' . URL_ROOT . '/Checkout">Checkout</a>';
       $res .= '</div>';
     }
 
