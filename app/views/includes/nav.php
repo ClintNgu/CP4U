@@ -42,6 +42,11 @@
   </div>
 
   <div class="navbar-nav">
+    <div class='d-flex align-items-center justify-content-center me-4'>
+      <h5 class='m-0 p-0 text-light' style='font-weight:400; font-size:1.1rem;'>
+        Hi, <?= isset($_SESSION['User']) ? ucfirst($_SESSION['User']['fname']) : 'Guest' ?>
+      </h5>
+    </div>
     <li>
       <a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/Cart">
         <i class="fas fa-shopping-cart"></i>&nbsp;
