@@ -58,6 +58,13 @@ class Products extends Controller
       unset($_SESSION['productDeleted']);
     }
 
+    //profile deleted msg
+    if (isset($_SESSION['profileDeleteMsg'])) {
+      $this->data['profileDeleteMsg'] = $_SESSION['profileDeleteMsg'];
+      unset($_SESSION['profileDeleteMsg']);
+      unset($_SESSION['User']);
+    }
+
     // display products
     $this->renderView('Products', $this->data);
   }

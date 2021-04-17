@@ -18,27 +18,28 @@ class Profile extends Controller
       header('Location: ' . URL_ROOT . '/products');
       die;
     }
-
+    
     if (isset($_SESSION['updateMsg'])) {
       $this->data['updateMsg'] = $_SESSION['updateMsg'];
       unset($_SESSION['updateMsg']);
     }
-
+    
     // update user POST
     if(isset($_POST['profileUpdateBtn'])) {
       $this->updateUser();
       die;
     }
-
+    
     // delete user POST
     if(isset($_POST['profileDeleteBtn'])) {
       $this->deleteUser();
+      die;
     }
     
     //render view
     $this->renderView('Profile', $this->data);
   }
-
+  
   private function updateUser() {
     unset($_POST['profileUpdateBtn']);
     self::$userCtrl->updateUser($_POST);
@@ -48,8 +49,10 @@ class Profile extends Controller
     
     header('Location: ' . URL_ROOT . '/profile'); // prevent dupe POST 
   }
-
+  
   private function deleteUser() {
-    
+    self::$userCtrl->deleteUser($_POST['id']);
+    $_SESSION['profileDeleteMsg'] = '* Profile Deleted Successfully *';
+    header('Location: ' . URL_ROOT . '/products');
   }
 }

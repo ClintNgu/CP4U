@@ -9,7 +9,18 @@
   <?php endif; ?>
 
   <div class="header-wrapper">
-    <h2 class="product-title m-0"><?= str_replace('_', ' ', $data['title']) ?></h2>
+    <div>
+      <h2 class="product-title m-0"><?= str_replace('_', ' ', $data['title']) ?></h2>
+        <!-- admin delete product msg -->
+      <?php if (isset($data['productDeleted'])) : ?>
+        <p class='text-success fw-bold h6' style='transform: translateX(-50%);'><?= $data['productDeleted'] ?></p>
+      <?php endif; ?>
+      
+      <!-- profile delete msg -->
+      <?php if (isset($data['profileDeleteMsg'])) : ?>
+        <p class='text-success fw-bold h6' style='transform: translateX(-50%);'><?= $data['profileDeleteMsg'] ?></p>
+      <?php endif; ?>
+    </div>
     <input type="text" class="search-box" placeholder="Search..">
   </div>
 
@@ -45,11 +56,6 @@
         </div>
       </div>
       <!-- end spinner -->
-
-      <!-- admin delete msg -->
-      <?php if (isset($data['productDeleted'])) : ?>
-        <p class='text-success fw-bold h6 mb-3'><?= $data['productDeleted'] ?></p>
-      <?php endif; ?>
 
       <!-- product item -->
       <div class="product-item">
