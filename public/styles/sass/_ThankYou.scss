@@ -1,0 +1,27 @@
+.thanks-container {
+  overflow: hidden;
+  padding: 2rem;
+  z-index: -1;
+  .wrapper {
+    padding: 2rem;
+    height: 70vh;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.4rem;
+    box-shadow: 2px 2px 2px #666;
+  }
+  .btn {
+    background: $orange;
+    color: $white;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px #666;
+    margin-top: 1rem;
+  }
+  .image {
+    margin-left: auto;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia0.giphy.com%2Fmedia%2FSvFi6ikOhmc1eyOiaU%2Fgiphy.gif&f=1&nofb=1');
+    background-size: cover;
+    background-position: center;
+    width: 60%;
+  }
+}
