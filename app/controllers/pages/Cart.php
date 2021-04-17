@@ -56,6 +56,8 @@ class Cart extends Controller
   {
     $res = '';
     $subtotal = 0;
+
+    // display products
     foreach ($_SESSION['Cart'][$_SESSION['cartId']] as $idx => $cartItem) {
       ['imgSrc' => $img, 'name' => $name, 'price' => $price, 'quantity' => $quan,] = $cartItem;
       $subtotal += $price;
@@ -81,6 +83,8 @@ class Cart extends Controller
       $res .= '<hr class="mt-3">';
       $res .= '</div>';
     }
+
+    // display total info
     if (!empty($res)) {
       $res .= '<div class="w-50 text-end ms-auto price-container">';
       $res .= '<div class="row mb-2">';
