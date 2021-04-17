@@ -40,6 +40,11 @@ class User extends Controller
     //insert user to db
     $this->model->signup($userInfo);
   }
+  
+  public function getUserById($id)
+  {
+    return $this->model->getUserById($id);
+  }
 
   public function updateUser($data)
   {

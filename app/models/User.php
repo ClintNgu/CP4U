@@ -34,24 +34,21 @@ class User
                 VALUES(:fname, :lname, :username, :email, :pass, :street, 0);";
     return $this->db->prepareStmt($query, $data);
   }
+  
+  public function getUserById($id)
+  {
+    $query = 'SELECT * FROM users WHERE user_id=?';
+    return $this->db->querySingle($query, [$id]);
+  }
 
   public function updateUser($data)
   {
-    // ex.:
-    // $data = [
-    //   'fname' => 'admin1',
-    //   'lname' => 'admin1',
-    //   'username' => 'admin123',
-    //   'email' => 'admin@admin.com',
-    //   'pass' => 'admin',
-    //   'street' => 'admin street 123',
-    //   'id' => 1,
-    // ];
-
     $query =  "UPDATE users 
-                SET username=:username,
-                street=:street,
-                pass=:pass
+                SET fname=:fname,
+                lname=:lname,
+                username=:username,
+                email=:email,
+                street=:street
                 WHERE user_id=:id;";
     return $this->db->prepareStmt($query, $data)->rowCount();
   }

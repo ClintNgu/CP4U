@@ -1,56 +1,41 @@
 <?php include APP_ROOT . "/views/includes/header.php"; ?>
 
-<?php
-
-if (!isset($_SESSION["User"])) {
-  echo "Error: No Account is Logged in";
-} else {
-  $user = $_SESSION["User"];
-?>
-
-  <div class="profile-container-div">
-    <div class="profile-info-section">
-      <img class="profile-image" src="https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg" alt="avatar-template">
-      <br>
-      <label class="name-label"><?= $user["fname"] . " " . $user["lname"]; ?></label>
-      <br>
-      <label class="username-label"><?= $user["username"]; ?></label>
-      <br>
-      <label class="address-label"><?= $user["street"]; ?></label>
-      <br>
-    </div>
-    <div class="edit-section-div">
-
-      <form id="myform" method="post">
-        <div class="p-2">
-          <input class="form-control" type="text" placeholder="Username" name="username" value="<?= $user["username"]; ?>">
-        </div>
-        <div class="p-2">
-          <input class="form-control" type="text" placeholder="Street" name="street" value="<?= $user["street"]; ?>">
-        </div>
-
-        <button class="edit-profile-button p-2 d-block mt-4 btn btn-dark"><span>Change Password</span></button>
-
-        <div class="p-2">
-          <input class="form-control" type="text" placeholder="Password" name="password">
-        </div>
-        <div class="p-2">
-          <input class="form-control" type="text" placeholder="Confirm Password" name="confirmPassword">
-        </div>
-        <div class="p-2">
-          <span class='alert-danger ms-3'> <?= $data['emptyPassword'] ?? '' ?> </span>
-          <span class='alert-success ms-3'> <?= $data['successChange'] ?? '' ?> </span>
-        </div>
-        <div class="p-3">
-          <button type="submit" class="save-button" name="saveButton">Save Changes</button>
-          <button type="submit" class="cancel-button" name="cancelButton">Cancel</button>
-        </div>
-      </form>
-    </div>
-    <button form="myform" type="submit" class="proflie-delete-button" name="deleteButton"><span>Delete Profile</span></button>
+<div class="profile-container" style='padding:2rem'>
+  <div style='display:grid; place-items: center;'>
+    <h2 style='font-weight: 900;' class="d-inline-block m-0 me-2">Profile</h2>
+    <?php if (isset($data['updateMsg'])): ?>
+      <span class='text-success'><?= $data['updateMsg'] ?></span>
+    <?php endif; ?>
   </div>
-<?php
-}
-?>
+  <form method='post' class="m-auto w-50 mt-3">
+    <input type="text" name='id' value='<?= $_SESSION['User']['user_id'] ?>' hidden>
+    <div class="row mb-2">
+      <div class="col">
+        <label class="form-label fw-bold">First Name</label>
+        <input type="text" name='fname' class="form-control" value="<?= $_SESSION['User']['fname'] ?>">  
+      </div>
+      <div class="col">
+        <label class="form-label fw-bold">Last Name</label>
+        <input type="text" name='lname' class="form-control" value="<?= $_SESSION['User']['lname'] ?>">
+      </div>
+    </div>
+    <div class="mb-2">
+      <label class="form-label fw-bold">Username</label>
+      <input type="text" name='username' class="form-control" value="<?= $_SESSION['User']['username'] ?>">  
+    </div>
+    <div class="mb-2">
+      <label class="form-label fw-bold">Email</label>
+      <input type="text" name='email' class="form-control" value="<?= $_SESSION['User']['email'] ?>">
+    </div>
+    <div class="mb-2">
+      <label class="form-label fw-bold">Shipping Address</label>
+      <input type="text" name='street' class="form-control" value="<?= $_SESSION['User']['street'] ?>">
+    </div>
+
+    <input type="submit" value='Update' name='profileUpdateBtn' class='btn btn-secondary d-block w-100 mb-2'>
+    <input type="submit" value='Delete' name='profileDeleteBtn' class='btn btn-danger d-block w-100'>
+  </form>
+</div>
+
 
 <?php include APP_ROOT . "/views/includes/footer.php"; ?>
