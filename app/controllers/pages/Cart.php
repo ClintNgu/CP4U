@@ -9,9 +9,7 @@ class Cart extends Controller
   public function index($params)
   { 
     // init user's cart
-    if (isset($_SESSION['User'])) {
-      $_SESSION['cartId'] = (int)$_SESSION['User']['user_id'];
-    }
+    $_SESSION['cartId'] = isset($_SESSION['User']) ? (int)$_SESSION['User']['user_id'] : -1;
     
     if (!isset($_SESSION['Cart'][$_SESSION['cartId']])) {
       $_SESSION['Cart'][$_SESSION['cartId']] = [];

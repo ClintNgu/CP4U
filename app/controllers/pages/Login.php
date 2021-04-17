@@ -29,6 +29,7 @@ class Login extends Controller
 
       if (!$this->isEmptyFields()) {
         $this->login();
+        die;
       }
     }
 
@@ -59,14 +60,22 @@ class Login extends Controller
       return;
     }
 
+    // init user session
     $_SESSION['User'] = $userRow;
     unset($_SESSION['User']['pass']);
+
+    // update cartId
+    $_SESSION['cartId'] = (int)$_SESSION['User']['user_id'];
+
+    // redirect to products page
     header('Location: ' . URL_ROOT . '/products');
   }
 
   public function signout()
   {
     unset($_SESSION['User']);
+    $_SESSION['cartId'] = -1;
+
     header('Location: ' . URL_ROOT);
   }
 }
