@@ -30,6 +30,7 @@ class Products extends Controller
   /* VIEWS */
   public function index($params)
   {
+    unset($_SESSION['User']);
     // render product
     if (isset($params[1])) {
       $this->renderProduct($params[1]);

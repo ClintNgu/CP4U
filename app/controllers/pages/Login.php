@@ -29,7 +29,6 @@ class Login extends Controller
 
       if (!$this->isEmptyFields()) {
         $this->login();
-        die;
       }
     }
 
@@ -45,7 +44,6 @@ class Login extends Controller
         return true;
       }
     }
-
     return false;
   }
 
