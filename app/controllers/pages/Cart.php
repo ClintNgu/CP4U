@@ -7,19 +7,29 @@ class Cart extends Controller
   private $data = ['title' => 'Cart',];
 
   public function index($params)
-  {
+  { 
+    // init user's cart
+    if (isset($_SESSION['User'])) {
+      $_SESSION['cartId'] = (int)$_SESSION['User']['user_id'];
+    }
+    
+    if (!isset($_SESSION['Cart'][$_SESSION['cartId']])) {
+      $_SESSION['Cart'][$_SESSION['cartId']] = [];
+    }
+
     // new item added to cart
     if (isset($_POST['cartSubmit'])) {
       $this->handleNewCartItem();
     }
 
-    // ajax requests
+    // remove item from cart ajax
     if (isset($_POST['removeBtn'])) {
       $this->ajaxRequests();
       die;
     }
 
-    $this->data['Cart'] ??= $_SESSION['Cart'];
+    // send cart data to view page
+    $this->data['Cart'] = $_SESSION['Cart'][$_SESSION['cartId']];
 
     //render view
     $this->renderView('Cart', $this->data);
@@ -27,14 +37,9 @@ class Cart extends Controller
 
   private function handleNewCartItem()
   {
-    // init cart
-    if (!isset($_SESSION['Cart'])) {
-      $_SESSION['Cart'] = [];
-    }
-
     // add item to cart
     unset($_POST['cartSubmit']);
-    array_push($_SESSION['Cart'], $_POST);
+    array_push($_SESSION['Cart'][$_SESSION['cartId']], $_POST);
 
     // redirect to prevent duplicate POST on page refresh
     header('Location: ' . URL_ROOT . '/Cart');
@@ -42,9 +47,9 @@ class Cart extends Controller
   }
   private function ajaxRequests()
   {
-    // remove at idx
-    unset($_SESSION['Cart'][$_POST['removeBtn']]);
-    $_SESSION['Cart'] = array_values($_SESSION['Cart']);
+    // remove item at idx
+    unset($_SESSION['Cart'][$_SESSION['cartId']][$_POST['removeBtn']]);
+    $_SESSION['Cart'][$_SESSION['cartId']] = array_values($_SESSION['Cart'][$_SESSION['cartId']]);
 
     echo $this->displayAjax();
   }
@@ -53,7 +58,7 @@ class Cart extends Controller
   {
     $res = '';
     $subtotal = 0;
-    foreach ($_SESSION['Cart'] as $idx => $cartItem) {
+    foreach ($_SESSION['Cart'][$_SESSION['cartId']] as $idx => $cartItem) {
       ['imgSrc' => $img, 'name' => $name, 'price' => $price, 'quantity' => $quan,] = $cartItem;
       $subtotal += $price;
       $res .= '<div class="row">';
