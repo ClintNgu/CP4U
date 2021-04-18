@@ -7,7 +7,7 @@
         <i class="fas fa-check" style='font-size: 2.5rem; color:#111;'></i>
       </div>
       <div class="ms-3">
-        <h4 style='font-weight:900; font-size:1.4rem;'>Thank You For Ordering</h4>
+        <h4 style='font-weight:900; font-size:1.4rem;'>Thank You <?=ucfirst($_POST['fname'])?>,</h4>
         <h6 style='font-weight:500; font-size:1rem; margin: 0;'>Your order has been received!</h4>
         <a href="<?=URL_ROOT?>/products" class="btn">Continue Shopping</a>
       </div>

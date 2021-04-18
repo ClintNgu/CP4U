@@ -35,6 +35,7 @@
           <option <?= isset($_POST['category']) && $_POST['category'] === 'Motherboard' ? 'selected' : '' ?> value="Motherboard">Motherboard</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'Graphics Card' ? 'selected' : '' ?> value="Graphics Card">Graphics Card</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'RAM' ? 'selected' : '' ?> value="RAM">RAM</option>
+          <option <?= isset($_POST['category']) && $_POST['category'] === 'M.2' ? 'selected' : '' ?> value="M.2">Storage</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'Power Supply' ? 'selected' : '' ?> value="Power Supply">Power Supply</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'CPU Cooler' ? 'selected' : '' ?> value="CPU Cooler">CPU Cooler</option>
           <option <?= isset($_POST['category']) && $_POST['category'] === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case</option>

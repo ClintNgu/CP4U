@@ -70,6 +70,7 @@
               <option <?= $cat === 'Motherboard' ? 'selected' : '' ?> value="Motherboard">Motherboard</option>
               <option <?= $cat === 'Graphics Card' ? 'selected' : '' ?> value="Graphics Card">Graphics Card</option>
               <option <?= $cat === 'RAM' ? 'selected' : '' ?> value="RAM">RAM</option>
+              <option <?= $cat === 'M.2' ? 'selected' : '' ?> value="M.2">Storage</option>
               <option <?= $cat === 'Power Supply' ? 'selected' : '' ?> value="Power Supply">Power Supply</option>
               <option <?= $cat === 'CPU Cooler' ? 'selected' : '' ?> value="CPU Cooler">CPU Cooler</option>
               <option <?= $cat === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case</option>
