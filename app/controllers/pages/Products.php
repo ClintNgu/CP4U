@@ -30,13 +30,13 @@ class Products extends Controller
   /* VIEWS */
   public function index($params)
   {
-    // render product
+    // render product if id exist
     if (isset($params[1])) {
       $this->renderProduct($params[1]);
       exit;
     }
 
-    // filter categories
+    // filter by categories from URL
     if (isset($params[0]) && !empty($params[0])) {
       if (!self::$productCtrl->isValidCategory($params[0])) {
         header('Location: ' . URL_ROOT . '/products');
@@ -46,45 +46,46 @@ class Products extends Controller
       }
     }
 
-    // filter ajax request
-    if (isset($_POST['suppliers']) || isset($_POST['prices']) || isset($_POST['searchVal'])) {
-      $this->ajaxHandler();
-      exit;
-    }
-
-    // admin deleted product msg
+    // set admin deleted product msg
     if (isset($_SESSION['productDeleted'])) {
       $this->data['productDeleted'] = $_SESSION['productDeleted'];
       unset($_SESSION['productDeleted']);
     }
 
-    //profile deleted msg
+    // set profile deleted msg
     if (isset($_SESSION['profileDeleteMsg'])) {
       $this->data['profileDeleteMsg'] = $_SESSION['profileDeleteMsg'];
       unset($_SESSION['profileDeleteMsg']);
       unset($_SESSION['User']);
     }
 
+    // Ajax requests (sidebar and search)
+    if (isset($_POST['suppliers']) || isset($_POST['prices']) || isset($_POST['searchVal'])) {
+      $this->ajaxHandler();
+      exit;
+    }
+
     // display products
     $this->renderView('Products', $this->data);
   }
 
-  public function add($params)
-  {
+  public function add($params) {
+    // admin only
     if (!isset($_SESSION['User']) || (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0)) {
       header('Location: ' . URL_ROOT . '/products');
       die;
     }
 
+    // set title
     $this->data['title'] = 'Add Product';
 
-    //successfully added product
+    // set admin added product msg
     $this->data['msg'] = $_SESSION['msg'] ?? null;
     $this->data['textColor'] = $_SESSION['textColor'] ?? null;
     unset($_SESSION['msg']);
     unset($_SESSION['textColor']);
 
-    // admin add new product
+    // add new product POST
     if (isset($_POST['addProductBtn'])) {
       $newProduct = [
         'item_name' => $_POST['name'],
@@ -109,7 +110,7 @@ class Products extends Controller
         $_SESSION['textColor'] = 'text-success';
         self::$productCtrl->insertProduct($newProduct);
 
-        //prevent duplicate POST on refresh
+        // prevent duplicate POST on refresh
         header('location: ' . URL_ROOT . '/products/add');
         die;
       }
@@ -220,24 +221,30 @@ class Products extends Controller
 
   private function renderProduct($id)
   {
-    //get item
+    // fetch product
     unset($this->data['products']);
     $this->data['product'] = self::$productCtrl->getProductById($id);
     $this->data['title'] = $this->data['product']['item_name'];
 
-    //no item found
+    // product not found
     if (empty($this->data['title'])) {
       header('Location: ' . URL_ROOT . '/products');
       exit;
     }
+    
+    // set admin update product msg
+    if (isset($_SESSION['productUpdateMsg'])) {
+      $this->data['productUpdateMsg'] = $_SESSION['productUpdateMsg'];
+      unset($_SESSION['productUpdateMsg']);
+    }
 
-    //admin update product
+    // admin update product POST
     if (isset($_POST['updateBtn'])) {
       $this->updateProduct();
       die;
     }
 
-    //admin delete product 
+    // admin delete product POST
     if (isset($_POST['deleteBtn'])) {
       self::$productCtrl->deleteProduct($_POST['id']);
       $_SESSION['productDeleted'] = '* Product Deleted Successfully *';
@@ -260,6 +267,8 @@ class Products extends Controller
       'category' => $_POST['category'],
       'id' => $_POST['id'],
     ];
+    //display success product update
+    $_SESSION['productUpdateMsg'] = '* Product Updated Successfully *';
 
     self::$productCtrl->updateProduct($product);
     header("Refresh:0");

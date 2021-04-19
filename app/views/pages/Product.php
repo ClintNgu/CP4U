@@ -23,7 +23,12 @@
     <form method="post" class='d-flex'>
       <input hidden name='id' value='<?= $id ?>' />
       <div class="w-50 ms-auto p-4" style="border:1.5px solid #dedede; box-shadow: 1px 1px 6px #dedede;">
-        <h4 class='fw-bold mb-3'>Edit Product</h4>
+        <div class="d-flex align-items-center mb-3">
+          <h4 class='fw-bold m-0'>Edit Product</h4>
+          <?php if (isset($data['productUpdateMsg'])): ?>
+            <span class="ms-3 text-success"><?=$data['productUpdateMsg']?></span>
+          <?php endif; ?>
+        </div>
         <div class='mb-3'>
           <label class="form-label">Product Name</label>
           <input type="text" name='name' class="form-control" value='<?= $name ?>'>
