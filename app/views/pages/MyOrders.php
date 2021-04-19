@@ -21,7 +21,7 @@
             'price' => $price,
             'qty' => $qty,
           ] = $item;
-          $total += $price; 
+          $total += $qty*$price; 
       ?> 
       <div class='d-flex pe-4 mb-3'>
         <img src="<?=$img?>" width="60" height="60" style='border-radius: 50%; border:2px solid #333;'>
