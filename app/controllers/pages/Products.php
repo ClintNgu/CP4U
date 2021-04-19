@@ -215,7 +215,7 @@ class Products extends Controller
       $res .= "</a>";
     }
 
-    return empty($res) ? "<h3>No Items Found!</h3>" : $res;
+    return empty($res) ? "<h4 class='text-center' style='grid-column:1/3;'>No Items Found!</h4>" : $res;
   }
 
   private function renderProduct($id)

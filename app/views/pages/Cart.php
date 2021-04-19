@@ -1,10 +1,10 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="cart-container">
   <h2 class='title text-center'>Cart</h2>
-  <div class="cart-items mt-5">
-    <?php if (!isset($data['Cart']) || empty($data['Cart'])) : ?>
+  <div class="cart-items mt-4">
+    <?php if (!isset($data['Cart']) || empty($data['Cart'])): ?>
       <h4 class='text-center'>No Items in Cart</h4>
-    <?php else : ?>
+    <?php else: ?>
       <?php
       $subtotal = 0;
       foreach ($data['Cart'] as $idx => $cartItem) :
