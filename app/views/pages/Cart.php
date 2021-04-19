@@ -1,7 +1,7 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 <div class="cart-container">
   <h2 class='title text-center'>Cart</h2>
-  <div class="cart-items mt-4">
+  <div class="cart-items" style="margin-top: 2.8rem; padding: 0 10rem;">
     <?php if (!isset($data['Cart']) || empty($data['Cart'])): ?>
       <h4 class='text-center'>No Items in Cart</h4>
     <?php else: ?>
@@ -34,21 +34,21 @@
         </div>
       <?php endforeach; ?>
       <div class="w-50 text-end ms-auto price-container">
-        <div class="row mb-2">
-          <div class="col fs-6 text-muted">Subtotal: </div>
-          <div class="col-3 text-muted">$<?= $subtotal * $quan ?>.00</div>
+        <div class="row mb-1">
+          <div class="col fs-6 text-muted fw-bold">Subtotal: </div>
+          <div class="col-3 text-muted fw-bold">$<?= $subtotal * $quan ?>.00</div>
         </div>
-        <div class="row mb-2">
-          <div class="col fs-6 text-muted">Tax: </div>
-          <div class="col-3 text-muted">$<?= number_format($subtotal * $quan * .15, 2) ?></div>
+        <div class="row mb-1">
+          <div class="col fs-6 text-muted fw-bold">Tax: </div>
+          <div class="col-3 text-muted fw-bold">$<?= number_format($subtotal * $quan * .15, 2) ?></div>
         </div>
         <div class="row mb-2">
           <div class="col fs-6 fw-bold">Grand Total: </div>
-          <div class="col-3 fs-5 fw-bolder">$<?= number_format($subtotal * $quan * 1.15, 2) ?></div>
+          <div class="col-3" style="font-size:1.2rem; font-weight:800;">$<?= number_format($subtotal * $quan * 1.15, 2) ?></div>
         </div>
       </div>
-      <div class="w-100 mt-4 text-end">
-        <a class="btn btn-primary fw-bold px-5 py-3" href="<?= URL_ROOT ?>/Checkout">Checkout</a>
+      <div class="w-100 text-end">
+        <a class="btn btn-primary fw-bold" href="<?= URL_ROOT ?>/Checkout">Checkout</a>
       </div>
     <?php endif; ?>
   </div>

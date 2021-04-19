@@ -6,8 +6,8 @@
     font-weight: 900;
   }
   img {
-    height: 5.5rem;
-    width: 5.5rem;
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
     border: 2px solid #333;
   }
@@ -23,5 +23,11 @@
   .remove-btn {
     border-radius: 0;
     margin: auto;
+  }
+  .btn-primary {
+    border-radius: 0;
+    padding: 0.8rem;
+    width: 14rem;
+    margin-top: 0.5rem;
   }
 }
