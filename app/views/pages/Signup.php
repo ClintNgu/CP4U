@@ -11,9 +11,9 @@
     </a>
   </div>
 
-  <div class="right p-4 ms-4">
+  <div class="right ms-4" style="padding: 2.4rem 2.4rem 1.5rem 2.4rem;">
     <div class='d-flex align-items-center'>
-      <h3 class="d-inline m-0">Sign Up</h3>
+      <h4 class="d-inline m-0" style="font-weight: 900;">Sign Up</h4>
       <span class='text-danger ms-3'> <?= $data['emptyFields'] ?? '' ?> </span>
     </div>
     <form method="post" class="signup-form mt-4">
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <input type="submit" value='Sign Up' name='signupSubmit' class="btn btn-primary w-100 mt-4" />
+      <input type="submit" value='Sign Up' name='signupSubmit' class="btn btn-primary w-100 mt-4" style='font-weight: bold;' />
       <p class="text-center w-100 mt-3">Already have an Account? <a class="link link-primary" href="<?= URL_ROOT ?>/login">Login</a></p>
 
     </form>

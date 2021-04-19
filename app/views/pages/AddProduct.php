@@ -3,7 +3,7 @@
 <div class="add-container">
   <div class="wrapper bg-light">
     <div>
-      <h4 class='fw-bold d-inline'>New Product</h4>
+      <h4 class='d-inline' style='font-weight: 900;'>Add Product</h4>
       <span class='<?= $data['textColor'] ?? '' ?> ms-2'><?= $data['msg'] ?? '' ?></span>
     </div>
     <form method='post' class='mt-4'>
@@ -38,7 +38,8 @@
           <option <?= isset($_POST['category']) && $_POST['category'] === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case</option>
         </select>
       </div>
-      <input type="submit" name='addProductBtn' value='Add' class='btn d-block w-100 mt-3'>
+      <hr>
+      <input type="submit" name='addProductBtn' value='Add' class='btn d-block w-100'>
     </form>
   </div>
 

@@ -1,15 +1,15 @@
 <?php include APP_ROOT . "/views/includes/header.php"; ?>
 
 <div class="profile-container" style='padding:2rem; min-height: 90vh;'>
-  <div style='display:grid; place-items: center;'>
-    <h2 style='font-weight: 900;' class="d-inline-block m-0 me-2">Profile</h2>
-    <?php if (isset($data['updateMsg'])): ?>
-      <span class='text-success'><?= $data['updateMsg'] ?></span>
-    <?php endif; ?>
-  </div>
   <form method='post' class="m-auto mt-4" style="width: 45%; background: #fff; padding:2rem 3rem; border-radius: .2rem; box-shadow:2px 2px 3px #777;">
+    <div class="d-flex align-items-center">
+      <h4 style='font-weight: 900;' class="d-inline-block m-0 me-2">Profile</h4>
+      <?php if (isset($data['updateMsg'])): ?>
+        <span class='text-success' style="font-size: small;"><?= $data['updateMsg'] ?></span>
+      <?php endif; ?>
+    </div>  
     <input type="text" name='id' value='<?= $_SESSION['User']['user_id'] ?>' hidden>
-    <div class="row mb-2">
+    <div class="row mb-2 mt-4">
       <div class="col">
         <label class="form-label fw-bold">First Name</label>
         <input type="text" name='fname' class="form-control" value="<?= $_SESSION['User']['fname'] ?>">  
