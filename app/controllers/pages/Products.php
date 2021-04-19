@@ -255,7 +255,7 @@ class Products extends Controller
       'image' => $_POST['imgSrc'],
       'description' => $_POST['descript'],
       'price' => $_POST['price'],
-      'quantity' => $_POST['quantity'],
+      'quantity' => 5,
       'supplier_name' => $_POST['supplier'],
       'category' => $_POST['category'],
       'id' => $_POST['id'],
