@@ -4,10 +4,10 @@
 <div class="my-orders-container" style='padding: 2rem 3rem;'>
   <h2 style='font-weight: 900;' class="text-center mb-4">My Orders</h2>
   <div style='display: grid; grid-template-columns:repeat(3, 1fr); gap:2rem; justify-items:center;'>
-    <?php foreach ($data['orderHistories'] as $order): ?>
+    <?php foreach ($data['orderHistories'] as $idx => $order): ?>
       <div class="p-4 d-flex flex-column" style='background:#fff; font-size: 14px; font-weight:500; min-height:23rem; width: 23rem; border-radius:.2rem; box-shadow:2px 2px 3px #777;'>
         <div>
-          <p class="m-0" style="font-size:1.15rem; font-weight:800;">Order Details</p>
+          <p class="m-0" style="font-size:1.15rem; font-weight:800;">Order #<?=str_pad($idx+1,3,'0',STR_PAD_LEFT)?></p>
           <p class="m-0 text-muted" style="font-size:13px;">Ordered On: <?=$order['order_date']?></p>
         </div>
         <hr>
