@@ -10,10 +10,7 @@
       <input type="text" class="input form-control" placeholder="Name" name="name" value='<?= $_POST['name'] ?? '' ?>'>
       <input type="text" class="input form-control mt-2" placeholder="Description" name="descript" value='<?= $_POST['descript'] ?? '' ?>'>
       <input type="text" class="input form-control mt-2" placeholder="ImageUrl" name="imgSrc" value='<?= $_POST['imgSrc'] ?? '' ?>'>
-      <div class="d-flex">
-        <input type="text" class="input form-control mt-2" placeholder="Price" name="price" value='<?= $_POST['price'] ?? '' ?>'>
-        <input type="text" class="input form-control mt-2 ms-4" placeholder="Quantity" name="quantity" value='<?= $_POST['quantity'] ?? '' ?>'>
-      </div>
+      <input type="text" class="input form-control mt-2" placeholder="Price" name="price" value='<?= $_POST['price'] ?? '' ?>'>
       <div class="d-flex mt-2">
         <select class='form-select w-50' name='supplier'>
           <option value=''>- Choose Brand -</option>

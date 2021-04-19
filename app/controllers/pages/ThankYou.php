@@ -7,7 +7,8 @@ class ThankYou extends Controller {
   private $ordersCtrl;
 
   public function index() {
-    $this->ordersCtrl = $this->loadModel('Order'); // init order controller
+    // init order controller
+    $this->ordersCtrl = $this->loadModel('Order'); 
 
     // did not enter page through checkout
     if (!isset($_POST['purchaseBtn'])) {
@@ -16,19 +17,20 @@ class ThankYou extends Controller {
     }
     
     // insert order(s) into db
-    $orderDate = date('Y-m-d H:i:s');
-    foreach($_SESSION['Cart'][$_SESSION['cartId']] as $cartItem) {
-      [ 'id' => $item_id, 'quantity' => $quantity, ] = $cartItem;
-      $data = [ 
-        'quantity' => $quantity, 
-        'order_date' => $orderDate, 
-        'item_id' => $item_id, 
-        'user_id' => $_SESSION['cartId'], 
-      ];
-
-      $this->ordersCtrl->addOrder($data);
+    if ($_SESSION['cartId'] !== -1) {
+      $orderDate = date('Y-m-d H:i:s');
+      foreach($_SESSION['Cart'][$_SESSION['cartId']] as $cartItem) {
+        [ 'id' => $item_id, 'quantity' => $quantity, ] = $cartItem;
+        $data = [ 
+          'quantity' => $quantity, 
+          'order_date' => $orderDate, 
+          'item_id' => $item_id, 
+          'user_id' => $_SESSION['cartId'], 
+        ]; 
+        $this->ordersCtrl->addOrder($data);
+      }
     }
-
+      
     unset($_SESSION['Cart'][$_SESSION['cartId']]);
 
     $this->renderView('ThankYou', $this->data);

@@ -3,7 +3,7 @@
   <h2 class='title text-center'>Cart</h2>
   <div class="cart-items mt-5">
     <?php if (!isset($data['Cart']) || empty($data['Cart'])) : ?>
-      <h4>No Items in Cart</h4>
+      <h4 class='text-center'>No Items in Cart</h4>
     <?php else : ?>
       <?php
       $subtotal = 0;

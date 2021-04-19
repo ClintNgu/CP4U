@@ -105,6 +105,6 @@ class Cart extends Controller
       $res .= '</div>';
     }
 
-    return !empty($res) ? $res : '<h4>No Items in Cart</h4>';
+    return !empty($res) ? $res : '<h4 class="text-center">No Items in Cart</h4>';
   }
 }

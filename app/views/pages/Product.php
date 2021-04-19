@@ -41,10 +41,6 @@
             <label class="form-label">Product Price</label>
             <input type="text" name='price' class="form-control" value='<?= $price ?>'>
           </div>
-          <div class='w-100 ms-4'>
-            <label class="form-label">Product Quantity</label>
-            <input type="text" name='quantity' class="form-control" value='<?= $remain ?>'>
-          </div>
         </div>
         <div class='mb-3 d-flex'>
           <div class="w-100">
@@ -92,7 +88,6 @@
           </div>
           <hr class='d-block m-4 mx-3'>
           <div>
-            <span class='fw-bold'>In Stock: </span><span class='mb-1 p-0'><?= $remain ?></span><br>
             <span class='fw-bold'>Brand: </span><span class='mb-1 p-0'><?= $supplier ?></span><br>
             <span class='fw-bold'>Category: </span><span class='mb-1 p-0'><?= $cat ?></span><br>
             <span class='fw-bold'>Description: </span><span class='mb-1 p-0'><?= $descript ?></span><br>
@@ -118,8 +113,6 @@
           </div>
           <hr class="mx-2">
           <div class="descript-body pe-5">
-            <span>In Stock: </span>
-            <p class='remain'><?= $remain ?></p><br>
             <span>Brand: </span>
             <p class='brand'><?= $supplier ?></p><br>
             <span>Category: </span>

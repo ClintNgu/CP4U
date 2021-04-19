@@ -1,4 +1,3 @@
-const inStock = +document.querySelector('.product-container .remain').innerHTML;
 const quanInput = document.querySelector('.product-container input[name=quantity]');
 const quanDiv = document.querySelector('.product-container div.quantityDiv');
 
@@ -15,8 +14,6 @@ minusBtn.addEventListener('click', () => {
 
 plusBtn.addEventListener('click', () => {
   const quantity = +quanInput.value;
-  if (quantity < inStock) {
-    quanInput.value = quantity + 1;
-    quanDiv.innerHTML = quantity + 1;
-  }
+  quanInput.value = quantity + 1;
+  quanDiv.innerHTML = quantity + 1;
 });

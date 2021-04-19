@@ -40,7 +40,7 @@
         $subtotal += $price;
     ?>
       <div class="d-flex pe-3 mb-3" style='font-size: 14px; font-weight:500; min-height:3rem;'>
-        <img src="<?=$img?>" width="60" height="60" style='border-radius: 50%; border:1px solid #999;'>
+        <img src="<?=$img?>" width="60" height="60" style='border-radius: 50%; border:2px solid #333;'>
         <p class='m-0 ms-3 mt-2 h-100'><?=$quan?> x <?=$name?></p>
       </div>
     <?php endforeach; ?>
