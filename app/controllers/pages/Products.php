@@ -71,7 +71,7 @@ class Products extends Controller
 
   public function add($params) {
     // admin only
-    if (!isset($_SESSION['User']) || (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0)) {
+    if (!isset($_SESSION['User']) || (int)$_SESSION['User']['is_admin'] === 0) {
       header('Location: ' . URL_ROOT . '/products');
       die;
     }
