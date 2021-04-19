@@ -87,17 +87,17 @@ class Cart extends Controller
     // display total info
     if (!empty($res)) {
       $res .= '<div class="w-50 text-end ms-auto price-container">';
-      $res .= '<div class="row mb-1">';
-      $res .= '<div class="col fs-6 text-muted fw-bold">Subtotal: </div>';
-      $res .= '<div class="col-3 text-muted fw-bold">$' . $subtotal . '.00</div>';
+      $res .= '<div class="row">';
+      $res .= '<div class="col fs-6 text-muted">Subtotal: </div>';
+      $res .= '<div class="col-3 text-muted">$' . $subtotal . '.00</div>';
       $res .= '</div>';
-      $res .= '<div class="row mb-1">';
-      $res .= '<div class="col fs-6 text-muted fw-bold">Tax: </div>';
-      $res .= '<div class="col-3 text-muted fw-bold">$' . number_format($subtotal * .15, 2) . '</div>';
+      $res .= '<div class="row">';
+      $res .= '<div class="col fs-6 text-muted">Tax: </div>';
+      $res .= '<div class="col-3 text-muted">$' . number_format($subtotal * .15, 2) . '</div>';
       $res .= '</div>';
       $res .= '<div class="row mb-2">';
       $res .= '<div class="col fs-6 fw-bold">Grand Total: </div>';
-      $res .= '<div class="col-3" style="font-size:1.2rem; font-weight:800;">$' . number_format($subtotal * 1.15, 2) . '</div>';
+      $res .= '<div class="col-3" style="font-weight:800;">$' . number_format($subtotal * 1.15, 2) . '</div>';
       $res .= '</div>';
       $res .= '</div>';
       $res .= '<div class="w-100 text-end">';

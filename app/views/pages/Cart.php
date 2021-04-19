@@ -34,17 +34,17 @@
         </div>
       <?php endforeach; ?>
       <div class="w-50 text-end ms-auto price-container">
-        <div class="row mb-1">
-          <div class="col fs-6 text-muted fw-bold">Subtotal: </div>
-          <div class="col-3 text-muted fw-bold">$<?= $subtotal * $quan ?>.00</div>
+        <div class="row">
+          <div class="col fs-6 text-muted">Subtotal: </div>
+          <div class="col-3 text-muted">$<?= $subtotal * $quan ?>.00</div>
         </div>
-        <div class="row mb-1">
-          <div class="col fs-6 text-muted fw-bold">Tax: </div>
-          <div class="col-3 text-muted fw-bold">$<?= number_format($subtotal * $quan * .15, 2) ?></div>
+        <div class="row">
+          <div class="col fs-6 text-muted ">Tax: </div>
+          <div class="col-3 text-muted ">$<?= number_format($subtotal * $quan * .15, 2) ?></div>
         </div>
         <div class="row mb-2">
           <div class="col fs-6 fw-bold">Grand Total: </div>
-          <div class="col-3" style="font-size:1.2rem; font-weight:800;">$<?= number_format($subtotal * $quan * 1.15, 2) ?></div>
+          <div class="col-3" style="font-weight:800;">$<?= number_format($subtotal * $quan * 1.15, 2) ?></div>
         </div>
       </div>
       <div class="w-100 text-end">
