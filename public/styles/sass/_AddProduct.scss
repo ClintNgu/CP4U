@@ -6,18 +6,19 @@
   box-shadow: $boxShadow;
   .wrapper {
     padding: 2.5rem 3rem;
+    background: #fff;
     border-radius: 0.1rem;
     box-shadow: 3px 3px 4px #333;
-    width: 50%;
+    width: 40%;
   }
   input {
-    background: #fff !important;
+    border: 1px solid lightgray;
   }
   input[type='submit'] {
     background: $pink !important;
     font-weight: 800;
-    box-shadow: 2px 2px 2px #333;
+    // box-shadow: 2px 2px 2px #333;
     color: #fff;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }

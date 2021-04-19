@@ -1,7 +1,7 @@
 <?php include APP_ROOT . '/views/includes/header.php'; ?>
 
 <div class="add-container">
-  <div class="wrapper bg-light">
+  <div class="wrapper">
     <div>
       <h4 class='d-inline' style='font-weight: 900;'>Add Product</h4>
       <span class='<?= $data['textColor'] ?? '' ?> ms-2'><?= $data['msg'] ?? '' ?></span>
