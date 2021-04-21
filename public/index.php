@@ -3,8 +3,9 @@ require_once dirname(__DIR__) . '/app/core/config.php';
 require_once APP_ROOT . '/vendor/autoload.php';
 require_once APP_ROOT . '/core/Application.php';
 
+// start session
 session_start();
 
-$app = new Application;;
-$app->run(); 
+// run app
+new Application;
 

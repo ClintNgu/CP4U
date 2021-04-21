@@ -6,8 +6,7 @@ class Application
   private $callback = 'index';
   private $params = [];
 
-  public function run()
-  {
+  public function __construct() {
     //get url from GET
     $urls = $this->splitUrl();
 
@@ -34,8 +33,7 @@ class Application
     call_user_func([$this->controller, $this->callback], $this->params);
   }
 
-  private function splitUrl()
-  {
+  private function splitUrl() {
     $url = rtrim($_GET['url'] ?? '', '/');
     return explode('/', ucwords(strtolower($url)));
   }

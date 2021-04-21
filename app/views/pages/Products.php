@@ -11,17 +11,16 @@
   <div class="header-wrapper">
     <div>
       <h2 class="product-title m-0"><?= str_replace('_', ' ', $data['title']) ?></h2>
-        <!-- admin delete product msg -->
+      <!-- admin delete product msg -->
       <?php if (isset($data['productDeleted'])) : ?>
         <p class='text-success fw-bold h6' style='transform: translateX(-50%);'><?= $data['productDeleted'] ?></p>
       <?php endif; ?>
-      
       <!-- profile delete msg -->
       <?php if (isset($data['profileDeleteMsg'])) : ?>
         <p class='text-success fw-bold h6' style='transform: translateX(-50%);'><?= $data['profileDeleteMsg'] ?></p>
       <?php endif; ?>
     </div>
-    <input type="text" class="search-box" placeholder="Search..">
+    <input type="text" class="search-box" placeholder="Search ...">
   </div>
 
 
@@ -45,9 +44,8 @@
         <input type='submit' name='filterSubmit' class="btn btn-warning w-100 mt-2" value='Apply Filters'>
       </div>
     </div>
-    <!-- end sidebar  -->
 
-    <!-- products -->
+    <!-- products container -->
     <div class="products-item-container col h-100">
       <!-- spinner -->
       <div class="spinner d-none d-flex justify-content-center align-items-center">
@@ -55,16 +53,17 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <!-- end spinner -->
 
-      <!-- product item -->
+      <!-- product container -->
       <div class="product-item">
-        <?php foreach ($data['products'] as $p) : ?>
-          <?php [
-            'item_name' => $name, 'image' => $img, 'price' => $price,
-            'urlCategory' => $urlCategory, 'item_id' => $id,
-          ] = $p ?>
-          <a href='<?= URL_ROOT . "/products/$urlCategory/$id" ?>' class='item-wrapper d-none'>
+        <?php foreach ($data['products'] as [
+            'item_name' => $name, 
+            'image' => $img, 
+            'price' => $price,
+            'urlCategory' => $urlCategory, 
+            'item_id' => $id,
+          ]): ?>
+          <a href='<?=URL_ROOT."/products/$urlCategory/$id" ?>' class='item-wrapper d-none'>
             <div class="item d-flex flex-column align-items-center shadow p-1">
               <img src="<?= $img ?>" class=' img mt-auto'>
               <div class="caption d-flex justify-content-between w-100 px-3 pt-5">
@@ -75,15 +74,14 @@
           </a>
         <?php endforeach; ?>
       </div>
+      
+      <!-- load more button -->
       <div class="text-center mt-5">
         <button class="btn loadMoreBtn btn-primary">Load More</button>
       </div>
-
     </div>
-    <!-- end product item -->
   </div>
 </div>
 
-<!-- ajax -->
 <script src='<?= URL_ROOT ?>/js/ajax/products.js'></script>
 <?php include APP_ROOT . '/views/includes/footer.php'; ?>

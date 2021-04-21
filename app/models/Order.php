@@ -12,7 +12,7 @@ class Order
 
   public function addOrder($data) {
     $query =  "INSERT INTO orders(quantity, order_date, user_id, item_id) 
-    VALUES(:quantity, :order_date, :user_id, :item_id);";
+                 VALUES(:quantity, :order_date, :user_id, :item_id);";
     return $this->db->prepareStmt($query, $data);
   }
 
