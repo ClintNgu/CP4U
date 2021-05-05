@@ -34,7 +34,7 @@ class User
                 VALUES(:fname, :lname, :username, :email, :pass, :street, 0);";
     return $this->db->prepareStmt($query, $data);
   }
-  
+
   public function getUserById($id)
   {
     $query = 'SELECT * FROM users WHERE user_id=?';

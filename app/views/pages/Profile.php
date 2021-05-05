@@ -4,15 +4,15 @@
   <form method='post' class="m-auto mt-4" style="width: 45%; background: #fff; padding:2rem 3rem; border-radius: .2rem; box-shadow:2px 2px 3px #777;">
     <div class="d-flex align-items-center">
       <h4 style='font-weight: 900;' class="d-inline-block m-0 me-2">Profile</h4>
-      <?php if (isset($data['updateMsg'])): ?>
+      <?php if (isset($data['updateMsg'])) : ?>
         <span class='text-success' style="font-size: small;"><?= $data['updateMsg'] ?></span>
       <?php endif; ?>
-    </div>  
+    </div>
     <input type="text" name='id' value='<?= $_SESSION['User']['user_id'] ?>' hidden>
     <div class="row mb-2 mt-4">
       <div class="col">
         <label class="form-label fw-bold">First Name</label>
-        <input type="text" name='fname' class="form-control" value="<?= $_SESSION['User']['fname'] ?>">  
+        <input type="text" name='fname' class="form-control" value="<?= $_SESSION['User']['fname'] ?>">
       </div>
       <div class="col">
         <label class="form-label fw-bold">Last Name</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-2">
       <label class="form-label fw-bold">Username</label>
-      <input type="text" name='username' class="form-control" value="<?= $_SESSION['User']['username'] ?>">  
+      <input type="text" name='username' class="form-control" value="<?= $_SESSION['User']['username'] ?>">
     </div>
     <div class="mb-2">
       <label class="form-label fw-bold">Email</label>

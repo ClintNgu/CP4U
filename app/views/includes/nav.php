@@ -47,22 +47,24 @@
         Hi, <?= isset($_SESSION['User']) ? ucfirst($_SESSION['User']['fname']) : 'Guest' ?>
       </h5>
     </div>
-    <?php if (!isset($_SESSION['User']) || (int)$_SESSION['User']['is_admin'] !== 1): ?>
+    <?php if (!isset($_SESSION['User']) || (int)$_SESSION['User']['is_admin'] !== 1) : ?>
       <li><a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/Cart">
-        <i class="fas fa-shopping-cart"></i>&nbsp;
-        <span id='navCartCount'>
-          <?= isset($_SESSION['Cart'][$_SESSION['cartId']]) ? count($_SESSION['Cart'][$_SESSION['cartId']]) : 0 ?>
-        </span>
-      </a></li>
+          <i class="fas fa-shopping-cart"></i>&nbsp;
+          <span id='navCartCount'>
+            <?= isset($_SESSION['Cart'][$_SESSION['cartId']]) ? count($_SESSION['Cart'][$_SESSION['cartId']]) : 0 ?>
+          </span>
+        </a></li>
     <?php endif; ?>
     <li>
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle m-0"><i class="far fa-user-circle"></i></a>
         <ul class="profile-dropdown dropdown-menu dropdown-menu-end me-2 text-end">
-          <?php if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0): ?>
+          <?php if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 0) : ?>
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/profile">My Profile</a></li>
             <li><a class="dropdown-item py-2" href="<?= URL_ROOT ?>/myorders">My Orders</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
           <?php endif; ?>
 
           <?php if (!isset($_SESSION['User'])) : ?>
