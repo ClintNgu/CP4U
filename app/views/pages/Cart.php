@@ -2,9 +2,9 @@
 <div class="cart-container">
   <h2 class='title text-center'>Cart</h2>
   <div class="cart-items" style="margin-top: 2.8rem; padding: 0 10rem;">
-    <?php if (!isset($data['Cart']) || empty($data['Cart'])): ?>
+    <?php if (!isset($data['Cart']) || empty($data['Cart'])) : ?>
       <h4 class='text-center'>No Items in Cart</h4>
-    <?php else: ?>
+    <?php else : ?>
       <?php
       $subtotal = 0;
       foreach ($data['Cart'] as $idx => $cartItem) :
