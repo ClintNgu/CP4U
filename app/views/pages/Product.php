@@ -24,14 +24,12 @@
   <?php if (isset($_SESSION['User']) && (int)$_SESSION['User']['is_admin'] === 1) : ?>
     <form method="post" class='d-flex'>
       <input hidden name='id' value='<?= $id ?>' />
-      
-      <div 
-        class="w-50 ms-auto p-4" 
-        style="border:1.5px solid #dedede; box-shadow: 1px 1px 6px #dedede;">
+
+      <div class="w-50 ms-auto p-4" style="border:1.5px solid #dedede; box-shadow: 1px 1px 6px #dedede;">
         <div class="d-flex align-items-center mb-3">
           <h4 class='fw-bold m-0'>Edit Product</h4>
-          <?php if (isset($data['productUpdateMsg'])): ?>
-            <span class="ms-3 text-success"><?=$data['productUpdateMsg']?></span>
+          <?php if (isset($data['productUpdateMsg'])) : ?>
+            <span class="ms-3 text-success"><?= $data['productUpdateMsg'] ?></span>
           <?php endif; ?>
         </div>
         <div class='mb-3'>
@@ -57,59 +55,37 @@
           <div class="w-100">
             <label class="form-label">Product Brand</label>
             <select class='form-select' name='supplier'>
-              <option 
-                <?= $supplier === 'AMD' ? 'selected' : '' ?> 
-                value="AMD">
+              <option <?= $supplier === 'AMD' ? 'selected' : '' ?> value="AMD">
                 AMD
               </option>
-              <option 
-                <?= $supplier === 'Intel' ? 'selected' : '' ?> 
-                value="Intel">
+              <option <?= $supplier === 'Intel' ? 'selected' : '' ?> value="Intel">
                 Intel
               </option>
-              <option 
-                <?= $supplier === 'ASUS' ? 'selected' : '' ?> 
-                value="ASUS">
+              <option <?= $supplier === 'ASUS' ? 'selected' : '' ?> value="ASUS">
                 ASUS
               </option>
-              <option 
-                <?= $supplier === 'GIGABYTE' ? 'selected' : '' ?> 
-                value="GIGABYTE">
+              <option <?= $supplier === 'GIGABYTE' ? 'selected' : '' ?> value="GIGABYTE">
                 GIGABYTE
               </option>
-              <option 
-                <?= $supplier === 'MSI' ? 'selected' : '' ?> 
-                value="MSI">
+              <option <?= $supplier === 'MSI' ? 'selected' : '' ?> value="MSI">
                 MSI
               </option>
-              <option 
-                <?= $supplier === 'ASRock' ? 'selected' : '' ?> 
-                value="ASRock">
+              <option <?= $supplier === 'ASRock' ? 'selected' : '' ?> value="ASRock">
                 ASRock
               </option>
-              <option 
-                <?= $supplier === 'G.Skill' ? 'selected' : '' ?> 
-                value="G.Skill">G.
+              <option <?= $supplier === 'G.Skill' ? 'selected' : '' ?> value="G.Skill">G.
                 Skill
               </option>
-              <option 
-                <?= $supplier === 'SAMSUNG' ? 'selected' : '' ?> 
-                value="SAMSUNG">
+              <option <?= $supplier === 'SAMSUNG' ? 'selected' : '' ?> value="SAMSUNG">
                 SAMSUNG
               </option>
-              <option 
-                <?= $supplier === 'EVGA' ? 'selected' : '' ?> 
-                value="EVGA">
+              <option <?= $supplier === 'EVGA' ? 'selected' : '' ?> value="EVGA">
                 EVGA
               </option>
-              <option 
-                <?= $supplier === 'CORSAIR' ? 'selected' : '' ?> 
-                value="CORSAIR">
+              <option <?= $supplier === 'CORSAIR' ? 'selected' : '' ?> value="CORSAIR">
                 CORSAIR
               </option>
-              <option 
-                <?= $supplier === 'Noctua' ? 'selected' : '' ?> 
-                value="Noctua">
+              <option <?= $supplier === 'Noctua' ? 'selected' : '' ?> value="Noctua">
                 Noctua
               </option>
             </select>
@@ -118,59 +94,33 @@
           <div class="w-100 ms-4">
             <label class="form-label">Product Category</label>
             <select class='form-select' name='category'>
-              <option 
-                <?= $cat === 'CPU' ? 'selected' : '' ?> 
-                value="CPU">
+              <option <?= $cat === 'CPU' ? 'selected' : '' ?> value="CPU">
                 CPU
               </option>
-              <option 
-                <?= $cat === 'Motherboard' ? 'selected' : '' ?> 
-                value="Motherboard">
+              <option <?= $cat === 'Motherboard' ? 'selected' : '' ?> value="Motherboard">
                 Motherboard
               </option>
-              <option 
-                <?= $cat === 'Graphics Card' ? 'selected' : '' ?> 
-                value="Graphics Card">Graphics Card
+              <option <?= $cat === 'Graphics Card' ? 'selected' : '' ?> value="Graphics Card">Graphics Card
               </option>
-              <option 
-                <?= $cat === 'RAM' ? 'selected' : '' ?> 
-                value="RAM">RAM
+              <option <?= $cat === 'RAM' ? 'selected' : '' ?> value="RAM">RAM
               </option>
-              <option 
-                <?= $cat === 'M.2' ? 'selected' : '' ?> 
-                value="M.2">Storage
+              <option <?= $cat === 'M.2' ? 'selected' : '' ?> value="M.2">Storage
               </option>
-              <option 
-                <?= $cat === 'Power Supply' ? 'selected' : '' ?> 
-                value="Power Supply">Power Supply
+              <option <?= $cat === 'Power Supply' ? 'selected' : '' ?> value="Power Supply">Power Supply
               </option>
-              <option 
-                <?= $cat === 'CPU Cooler' ? 'selected' : '' ?> 
-                value="CPU Cooler">CPU Cooler
+              <option <?= $cat === 'CPU Cooler' ? 'selected' : '' ?> value="CPU Cooler">CPU Cooler
               </option>
-              <option 
-                <?= $cat === 'PC Case' ? 'selected' : '' ?> 
-                value="PC Case">PC Case
+              <option <?= $cat === 'PC Case' ? 'selected' : '' ?> value="PC Case">PC Case
               </option>
             </select>
           </div>
         </div>
-          
-        <input 
-          type="submit" 
-          class="btn btn-warning w-100 fw-bold" 
-          name='updateBtn' 
-          value='Update' />
-        <input 
-          type="submit" 
-          class="btn btn-danger w-100 fw-bold mt-1" 
-          name='deleteBtn' 
-          value='Delete' />
+
+        <input type="submit" class="btn btn-warning w-100 fw-bold" name='updateBtn' value='Update' />
+        <input type="submit" class="btn btn-danger w-100 fw-bold mt-1" name='deleteBtn' value='Delete' />
       </div>
 
-      <div 
-        class="w-25 h-100 d-flex p-4 m-auto" 
-        style='border:1.7px solid lightgray; box-shadow: 2px 2px 8px #bbb;'>
+      <div class="w-25 h-100 d-flex p-4 m-auto" style='border:1.7px solid lightgray; box-shadow: 2px 2px 8px #bbb;'>
         <div class="descript-container">
           <h5 class='fw-bold'><u> -Preview- </u></h5>
           <div class="descript-head d-flex mt-3">
@@ -183,17 +133,17 @@
           <hr class='d-block m-4 mx-3'>
           <div>
             <span class='fw-bold'>
-              Brand: 
+              Brand:
             </span>
             <span class='mb-1 p-0'><?= $supplier ?></span><br>
-            
+
             <span class='fw-bold'>
-              Category: 
+              Category:
             </span>
             <span class='mb-1 p-0'><?= $cat ?></span><br>
-            
+
             <span class='fw-bold'>
-              Description: 
+              Description:
             </span>
             <span class='mb-1 p-0'><?= $descript ?></span><br>
           </div>
