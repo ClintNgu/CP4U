@@ -51,7 +51,7 @@
       <li><a class="nav-link d-flex justify-content-center" href="<?= URL_ROOT ?>/Cart">
           <i class="fas fa-shopping-cart"></i>&nbsp;
           <span id='navCartCount'>
-            <?= isset($_SESSION['Cart'][$_SESSION['cartId']]) ? count($_SESSION['Cart'][$_SESSION['cartId']]) : 0 ?>
+            <?= isset($_SESSION['cartId']) && isset($_SESSION['Cart'][$_SESSION['cartId']]) ? count($_SESSION['Cart'][$_SESSION['cartId']]) : 0 ?>
           </span>
         </a></li>
     <?php endif; ?>
